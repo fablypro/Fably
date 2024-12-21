@@ -1,9 +1,12 @@
+// importing all material from package:flutter/material.dart.
 import 'package:flutter/material.dart';
 
+// running the App.
 void main() {
   runApp(const MyApp());
 }
 
+// class with widgests and states.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
