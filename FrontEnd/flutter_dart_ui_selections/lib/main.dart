@@ -22,17 +22,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: ''),
+      home: const MyHomePage(title: 'Accessory Suggestions'),
     );
   }
 }
 
 // visuals of Home page.
 class MyHomePage extends StatefulWidget {
-  // creating the visuals of the Home page title.
+  // creating the visuals of the Suggestions widget title.
   const MyHomePage({super.key, required this.title});
 
-  // declare the title of the Home page.
+  // declare the title of the Suggestions widget.
   final String title;
 
   @override
