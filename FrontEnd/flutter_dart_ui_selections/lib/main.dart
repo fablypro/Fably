@@ -73,9 +73,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      // positioning the widget in middle of page.
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
@@ -86,10 +85,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
