@@ -77,7 +77,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       body: Center(
         // vertically arranges the buttons.
         child: Column(
-          // cetntering the buttons vertically.
+          // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
