@@ -22,25 +22,25 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Accessory Suggestions'),
+      home: const AccessorySuggestions(title: 'Accessory Suggestions'),
     );
   }
 }
 
 // visuals of Home page.
-class MyHomePage extends StatefulWidget {
+class AccessorySuggestions extends StatefulWidget {
   // creating the visuals of the Suggestions widget title.
-  const MyHomePage({super.key, required this.title});
+  const AccessorySuggestions({super.key, required this.title});
 
   // declare the title of the Suggestions widget.
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<AccessorySuggestions> createState() => _AccessorySuggestions();
 }
 
 // state of the Home page.
-class _MyHomePageState extends State<MyHomePage> {
+class _AccessorySuggestions extends State<AccessorySuggestions> {
   
   int _counter = 0;
 
@@ -102,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      // selection buttons.
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
