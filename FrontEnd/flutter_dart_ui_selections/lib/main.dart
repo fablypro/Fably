@@ -39,7 +39,7 @@ class AccessorySuggestions extends StatefulWidget {
   State<AccessorySuggestions> createState() => _AccessorySuggestions();
 }
 
-// state of the Home page.
+// state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
   
   int _counter = 0;
