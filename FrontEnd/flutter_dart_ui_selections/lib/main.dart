@@ -75,16 +75,9 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       ),
       // positioning the widget in middle of page.
       body: Center(
+        // vertically arranges the buttons.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
+          // cetntering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
