@@ -43,7 +43,7 @@ dependencies {
 
     implementation 'com.google.android.gms.ads.rewarded'	// Contains classes for Rewarded Ads.
     implementation 'com.google.android.gms.ads.rewardedinterstitial'	// Contains classes for Rewarded Interstitial Ads.
-    implementation 'com.google.android.gms.ads.search'	// ontains classes for Search Ads for Apps.'
+    implementation 'com.google.android.gms.ads.search'	// contains classes for Search Ads for Apps.'
 }
 
 android {
