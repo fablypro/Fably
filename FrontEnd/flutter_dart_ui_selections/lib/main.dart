@@ -42,6 +42,9 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
+  String image1 = '';
+  String image2 = '';
+
   int counter = 0;
 
   void _incrementCounter() {
@@ -80,12 +83,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           children: <Widget>[
             FloatingActionButton(
               onPressed: _incrementCounter,
-              child: Icon(Icons.add),
+              child: Icon(image1),
             ),
             SizedBox(height: 20),
             FloatingActionButton(
               onPressed: _decrementCounter,
-              child: Icon(Icons.remove),
+              child: Icon(image2),
             ),
           ],
         ),
