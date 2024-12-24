@@ -61,9 +61,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
+        // background color to AppBar.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -75,34 +73,24 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,
+          // selection buttons.
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(),
-              child: ,
+              margin: EdgeInsets.all(25),
+              child: FloatingActionButton(
+                  onPressed: onPressed,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(25),
+              child: FloatingActionButton(onPressed: onPressed),
+            ),
+            Container(
+              margin: EdgeInsets.all(25),
+              child: FloatingActionButton(onPressed: onPressed),
             ),
           ],
         ),
-      ),
-      // selection buttons.
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.image),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.mage2),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
