@@ -49,16 +49,16 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       // incrementing the count.
       _counter++;
     });
+
+    void _decrementCounter() {
+      setState(() {
+        // incrementing the count.
+        _counter--;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         // background color to AppBar.
@@ -66,6 +66,9 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
       ),
       // positioning the widget in middle of page.
       body: Center(
@@ -75,19 +78,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           mainAxisAlignment: MainAxisAlignment.center,
           // selection buttons.
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(25),
-              child: FloatingActionButton(
-                  onPressed: onPressed,
-              ),
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              child: Icon(Icons.add),
             ),
-            Container(
-              margin: EdgeInsets.all(25),
-              child: FloatingActionButton(onPressed: onPressed),
-            ),
-            Container(
-              margin: EdgeInsets.all(25),
-              child: FloatingActionButton(onPressed: onPressed),
+            SizedBox(height: 20),
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              child: Icon(Icons.remove),
             ),
           ],
         ),
