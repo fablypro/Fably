@@ -41,7 +41,7 @@ class AccessorySuggestions extends StatefulWidget {
 
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
-  
+
   int _counter = 0;
 
   void _incrementCounter() {
@@ -49,8 +49,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       // incrementing the count.
       _counter++;
     });
-
-    void _decrementCounter() {
+  }
+  void _decrementCounter() {
       setState(() {
         // incrementing the count.
         _counter--;
