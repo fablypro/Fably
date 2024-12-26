@@ -47,19 +47,48 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
   Image image4 = '';
   Image image5 = '';
   Image image6 = '';
+  Image image7 = '';
 
-  int counter = 0;
-
-  void _incrementCounter() {
+  void _shoes() {
     setState(() {
       // incrementing the count.
       counter++;
     });
   }
-  void _decrementCounter() {
+  void _socks() {
+    setState(() {
+      // incrementing the count.
+      counter++;
+    });
+  }
+  void _glasses() {
+    setState(() {
+      // incrementing the count.
+      counter++;
+    });
+  }
+  void _gloves() {
+    setState(() {
+      // incrementing the count.
+      counter++;
+    });
+  }
+  void _watches() {
     setState(() {
         // incrementing the count.
         counter--;
+    });
+  }
+  void _rings() {
+    setState(() {
+      // incrementing the count.
+      counter--;
+    });
+  }
+  void _chains() {
+    setState(() {
+      // incrementing the count.
+      counter--;
     });
   }
 
@@ -85,33 +114,38 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           children: <Widget>[
             SizedBox(height: 20, width: 20,),
             IconButton(
-                onPressed: onPressed,
-                icon: image1,
+              onPressed: _shoes,
+              icon: image1,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
-                onPressed: onPressed,
-                icon: image2,
+              onPressed: _socks,
+              icon: image2,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
-                onPressed: onPressed,
-                icon: image3,
+              onPressed: _gloves,
+              icon: image3,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
-                onPressed: onPressed,
-                icon: image4,
+              onPressed: _glasses,
+              icon: image4,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
-                onPressed: onPressed,
-                icon: image5,
+              onPressed: _watches,
+              icon: image5,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
-                onPressed: onPressed,
-                icon: image6,
+              onPressed: _rings,
+              icon: image6,
+            ),
+            SizedBox(height: 20, width: 20,),
+            IconButton(
+              onPressed: _chains,
+              icon: image7,
             ),
           ],
         ),
