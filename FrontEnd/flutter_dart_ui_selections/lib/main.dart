@@ -84,36 +84,35 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           // selection buttons.
           children: <Widget>[
             SizedBox(height: 20, width: 20,),
-            FloatingActionButton(
-              onPressed: _incrementCounter,
-              child: Icon(image1),
+            IconButton(
+                onPressed: onPressed,
+                icon: image1,
             ),
             SizedBox(height: 20, width: 20,),
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              child: Icon(image2),
+            IconButton(
+                onPressed: onPressed,
+                icon: image2,
             ),
             SizedBox(height: 20, width: 20,),
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              child: Icon(image3),
+            IconButton(
+                onPressed: onPressed,
+                icon: image3,
             ),
             SizedBox(height: 20, width: 20,),
-            FloatingActionButton(
-              onPressed: _incrementCounter,
-              child: Icon(image4),
+            IconButton(
+                onPressed: onPressed,
+                icon: image4,
             ),
             SizedBox(height: 20, width: 20,),
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              child: Icon(image5),
+            IconButton(
+                onPressed: onPressed,
+                icon: image5,
             ),
             SizedBox(height: 20, width: 20,),
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              child: Icon(image6),
+            IconButton(
+                onPressed: onPressed,
+                icon: image6,
             ),
-            IconButton(onPressed: onPressed, icon: icon),
           ],
         ),
       ),
