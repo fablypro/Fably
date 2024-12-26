@@ -17,9 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Selection',
       // This is the theme of your application.
       theme: ThemeData(
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        // the App is dark.
+        colorScheme: ColorScheme.dark(),
         useMaterial3: true,
       ),
       home: const AccessorySuggestions(title: 'Accessory Suggestions'),
@@ -42,8 +41,12 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
-  String image1 = '';
-  String image2 = '';
+  Image image1 = '';
+  Image image2 = '';
+  Image image3 = '';
+  Image image4 = '';
+  Image image5 = '';
+  Image image6 = '';
 
   int counter = 0;
 
@@ -66,8 +69,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       appBar: AppBar(
         // background color to AppBar.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        // widget title.
         title: Text(widget.title),
         actions: <Widget>[
           Text("data"),
@@ -81,15 +83,37 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           mainAxisAlignment: MainAxisAlignment.center,
           // selection buttons.
           children: <Widget>[
+            SizedBox(height: 20, width: 20,),
             FloatingActionButton(
               onPressed: _incrementCounter,
               child: Icon(image1),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20, width: 20,),
             FloatingActionButton(
               onPressed: _decrementCounter,
               child: Icon(image2),
             ),
+            SizedBox(height: 20, width: 20,),
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              child: Icon(image3),
+            ),
+            SizedBox(height: 20, width: 20,),
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              child: Icon(image4),
+            ),
+            SizedBox(height: 20, width: 20,),
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              child: Icon(image5),
+            ),
+            SizedBox(height: 20, width: 20,),
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              child: Icon(image6),
+            ),
+            IconButton(onPressed: onPressed, icon: icon),
           ],
         ),
       ),
