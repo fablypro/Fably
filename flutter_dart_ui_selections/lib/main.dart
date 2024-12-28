@@ -43,27 +43,6 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
-  Image imageFile01;
-  Image imageFile02;
-  Image imageFile03;
-  Image imageFile04;
-  Image imageFile05;
-  Image imageFile06;
-  Image imageFile07;
-
-  @override
-  void initState() {
-    // implement initState for image files.
-    super.initState();
-    imageFile01 = File("");
-    imageFile02 = File("");
-    imageFile03 = File("");
-    imageFile04 = File("");
-    imageFile05 = File("flutter_dart_ui_selections\icon images\watches logo.png");
-    imageFile06 = File("");
-    imageFile07 = File("flutter_dart_ui_selections\icon images\chains logo.png");
-  }
-
   void _shoes() {
     setState(() {
       print("Shoes Button Pressed!");
@@ -124,37 +103,51 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _shoes,
-              icon: imageFile01,
+              icon: ImageIcon(
+                AssetImage(""),
+              ),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _socks,
-              icon: imageFile02,
+              icon: ImageIcon(
+                AssetImage(""),
+              ),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _gloves,
-              icon: imageFile03,
+              icon: ImageIcon(
+                AssetImage(""),
+              ),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _glasses,
-              icon: imageFile04,
+              icon: ImageIcon(
+                AssetImage(""),
+              ),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _watches,
-              icon: Image.file(imageFile05),
+              icon: ImageIcon(
+                AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
+              ),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _rings,
-              icon: Image.file(imageFile06),
+              icon: ImageIcon(
+                AssetImage(""),
+              ),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _chains,
-              icon: Image.file(imageFile07),
+              icon: ImageIcon(
+                AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
+              ),
             ),
           ],
         ),
