@@ -153,3 +153,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     );
   }
 }
+
+class Watches extends StatefulWidget {}
+
+class Chains extends StatefulWidget {}
