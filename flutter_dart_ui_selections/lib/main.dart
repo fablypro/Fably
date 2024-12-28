@@ -51,47 +51,34 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
 
   void _shoes() {
     setState(() {
-      // incrementing the count.
-      counter++;
     });
   }
   void _socks() {
     setState(() {
-      // incrementing the count.
-      counter++;
     });
   }
   void _glasses() {
     setState(() {
-      // incrementing the count.
-      counter++;
     });
   }
   void _gloves() {
     setState(() {
-      // incrementing the count.
-      counter++;
     });
   }
   void _watches() {
     setState(() {
-        // incrementing the count.
-        counter--;
     });
   }
   void _rings() {
     setState(() {
-      // incrementing the count.
-      counter--;
     });
   }
   void _chains() {
     setState(() {
-      // incrementing the count.
-      counter--;
     });
   }
 
+  // building the conmtext of the App Page.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
