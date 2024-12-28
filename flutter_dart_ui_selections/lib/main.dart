@@ -1,6 +1,6 @@
-// importing all material from package:flutter/material.dart.
+// importing all material from dart:io.
 import 'dart:io';
-
+// importing all material from package:flutter/material.dart.
 import 'package:flutter/material.dart';
 
 // running the App.
@@ -59,7 +59,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     imageFile02 = File("");
     imageFile03 = File("");
     imageFile04 = File("");
-    imageFile05 = File("");
+    imageFile05 = File("flutter_dart_ui_selections\icon images\watches logo.png");
     imageFile06 = File("");
     imageFile07 = File("flutter_dart_ui_selections\icon images\chains logo.png");
   }
@@ -129,32 +129,32 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _socks,
-              icon: image2,
+              icon: imageFile02,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _gloves,
-              icon: image3,
+              icon: imageFile03,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _glasses,
-              icon: image4,
+              icon: imageFile04,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _watches,
-              icon: image5,
+              icon: Image.file(imageFile05),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _rings,
-              icon: image6,
+              icon: Image.file(imageFile06),
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _chains,
-              icon: image7,
+              icon: Image.file(imageFile07),
             ),
           ],
         ),
