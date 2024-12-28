@@ -1,4 +1,6 @@
 // importing all material from package:flutter/material.dart.
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 // running the App.
@@ -41,40 +43,60 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
-  Image image1 = '';
-  Image image2 = '';
-  Image image3 = '';
-  Image image4 = '';
-  Image image5 = '';
-  Image image6 = '';
-  Image image7 = '';
+  Image imageFile01;
+  Image imageFile02;
+  Image imageFile03;
+  Image imageFile04;
+  Image imageFile05;
+  Image imageFile06;
+  Image imageFile07;
+
+  @override
+  void initState() {
+    // implement initState for image files.
+    super.initState();
+    imageFile01 = File("");
+    imageFile02 = File("");
+    imageFile03 = File("");
+    imageFile04 = File("");
+    imageFile05 = File("");
+    imageFile06 = File("");
+    imageFile07 = File("flutter_dart_ui_selections\icon images\chains logo.png");
+  }
 
   void _shoes() {
     setState(() {
+      print("Shoes Button Pressed!");
     });
   }
   void _socks() {
     setState(() {
+      print("Socks Button Pressed!");
     });
   }
   void _glasses() {
     setState(() {
+      print("Glasses Button Pressed!");
     });
   }
   void _gloves() {
     setState(() {
+      print("Gloves Button Pressed!");
     });
   }
   void _watches() {
     setState(() {
+      print("Watches Button Pressed!");
     });
   }
   void _rings() {
     setState(() {
+      print("Rings Button Pressed!");
     });
   }
   void _chains() {
     setState(() {
+      print("Chains Button Pressed!");
     });
   }
 
@@ -102,7 +124,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _shoes,
-              icon: image1,
+              icon: imageFile01,
             ),
             SizedBox(height: 20, width: 20,),
             IconButton(
