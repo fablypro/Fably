@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       // This is the theme of your application.
       theme: ThemeData(
         // the App is dark.
-        colorScheme: ColorScheme.dark(),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
       home: const AccessorySuggestions(title: 'Accessory Suggestions'),
@@ -89,6 +89,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     });
   }
 
+  void _others() {
+    setState(() {
+      print("Others Button Pressed!");
+    });
+  }
+
   // building the conmtext of the App Page.
   @override
   Widget build(BuildContext context) {
@@ -114,7 +120,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             IconButton(
               onPressed: _shoes,
               icon: ImageIcon(
-                AssetImage(""),
+                AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
                 size: 20,
               ),
             ),
@@ -163,6 +169,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _chains,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
+                size: 20,
+              ),
+            ),
+            SizedBox(height: 20, width: 20,),
+            IconButton(
+              onPressed: _others,
+              icon: ImageIcon(
+                AssetImage(""),
                 size: 20,
               ),
             ),
