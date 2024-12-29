@@ -38,6 +38,18 @@ class AccessorySuggestions extends StatefulWidget {
   State<AccessorySuggestions> createState() => _AccessorySuggestions();
 }
 
+/*
+class Watches extends StatefulWidget {
+  @override
+  State<Watches> createState() => ();
+}
+
+class Chains extends StatefulWidget {
+  @override
+  State<Chains> createState() => ();
+}
+*/
+
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
@@ -103,6 +115,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _shoes,
               icon: ImageIcon(
                 AssetImage(""),
+                size: 20,
               ),
             ),
             SizedBox(height: 20, width: 20,),
@@ -110,6 +123,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _socks,
               icon: ImageIcon(
                 AssetImage(""),
+                size: 20,
               ),
             ),
             SizedBox(height: 20, width: 20,),
@@ -117,6 +131,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _gloves,
               icon: ImageIcon(
                 AssetImage(""),
+                size: 20,
               ),
             ),
             SizedBox(height: 20, width: 20,),
@@ -124,6 +139,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _glasses,
               icon: ImageIcon(
                 AssetImage(""),
+                size: 20,
               ),
             ),
             SizedBox(height: 20, width: 20,),
@@ -131,6 +147,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _watches,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
+                size: 20,
               ),
             ),
             SizedBox(height: 20, width: 20,),
@@ -138,6 +155,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _rings,
               icon: ImageIcon(
                 AssetImage(""),
+                size: 20,
               ),
             ),
             SizedBox(height: 20, width: 20,),
@@ -145,6 +163,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: _chains,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
+                size: 20,
               ),
             ),
           ],
@@ -153,7 +172,3 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     );
   }
 }
-
-class Watches extends StatefulWidget {}
-
-class Chains extends StatefulWidget {}
