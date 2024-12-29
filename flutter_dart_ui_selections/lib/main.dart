@@ -39,9 +39,19 @@ class AccessorySuggestions extends StatefulWidget {
 }
 
 /*
-class Watches extends StatefulWidget {
+class Shoes extends StatefulWidget {
   @override
-  State<Watches> createState() => ();
+  State<Shoes> createState() => ();
+}
+
+class Socks extends StatefulWidget {
+  @override
+  State<Socks> createState() => ();
+}
+
+class Chains extends StatefulWidget {
+  @override
+  State<Chains> createState() => ();
 }
 
 class Chains extends StatefulWidget {
