@@ -130,7 +130,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             IconButton(
               onPressed: _gloves,
               icon: ImageIcon(
-                AssetImage(""),
+                AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
                 size: 20,
               ),
             ),
