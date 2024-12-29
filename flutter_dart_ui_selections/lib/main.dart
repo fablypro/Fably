@@ -136,7 +136,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             IconButton(
               onPressed: _glasses,
               icon: ImageIcon(
-                AssetImage(""),
+                AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
                 size: 20,
               ),
             ),
@@ -154,7 +154,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             IconButton(
               onPressed: _rings,
               icon: ImageIcon(
-                AssetImage(""),
+                AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
                 size: 20,
               ),
             ),
