@@ -38,28 +38,6 @@ class AccessorySuggestions extends StatefulWidget {
   State<AccessorySuggestions> createState() => _AccessorySuggestions();
 }
 
-/*
-class Shoes extends StatefulWidget {
-  @override
-  State<Shoes> createState() => ();
-}
-
-class Socks extends StatefulWidget {
-  @override
-  State<Socks> createState() => ();
-}
-
-class Chains extends StatefulWidget {
-  @override
-  State<Chains> createState() => ();
-}
-
-class Chains extends StatefulWidget {
-  @override
-  State<Chains> createState() => ();
-}
-*/
-
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
@@ -126,6 +104,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           mainAxisAlignment: MainAxisAlignment.center,
           // selection buttons.
           children: <Widget>[
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _shoes,
@@ -134,6 +113,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _socks,
@@ -142,6 +122,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _gloves,
@@ -150,6 +131,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+            
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _glasses,
@@ -158,6 +140,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _watches,
@@ -166,6 +149,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _rings,
@@ -174,6 +158,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _chains,
@@ -182,6 +167,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 size: 20,
               ),
             ),
+
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _others,
@@ -195,4 +181,46 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       ),
     );
   }
+
+  /*
+  Widget Shoes extends StatefulWidget {
+    @override
+    State<Shoes> createState() => ();
+  }
+
+  Widget Socks extends StatefulWidget {
+    @override
+    State<Socks> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
+  }
+
+  Widget Shoes extends StatefulWidget {
+    @override
+    State<Shoes> createState() => ();
+  }
+
+  Widget Socks extends StatefulWidget {
+    @override
+    State<Socks> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
+  }
+  */
 }
