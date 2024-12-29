@@ -183,19 +183,19 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
   }
 
   /*
-  Widget Shoes extends StatefulWidget {
+  Widget shoesWidget() {
     @override
     State<Shoes> createState() => ();
   }
 
-  Widget Socks extends StatefulWidget {
+  Widget socksWidget() {
     @override
     State<Socks> createState() => ();
   }
 
-  Widget Chains extends StatefulWidget {
+  Widget glovesWidget() {
     @override
-    State<Chains> createState() => ();
+    State<Gloves> createState() => ();
   }
 
   Widget Chains extends StatefulWidget {
