@@ -41,6 +41,7 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
+  // methods for each slelection button.
   void _shoes() {
     setState(() {
       print("Shoes Button Pressed!");
@@ -81,6 +82,47 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     setState(() {
       print("Others Button Pressed!");
     });
+  }
+  
+  // methods for each slelection button.
+  Widget shoesWidget() {
+    @override
+    State<Shoes> createState() => ();
+  }
+
+  Widget socksWidget() {
+    @override
+    State<Socks> createState() => ();
+  }
+
+  Widget glovesWidget() {
+    @override
+    State<Gloves> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
+  }
+
+  Widget Shoes extends StatefulWidget {
+    @override
+    State<Shoes> createState() => ();
+  }
+
+  Widget Socks extends StatefulWidget {
+    @override
+    State<Socks> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
+  }
+
+  Widget Chains extends StatefulWidget {
+    @override
+    State<Chains> createState() => ();
   }
 
   // building the conmtext of the App Page.
@@ -181,46 +223,4 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       ),
     );
   }
-
-  /*
-  Widget shoesWidget() {
-    @override
-    State<Shoes> createState() => ();
-  }
-
-  Widget socksWidget() {
-    @override
-    State<Socks> createState() => ();
-  }
-
-  Widget glovesWidget() {
-    @override
-    State<Gloves> createState() => ();
-  }
-
-  Widget Chains extends StatefulWidget {
-    @override
-    State<Chains> createState() => ();
-  }
-
-  Widget Shoes extends StatefulWidget {
-    @override
-    State<Shoes> createState() => ();
-  }
-
-  Widget Socks extends StatefulWidget {
-    @override
-    State<Socks> createState() => ();
-  }
-
-  Widget Chains extends StatefulWidget {
-    @override
-    State<Chains> createState() => ();
-  }
-
-  Widget Chains extends StatefulWidget {
-    @override
-    State<Chains> createState() => ();
-  }
-  */
 }
