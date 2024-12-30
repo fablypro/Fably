@@ -39,27 +39,6 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions page.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
-  // methods for each selection button.
-  void _shoes() { setState(() { print("Shoes Button Pressed!"); }); }
-
-  void _socks() { setState(() { print("Socks Button Pressed!"); }); }
-
-  void _glasses() { setState(() { print("Glasses Button Pressed!"); }); }
-
-  void _gloves() { setState(() { print("Gloves Button Pressed!"); }); }
-
-  void _watches() { setState(() { print("Watches Button Pressed!"); }); }
-
-  void _rings() { setState(() { print("Rings Button Pressed!"); }); }
-
-  void _chains() { setState(() { print("Chains Button Pressed!"); }); }
-
-  void _belts() { setState(() { print("Belts Button Pressed!"); }); }
-
-  void _handbags() { setState(() { print("Belts Button Pressed!"); }); }
-  
-  void _hats() { setState(() { print("Belts Button Pressed!"); }); }
-
   // building the conmtext of the App Page.
   @override
   Widget build(BuildContext context) {
@@ -82,13 +61,24 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           // selection buttons.
           children: <Widget>[
             
+            /*
             // back button.
-            ElevatedButton(onPressed: onPressed, child: child),
+            SizedBox(height: 20, width: 20,),
+            ElevatedButton(
+              child: const Text("Back to Home Page"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
+            ),
+            */
             
             // shoe icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _shoes,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
                 size: 20,
@@ -98,7 +88,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // sock icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _socks,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
                 size: 20,
@@ -108,7 +98,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // gloves icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _gloves,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
                 size: 20,
@@ -118,7 +108,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // glasses icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _glasses,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
                 size: 20,
@@ -128,7 +118,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // watches icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _watches,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
                 size: 20,
@@ -138,7 +128,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // ring icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _rings,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
                 size: 20,
@@ -148,7 +138,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // chains icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _chains,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
                 size: 20,
@@ -158,7 +148,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // belt icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _belts,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
                 size: 20,
@@ -168,7 +158,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // handbag icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _handbags,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
                 size: 20,
@@ -178,7 +168,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // hat icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _hats,
+              onPressed: ,
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
                 size: 20,
