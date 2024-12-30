@@ -2,18 +2,18 @@
 import 'package:flutter/material.dart';
 
 // running the App.
-void main() {runApp(const MyApp());}
+void main() { runApp(const MyApp()); }
 
 // class with widgets and states.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Selection',
-      // This is the theme of your application.
+      // The theme of the application.
       theme: ThemeData(
         // the App is dark.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
@@ -24,78 +24,46 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// visuals of Home page.
+// visuals of Suggestions page.
 class AccessorySuggestions extends StatefulWidget {
-  // creating the visuals of the Suggestions widget title.
+  // creating the visuals of the Suggestions page title.
   const AccessorySuggestions({super.key, required this.title});
 
-  // declare the title of the Suggestions widget.
+  // declare the title of the Suggestions page.
   final String title;
 
   @override
   State<AccessorySuggestions> createState() => _AccessorySuggestions();
 }
 
-// state of the Suggestions widget.
+// state of the Suggestions page.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
   // methods for each selection button.
-  void _shoes() {
-    setState(() {
-      print("Shoes Button Pressed!");
-    });
-  }
-  void _socks() {
-    setState(() {
-      print("Socks Button Pressed!");
-    });
-  }
-  void _glasses() {
-    setState(() {
-      print("Glasses Button Pressed!");
-    });
-  }
-  void _gloves() {
-    setState(() {
-      print("Gloves Button Pressed!");
-    });
-  }
-  void _watches() {
-    setState(() {
-      print("Watches Button Pressed!");
-    });
-  }
-  void _rings() {
-    setState(() {
-      print("Rings Button Pressed!");
-    });
-  }
-  void _chains() {
-    setState(() {
-      print("Chains Button Pressed!");
-    });
-  }
-  void _belts() {
-    setState(() {
-      print("Belts Button Pressed!");
-    });
-  }
-  void _handbags() {
-    setState(() {
-      print("Belts Button Pressed!");
-    });
-  }
-  void _hats() {
-    setState(() {
-      print("Belts Button Pressed!");
-    });
-  }
+  void _shoes() { setState(() { print("Shoes Button Pressed!"); }); }
+
+  void _socks() { setState(() { print("Socks Button Pressed!"); }); }
+
+  void _glasses() { setState(() { print("Glasses Button Pressed!"); }); }
+
+  void _gloves() { setState(() { print("Gloves Button Pressed!"); }); }
+
+  void _watches() { setState(() { print("Watches Button Pressed!"); }); }
+
+  void _rings() { setState(() { print("Rings Button Pressed!"); }); }
+
+  void _chains() { setState(() { print("Chains Button Pressed!"); }); }
+
+  void _belts() { setState(() { print("Belts Button Pressed!"); }); }
+
+  void _handbags() { setState(() { print("Belts Button Pressed!"); }); }
+  
+  void _hats() { setState(() { print("Belts Button Pressed!"); }); }
   
   /*
   // widgets for each accessory.
   Widget shoesWidget() {
-    @override
-    State<Shoes> createState() => ();
+    retur;
   }
   Widget socksWidget() {
     @override
@@ -155,6 +123,9 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           mainAxisAlignment: MainAxisAlignment.center,
           // selection buttons.
           children: <Widget>[
+            
+            // back button.
+            ElevatedButton(onPressed: onPressed, child: child),
             
             // shoe icon button.
             SizedBox(height: 20, width: 20,),
@@ -258,6 +229,107 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           ],
         ),
       ),
+    );
+  }
+}
+
+// class for Shoes screen.
+class ShoesWidget extends StatelessWidget {
+  const ShoesWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Socks screen.
+class SocksWidget extends StatelessWidget {
+  const SocksWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Chains screen.
+class ChainsWidget extends StatelessWidget {
+  const ChainsWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Rings screen.
+class RingsWidget extends StatelessWidget {
+  const RingsWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Glasses screen.
+class GlassesWidget extends StatelessWidget {
+  const GlassesWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Gloves screen.
+class GlovesWidget extends StatelessWidget {
+  const GlovesWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Watches screen.
+class WatchesWidget extends StatelessWidget {
+  const WatchesWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Hats screen.
+class HatsWidget extends StatelessWidget {
+  const HatsWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Belts screen.
+class BeltsWidget extends StatelessWidget {
+  const BeltsWidget({super.key});
+  @override
+ Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+// classes for Handbags screen.
+class HandbagsWidget extends StatelessWidget {
+  const HandbagsWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
     );
   }
 }
