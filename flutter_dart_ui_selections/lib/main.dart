@@ -59,48 +59,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
   void _handbags() { setState(() { print("Belts Button Pressed!"); }); }
   
   void _hats() { setState(() { print("Belts Button Pressed!"); }); }
-  
-  /*
-  // widgets for each accessory.
-  Widget shoesWidget() {
-    retur;
-  }
-  Widget socksWidget() {
-    @override
-    State<Socks> createState() => ();
-  }
-  Widget glassesWidget() {
-    @override
-    State<Gloves> createState() => ();
-  }
-  Widget glovesWidget() {
-    State<Chains> createState() => ();
-  }
-  Widget watchesWidget() {
-    @override
-    State<Shoes> createState() => ();
-  }
-  Widget ringsWidget() {
-    @override
-    State<Socks> createState() => ();
-  }
-  Widget chainsWidget() {
-    @override
-    State<Chains> createState() => ();
-  }
-  Widget beltsWidget() {
-    @override
-    State<Chains> createState() => ();
-  }
-  Widget handbagsWidget() {
-    @override
-    State<Chains> createState() => ();
-  }
-  Widget hatsWidget() {
-    @override
-    State<Chains> createState() => ();
-  }
-  */
 
   // building the conmtext of the App Page.
   @override
