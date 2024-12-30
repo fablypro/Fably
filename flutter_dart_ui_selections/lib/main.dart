@@ -78,7 +78,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // shoe icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
                 size: 20,
@@ -88,7 +93,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // sock icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
                 size: 20,
@@ -98,7 +108,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // gloves icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
                 size: 20,
@@ -108,7 +123,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // glasses icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
                 size: 20,
@@ -118,7 +138,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // watches icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
                 size: 20,
@@ -128,7 +153,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // ring icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
                 size: 20,
@@ -138,7 +168,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // chains icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
                 size: 20,
@@ -148,7 +183,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // belt icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
                 size: 20,
@@ -158,7 +198,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // handbag icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
                 size: 20,
@@ -168,7 +213,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             // hat icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: ,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
                 size: 20,
@@ -187,7 +237,14 @@ class ShoesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -198,7 +255,14 @@ class SocksWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -209,7 +273,14 @@ class ChainsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -220,7 +291,14 @@ class RingsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -231,7 +309,14 @@ class GlassesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -242,7 +327,14 @@ class GlovesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -253,7 +345,14 @@ class WatchesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -264,7 +363,14 @@ class HatsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -275,7 +381,14 @@ class BeltsWidget extends StatelessWidget {
   @override
  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
@@ -286,7 +399,14 @@ class HandbagsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // widget title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          Text("data"),
+        ],
+      ),
       body: Center(),
     );
   }
