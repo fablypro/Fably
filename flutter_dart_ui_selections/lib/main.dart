@@ -91,6 +91,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     });
   }
   
+  /*
   // widgets for each accessory.
   Widget shoesWidget() {
     @override
@@ -131,6 +132,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     @override
     State<Chains> createState() => ();
   }
+  */
 
   // building the conmtext of the App Page.
   @override
