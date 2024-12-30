@@ -81,8 +81,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const ShoesWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
@@ -96,8 +96,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const SocksWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
@@ -111,8 +111,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const GlovesWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
@@ -126,8 +126,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const GlassesWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
@@ -141,8 +141,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const WatchesWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
@@ -156,8 +156,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const RingsWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
@@ -171,8 +171,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const ChainsWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
@@ -186,8 +186,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const BeltsWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
@@ -201,8 +201,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const HandbagsWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
@@ -216,8 +216,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute( builder: (context) => const  ),
-                ),
+                  MaterialPageRoute( builder: (context) => const HatsWidget(), ),
+                );
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
