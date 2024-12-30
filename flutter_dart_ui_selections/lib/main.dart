@@ -41,7 +41,7 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions widget.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
-  // methods for each slelection button.
+  // methods for each selection button.
   void _shoes() {
     setState(() {
       print("Shoes Button Pressed!");
@@ -77,62 +77,59 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       print("Chains Button Pressed!");
     });
   }
-
   void _belts() {
     setState(() {
       print("Belts Button Pressed!");
     });
   }
-
   void _handbags() {
     setState(() {
       print("Belts Button Pressed!");
     });
   }
-
   void _hats() {
     setState(() {
       print("Belts Button Pressed!");
     });
   }
   
-  // methods for each slelection button.
+  // widgets for each accessory.
   Widget shoesWidget() {
     @override
     State<Shoes> createState() => ();
   }
-
   Widget socksWidget() {
     @override
     State<Socks> createState() => ();
   }
-
-  Widget glovesWidget() {
+  Widget glassesWidget() {
     @override
     State<Gloves> createState() => ();
   }
-
-  Widget Chains extends StatefulWidget {
-    @override
+  Widget glovesWidget() {
     State<Chains> createState() => ();
   }
-
-  Widget Shoes extends StatefulWidget {
+  Widget watchesWidget() {
     @override
     State<Shoes> createState() => ();
   }
-
-  Widget Socks extends StatefulWidget {
+  Widget ringsWidget() {
     @override
     State<Socks> createState() => ();
   }
-
-  Widget Chains extends StatefulWidget {
+  Widget chainsWidget() {
     @override
     State<Chains> createState() => ();
   }
-
-  Widget Chains extends StatefulWidget {
+  Widget beltsWidget() {
+    @override
+    State<Chains> createState() => ();
+  }
+  Widget handbagsWidget() {
+    @override
+    State<Chains> createState() => ();
+  }
+  Widget hatsWidget() {
     @override
     State<Chains> createState() => ();
   }
@@ -158,7 +155,8 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           mainAxisAlignment: MainAxisAlignment.center,
           // selection buttons.
           children: <Widget>[
-
+            
+            // shoe icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _shoes,
@@ -168,6 +166,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // sock icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _socks,
@@ -177,6 +176,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // gloves icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _gloves,
@@ -186,6 +186,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
             
+            // glasses icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _glasses,
@@ -195,6 +196,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // watches icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _watches,
@@ -204,6 +206,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // ring icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _rings,
@@ -213,6 +216,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // chains icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _chains,
@@ -222,6 +226,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // belt icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _belts,
@@ -231,6 +236,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // handbag icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _handbags,
@@ -240,6 +246,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               ),
             ),
 
+            // hat icon button.
             SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: _hats,
