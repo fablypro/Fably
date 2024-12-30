@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 
 // running the App.
-void main() {
-  runApp(const MyApp());
-}
+void main() {runApp(const MyApp());}
 
 // class with widgets and states.
 class MyApp extends StatelessWidget {
