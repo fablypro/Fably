@@ -198,6 +198,7 @@ class ShoesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -208,6 +209,7 @@ class SocksWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -218,6 +220,7 @@ class ChainsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -228,6 +231,7 @@ class RingsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -238,6 +242,7 @@ class GlassesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -248,6 +253,7 @@ class GlovesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -258,6 +264,7 @@ class WatchesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -268,6 +275,7 @@ class HatsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -278,6 +286,7 @@ class BeltsWidget extends StatelessWidget {
  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
@@ -288,6 +297,7 @@ class HandbagsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(),
     );
   }
 }
