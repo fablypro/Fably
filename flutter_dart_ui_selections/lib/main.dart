@@ -78,9 +78,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     });
   }
 
-  void _others() {
+  void _belts() {
     setState(() {
-      print("Others Button Pressed!");
+      print("Belts Button Pressed!");
+    });
+  }
+
+  void _handbags() {
+    setState(() {
+      print("Belts Button Pressed!");
+    });
+  }
+
+  void _hats() {
+    setState(() {
+      print("Belts Button Pressed!");
     });
   }
   
@@ -160,7 +172,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             IconButton(
               onPressed: _socks,
               icon: ImageIcon(
-                AssetImage(""),
+                AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
                 size: 20,
               ),
             ),
@@ -212,9 +224,27 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
 
             SizedBox(height: 20, width: 20,),
             IconButton(
-              onPressed: _others,
+              onPressed: _belts,
               icon: ImageIcon(
-                AssetImage(""),
+                AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
+                size: 20,
+              ),
+            ),
+
+            SizedBox(height: 20, width: 20,),
+            IconButton(
+              onPressed: _handbags,
+              icon: ImageIcon(
+                AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
+                size: 20,
+              ),
+            ),
+
+            SizedBox(height: 20, width: 20,),
+            IconButton(
+              onPressed: _hats,
+              icon: ImageIcon(
+                AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
                 size: 20,
               ),
             ),
