@@ -242,11 +242,13 @@ class ShoesWidget extends StatelessWidget {
         // widget title.
         title: const Text('Shoes selection Screen'),
       ),
-      /*body: Center(
+      /*
+      body: Center(
         child: BottomNavigationBar(
           items: BottomNavigationBarItem(),
         ),
-      ),**/
+      ),
+      */
     );
   }
 }
