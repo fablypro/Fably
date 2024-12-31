@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 
 // running the App.
-void main() { runApp(const MyApp()); }
+void main() { runApp(const MySelectionApp()); }
 
 // class with widgets and states.
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MySelectionApp extends StatelessWidget {
+  const MySelectionApp({super.key});
 
   // This widget is the root of the application.
   @override
