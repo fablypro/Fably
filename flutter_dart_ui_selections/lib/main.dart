@@ -240,12 +240,13 @@ class ShoesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
-        actions: <Widget>[
-          Text("data"),
-        ],
+        title: const Text('Shoes selection Screen'),
       ),
-      body: Center(),
+      /*body: Center(
+        child: BottomNavigationBar(
+          items: BottomNavigationBarItem(),
+        ),
+      ),**/
     );
   }
 }
@@ -258,7 +259,7 @@ class SocksWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -276,7 +277,7 @@ class ChainsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -294,7 +295,7 @@ class RingsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -312,7 +313,7 @@ class GlassesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -330,7 +331,7 @@ class GlovesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -348,7 +349,7 @@ class WatchesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -366,7 +367,7 @@ class HatsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -384,7 +385,7 @@ class BeltsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
@@ -402,7 +403,7 @@ class HandbagsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: Text(widget.title),
+        title: const Text('Shoes selection Screen'),
         actions: <Widget>[
           Text("data"),
         ],
