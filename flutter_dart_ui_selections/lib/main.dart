@@ -39,7 +39,7 @@ class AccessorySuggestions extends StatefulWidget {
 // state of the Suggestions page.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
 
-  // building the conmtext of the App Page.
+  // building the context of the App Page.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
