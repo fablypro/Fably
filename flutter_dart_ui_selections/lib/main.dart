@@ -48,8 +48,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
         title: Text(widget.title),
-        actions: <Widget>[
-          Text("data"),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
       // positioning the widget in middle of page.
