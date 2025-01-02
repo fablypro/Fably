@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "490799617199",
+    "project_id": "fably-8b115",
+    "storage_bucket": "fably-8b115.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490799617199:android:57b9a631fcd20bba10f05a",
+        "android_client_info": {
+          "package_name": "com.example.fably"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsatDAPpVBOouPfvFB3mDBOkOngNq49gE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
