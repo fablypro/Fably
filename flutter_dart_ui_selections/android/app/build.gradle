@@ -6,16 +6,16 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
     
     // Add the Google services Gradle plugin
-    id "com.google.gms.google-services" version "4.4.2" apply false
+    // id "com.google.gms.google-services" version "4.4.2"
 
-    // id "com.google.gms.google-services"
+     id "com.google.gms.google-services"
 }
 
 dependencies {
     // Import the Firebase BoM
     implementation platform ('com.google.firebase:firebase-bom:33.7.0')
 
-
+    /*
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics'
@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.google.android.gms.ads.rewarded'	// Contains classes for Rewarded Ads.
     implementation 'com.google.android.gms.ads.rewardedinterstitial'	// Contains classes for Rewarded Interstitial Ads.
     implementation 'com.google.android.gms.ads.search'	// contains classes for Search Ads for Apps.'
+     */
 }
 
 android {
