@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/FrontEnd/flutter_dart_ui_selections/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/FrontEnd/flutter_dart_ui_selections/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/FrontEnd/flutter_dart_ui_selections/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_dart_ui_selections/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_dart_ui_selections/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_dart_ui_selections/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
