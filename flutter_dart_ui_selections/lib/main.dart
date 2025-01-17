@@ -7,7 +7,6 @@ void main() { runApp(const MySelectionApp()); }
 // class with widgets and states.
 class MySelectionApp extends StatelessWidget {
   const MySelectionApp({super.key});
-
   // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,6 @@ class AccessorySuggestions extends StatefulWidget {
 
 // state of the Suggestions page.
 class _AccessorySuggestions extends State<AccessorySuggestions> {
-
   // building the context of the App Page.
   @override
   Widget build(BuildContext context) {
@@ -245,14 +243,22 @@ class ShoesWidget extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
         title: const Text('Shoes selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
+        ],
       ),
-      /*
       body: Center(
-        child: BottomNavigationBar(
-          items: BottomNavigationBarItem(),
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
         ),
       ),
-      */
     );
   }
 }
@@ -265,12 +271,23 @@ class SocksWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Socks selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -283,12 +300,23 @@ class ChainsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Chains selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -301,12 +329,23 @@ class RingsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Rings selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -319,12 +358,23 @@ class GlassesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Glasses selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -337,12 +387,23 @@ class GlovesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Gloves selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -355,12 +416,23 @@ class WatchesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Watches selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -373,12 +445,23 @@ class HatsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Hats selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -391,12 +474,23 @@ class BeltsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Belts selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
@@ -409,12 +503,23 @@ class HandbagsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
-        actions: <Widget>[
-          Text("data"),
+        title: const Text('Handbags selection Screen'),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(child: Text("Actions")),
+          ),
         ],
       ),
-      body: Center(),
+      body: Center(
+        // vertically arranges the buttons.
+        child: Column(
+          // centering the buttons vertically.
+          mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
