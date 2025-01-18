@@ -57,9 +57,16 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
       // positioning the widget in middle of page.
       body: Center(
         // vertically arranges the buttons.
-        child: Column(
-          // centering the buttons vertically.
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: GridView.count(
+          // number of columns.
+          crossAxisCount: 2,
+          // spacing between buttons.
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          // padding around the grid.
+          padding: const EdgeInsets.all(20.0),
+          // fitting the grid size.
+          shrinkWrap: true,
           // selection buttons.
           children: <Widget>[
             
@@ -78,7 +85,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             */
             
             // shoe icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -88,12 +94,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // sock icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -103,12 +108,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // gloves icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -118,12 +122,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
             
             // glasses icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -133,12 +136,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // watches icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -148,12 +150,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // ring icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -163,12 +164,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // chains icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -178,12 +178,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // belt icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -193,12 +192,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // handbag icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -208,12 +206,11 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
 
             // hat icon button.
-            SizedBox(height: 20, width: 20,),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -223,7 +220,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
-                size: 20,
+                size: 50,
               ),
             ),
           ],
