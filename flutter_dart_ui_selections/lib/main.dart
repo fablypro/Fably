@@ -253,7 +253,8 @@ class ShoesWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -282,7 +283,8 @@ class SocksWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -311,7 +313,8 @@ class ChainsWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -340,7 +343,8 @@ class RingsWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -369,7 +373,8 @@ class GlassesWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -398,7 +403,8 @@ class GlovesWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -427,7 +433,8 @@ class WatchesWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -456,7 +463,8 @@ class HatsWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -485,7 +493,8 @@ class BeltsWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
@@ -514,7 +523,8 @@ class HandbagsWidget extends StatelessWidget {
         child: Column(
           // centering the buttons vertically.
           mainAxisAlignment: MainAxisAlignment.center,// selection buttons.
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );
