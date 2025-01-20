@@ -15,7 +15,10 @@ class MySelectionApp extends StatelessWidget {
       // The theme of the application.
       theme: ThemeData(
         // the App is dark.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.black,
+            brightness: Brightness.dark,
+        ),
         useMaterial3: true,
       ),
       home: const AccessorySuggestions(title: 'Accessory Suggestions'),
