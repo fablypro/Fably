@@ -2,16 +2,16 @@
 import 'package:flutter/material.dart';
 
 // importing from other dart files.
-import 'package:flutter_dart_ui_selections/ShoesWidget.dart';
-import 'package:flutter_dart_ui_selections/GlassesWidget.dart';
+import 'package:flutter_dart_ui_selections/BeltsWidget.dart';
 import 'package:flutter_dart_ui_selections/ChainsWidget.dart';
+import 'package:flutter_dart_ui_selections/GlassesWidget.dart';
+import 'package:flutter_dart_ui_selections/GlovesWidget.dart';
+import 'package:flutter_dart_ui_selections/HandbagsWidget.dart';
+import 'package:flutter_dart_ui_selections/HatsWidget.dart';
 import 'package:flutter_dart_ui_selections/RingsWidget.dart';
 import 'package:flutter_dart_ui_selections/SocksWidget.dart';
-import 'package:flutter_dart_ui_selections/BeltsWidget.dart';
-import 'package:flutter_dart_ui_selections/HatsWidget.dart';
-import 'package:flutter_dart_ui_selections/HandbagsWidget.dart';
+import 'package:flutter_dart_ui_selections/ShoesWidget.dart';
 import 'package:flutter_dart_ui_selections/WatchesWidget.dart';
-import 'package:flutter_dart_ui_selections/GlovesWidget.dart';
 
 // running the App.
 void main() { runApp(const MySelectionApp()); }
