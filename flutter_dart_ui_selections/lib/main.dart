@@ -16,7 +16,7 @@ class MySelectionApp extends StatelessWidget {
       theme: ThemeData(
         // the App is dark.
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.black,
+            seedColor: Colors.grey,
             brightness: Brightness.dark,
         ),
         useMaterial3: true,
@@ -53,7 +53,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -242,12 +241,11 @@ class ShoesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Shoes selection Screen'),
+        title: const Text('Shoes'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -272,12 +270,11 @@ class SocksWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Socks selection Screen'),
+        title: const Text('Socks'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -302,12 +299,11 @@ class ChainsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Chains selection Screen'),
+        title: const Text('Chains'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -332,12 +328,11 @@ class RingsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Rings selection Screen'),
+        title: const Text('Rings'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -362,12 +357,11 @@ class GlassesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Glasses selection Screen'),
+        title: const Text('Glasses'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -392,12 +386,11 @@ class GlovesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Gloves selection Screen'),
+        title: const Text('Gloves'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -422,12 +415,11 @@ class WatchesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Watches selection Screen'),
+        title: const Text('Watches'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -452,12 +444,11 @@ class HatsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Hats selection Screen'),
+        title: const Text('Hats'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -482,12 +473,11 @@ class BeltsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Belts selection Screen'),
+        title: const Text('Belts'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
@@ -512,12 +502,11 @@ class HandbagsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
-        title: const Text('Handbags selection Screen'),
+        title: const Text('Handbags'),
         actions: const [
           // padding for the selections screen page.
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(child: Text("Actions")),
           ),
         ],
       ),
