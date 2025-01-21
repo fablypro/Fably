@@ -107,7 +107,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -125,7 +125,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -143,7 +143,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -161,7 +161,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -179,7 +179,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -197,7 +197,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -215,7 +215,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -233,7 +233,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -251,7 +251,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
@@ -269,7 +269,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
               icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
-                size: 12,
+                size: 13,
               ),
             ),
             const Text(
