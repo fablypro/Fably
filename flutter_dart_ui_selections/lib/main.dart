@@ -86,7 +86,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             
             /*
             // back button.
-            SizedBox(height: 20, width: 20,),
             ElevatedButton(
               child: const Text("Back to Home Page"),
               onPressed: () {
@@ -106,10 +105,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const ShoesWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Shoes',
+              style: TextStyle(fontSize: 14),
             ),
 
             // sock icon button.
@@ -120,10 +123,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const SocksWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Socks',
+              style: TextStyle(fontSize: 14),
             ),
 
             // gloves icon button.
@@ -134,10 +141,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const GlovesWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Gloves',
+              style: TextStyle(fontSize: 14),
             ),
             
             // glasses icon button.
@@ -148,10 +159,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const GlassesWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Glasses',
+              style: TextStyle(fontSize: 14),
             ),
 
             // watches icon button.
@@ -162,10 +177,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const WatchesWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Watches',
+              style: TextStyle(fontSize: 14),
             ),
 
             // ring icon button.
@@ -176,10 +195,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const RingsWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Rings',
+              style: TextStyle(fontSize: 14),
             ),
 
             // chains icon button.
@@ -190,10 +213,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const ChainsWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Chains',
+              style: TextStyle(fontSize: 14),
             ),
 
             // belt icon button.
@@ -204,10 +231,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const BeltsWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Belts',
+              style: TextStyle(fontSize: 14),
             ),
 
             // handbag icon button.
@@ -218,10 +249,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const HandbagsWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Handbags',
+              style: TextStyle(fontSize: 14),
             ),
 
             // hat icon button.
@@ -232,10 +267,14 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const HatsWidget(), ),
                 );
               },
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
-                size: 50,
+                size: 12,
               ),
+            ),
+            const Text(
+              'Hats',
+              style: TextStyle(fontSize: 14),
             ),
           ],
         ),
