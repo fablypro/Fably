@@ -78,7 +78,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
           // padding around the grid.
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(16),
           // fitting the grid size.
           shrinkWrap: true,
           // selection buttons.
