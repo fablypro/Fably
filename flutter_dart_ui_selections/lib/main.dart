@@ -87,7 +87,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
             /*
             // back button.
             ElevatedButton(
-              child: const Text("Back to Home Page"),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -105,15 +104,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const ShoesWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\shoe logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Shoes',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Shoes',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // sock icon button.
             IconButton(
@@ -123,15 +128,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const SocksWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\sock logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Socks',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Socks',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // gloves icon button.
             IconButton(
@@ -141,15 +152,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const GlovesWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\gloves logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Gloves',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Gloves',
-              style: TextStyle(fontSize: 14),
-            ),
+
             
             // glasses icon button.
             IconButton(
@@ -159,15 +176,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const GlassesWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\glasses logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Glasses',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Glasses',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // watches icon button.
             IconButton(
@@ -177,15 +200,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const WatchesWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\watches logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Watches',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Watches',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // ring icon button.
             IconButton(
@@ -195,15 +224,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const RingsWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\ring logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Rings',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Rings',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // chains icon button.
             IconButton(
@@ -213,15 +248,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const ChainsWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\chains logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Chains',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Chains',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // belt icon button.
             IconButton(
@@ -231,15 +272,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const BeltsWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\belt logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Belts',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Belts',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // handbag icon button.
             IconButton(
@@ -249,15 +296,21 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const HandbagsWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Handbags',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Handbags',
-              style: TextStyle(fontSize: 14),
-            ),
+
 
             // hat icon button.
             IconButton(
@@ -267,15 +320,22 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   MaterialPageRoute( builder: (context) => const HatsWidget(), ),
                 );
               },
-              icon: const ImageIcon(
-                AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
-                size: 13,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Hats',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'Hats',
-              style: TextStyle(fontSize: 14),
-            ),
+
+
           ],
         ),
       ),
