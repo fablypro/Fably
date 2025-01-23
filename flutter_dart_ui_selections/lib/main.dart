@@ -95,6 +95,54 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
               },
             ),
             */
+
+            // handbag icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const HandbagsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Handbags',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // hat icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const HatsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Hats',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
             
             // shoe icon button.
             IconButton(
@@ -281,54 +329,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                   ),
                   const Text(
                     'Belts',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                ],
-              ),
-            ),
-
-
-            // handbag icon button.
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute( builder: (context) => const HandbagsWidget(), ),
-                );
-              },
-              icon: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ImageIcon(
-                    AssetImage("flutter_dart_ui_selections\\icon images\\handbag logo.png"),
-                    size: 15,
-                  ),
-                  const Text(
-                    'Handbags',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                ],
-              ),
-            ),
-
-
-            // hat icon button.
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute( builder: (context) => const HatsWidget(), ),
-                );
-              },
-              icon: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ImageIcon(
-                    AssetImage("flutter_dart_ui_selections\\icon images\\hat logo.png"),
-                    size: 15,
-                  ),
-                  const Text(
-                    'Hats',
                     style: TextStyle(fontSize: 17),
                   ),
                 ],
