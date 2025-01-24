@@ -1,7 +1,7 @@
 // importing all flutter material.
 import 'package:flutter/material.dart';
 
-import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 // importing from other dart files.
 import 'package:flutter_dart_ui_selections/BeltsWidget.dart';
