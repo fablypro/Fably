@@ -1,8 +1,6 @@
 // importing all flutter material.
 import 'package:flutter/material.dart';
 
-import 'package:flutter/widgets.dart';
-
 // importing from other dart files.
 import 'package:flutter_dart_ui_selections/belts_widget.dart';
 import 'package:flutter_dart_ui_selections/chains_widget.dart';
