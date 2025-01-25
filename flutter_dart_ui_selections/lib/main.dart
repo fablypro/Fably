@@ -87,7 +87,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
           children: <Widget>[
             
             /*
-            // back button.
+            /* back button.*/
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
