@@ -13,6 +13,9 @@ plugins {
 }
 
 dependencies {
+    // importing build.gradle tools
+    implementation platform ('com.android.tools.build:gradle:8.8.0')
+
     // Import the Firebase BoM
     implementation platform ('com.google.firebase:firebase-bom:33.7.0')
 
