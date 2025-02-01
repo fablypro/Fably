@@ -1,125 +1,344 @@
+// importing all flutter material.
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// importing from other dart files.
+import 'package:flutter_ui_selections/belts_widget.dart';
+import 'package:flutter_ui_selections/chains_widget.dart';
+import 'package:flutter_ui_selections/glasses_widget.dart';
+import 'package:flutter_ui_selections/gloves_widget.dart';
+import 'package:flutter_ui_selections/handbags_widget.dart';
+import 'package:flutter_ui_selections/hats_widget.dart';
+import 'package:flutter_ui_selections/rings_widget.dart';
+import 'package:flutter_ui_selections/socks_widget.dart';
+import 'package:flutter_ui_selections/shoes_widget.dart';
+import 'package:flutter_ui_selections/watches_widget.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// running the App.
+void main() { runApp(const MySelectionApp()); }
 
-  // This widget is the root of your application.
+// class with widgets and states.
+class MySelectionApp extends StatelessWidget {
+  const MySelectionApp({super.key});
+  // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Selection',
+      // The theme of the application.
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // the App is dark.
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.grey,
+          brightness: Brightness.dark,
+        ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const AccessorySuggestions(title: 'Accessory Suggestions'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+// visuals of Suggestions page.
+class AccessorySuggestions extends StatefulWidget {
+  // creating the visuals of the Suggestions page title.
+  const AccessorySuggestions({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
+  // declare the title of the Suggestions page.
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<AccessorySuggestions> createState() => _AccessorySuggestions();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+// state of the Suggestions page.
+class _AccessorySuggestions extends State<AccessorySuggestions> {
+  // building the context of the App Page.
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
+        // background color to AppBar.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        // widget title.
         title: Text(widget.title),
+        actions: const [
+          // padding for the selections screen page.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+          ),
+        ],
       ),
+      // positioning the widget in middle of page.
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+        // vertically arranges the buttons.
+        child: GridView.count(
+          // number of columns.
+          crossAxisCount: 2,
+          // spacing between buttons.
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          // padding around the grid.
+          padding: const EdgeInsets.all(16),
+          // fitting the grid size.
+          shrinkWrap: true,
+          // selection buttons.
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+
+            /*
+            /* back button.*/
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const  ),
+                ),
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            */
+
+            // handbag icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const HandbagsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\handbag logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Handbags',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
             ),
+
+
+            // hat icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const HatsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\hat logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Hats',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // shoe icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const ShoesWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\shoe logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Shoes',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // sock icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const SocksWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\sock logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Socks',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // gloves icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const GlovesWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\gloves logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Gloves',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // glasses icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const GlassesWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\glasses logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Glasses',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // watches icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const WatchesWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\watches logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Watches',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // ring icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const RingsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\ring logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Rings',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // chains icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const ChainsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\chains logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Chains',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
+            // belt icon button.
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute( builder: (context) => const BeltsWidget(), ),
+                );
+              },
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage("untitled\\icon images\\belt logo.png"),
+                    size: 15,
+                  ),
+                  const Text(
+                    'Belts',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+            ),
+
+
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
