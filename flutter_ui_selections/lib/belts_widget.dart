@@ -1,4 +1,4 @@
-// importing all material from package:flutter/material.dart.
+// importing all material from package below.
 import 'package:flutter/material.dart';
 
 // classes for Belts screen.
