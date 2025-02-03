@@ -1,7 +1,3 @@
-// necessary packages.
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 // cart class for the cart objects.
 class Cart {
   late final int? id;
