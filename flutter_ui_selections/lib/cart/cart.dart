@@ -1,3 +1,4 @@
+// necessary packages.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,18 +15,24 @@ class Cart {
   //cart constructor to initialize values.
   Cart(
     {
-      required this.id;
-      required this.productId;
-      required this.productName;
-      ;
+      required this.id,
+      required this.productId,
+      required this.productName,
+      required this.productPrice,
+      required this.image,
     }
   );
 
-  Cart.fromMap()
+  Cart.fromMap(Map<dynamic, dynamic> data)
+      : id = data['id'],
+        productId = data['productId'],
+  productName = data['productName'];
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'productId': productId,
+      'productName': productName,
     };
   }
 }
