@@ -108,7 +108,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/handbag logo.png"),
+                    AssetImage("flutter_ui_selections/assets/icon_images/handbag_logo.png"),
                     size: 15,
                   ),
                   const Text(
