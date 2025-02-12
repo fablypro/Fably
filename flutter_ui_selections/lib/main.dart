@@ -335,8 +335,6 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 ],
               ),
             ),
-
-
           ],
         ),
       ),
