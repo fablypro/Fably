@@ -6,8 +6,8 @@ class Item {
   final String img;
 
   //cart constructor to initialize values.
-  Item(
-      {required this.prodName,
+  Item({
+        required this.prodName,
         required this.prodPrice,
         required this.unit,
         required this.img,
@@ -18,7 +18,7 @@ class Item {
       this.prodName,
       this.prodPrice,
       this.unit,
-      his.img,
+      this.img,
     }
   }
 }
