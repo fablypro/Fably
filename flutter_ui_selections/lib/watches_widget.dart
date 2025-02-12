@@ -10,6 +10,7 @@ class WatchesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
+        centerTitle: true,
         title: const Text('Watches'),
         actions: const [
           // padding for the selections screen page.

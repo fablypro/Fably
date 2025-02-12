@@ -10,6 +10,7 @@ class ShoesWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
+        centerTitle: true,
         title: const Text('Shoes'),
         actions: const [
           // padding for the selections screen page.
