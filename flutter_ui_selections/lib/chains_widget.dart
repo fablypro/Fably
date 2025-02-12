@@ -10,6 +10,7 @@ class ChainsWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
+        centerTitle: true,
         title: const Text('Chains'),
         actions: const [
           // padding for the selections screen page.

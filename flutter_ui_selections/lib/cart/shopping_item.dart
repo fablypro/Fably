@@ -15,10 +15,10 @@ class Item {
 
   Map toJson() {
     return {
-      "prodName: ": prodName,
-      "prodPrice: ": prodPrice,
-      "unit: ": unit,
-      "img: ": img,
+      "prodName": prodName,
+      "prodPrice": prodPrice,
+      "unit": unit,
+      "img": img,
     };
   }
 }
