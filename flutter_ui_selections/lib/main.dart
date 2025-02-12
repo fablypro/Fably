@@ -108,12 +108,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/assets/icon_images/handbag_logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/handbag_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Handbags',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -132,12 +132,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/hat logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/hat_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Hats',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -156,12 +156,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/shoe logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/shoe_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Shoes',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -180,12 +180,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/sock logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/sock_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Socks',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -204,12 +204,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/gloves logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/gloves_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Gloves',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -228,12 +228,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/glasses logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/glasses_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Glasses',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -252,12 +252,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/watches logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/watches_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Watches',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -276,12 +276,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/ring logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/ring_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Rings',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -300,12 +300,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/chains logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/chains_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Chains',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
@@ -324,12 +324,12 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ImageIcon(
-                    AssetImage("flutter_ui_selections/Assets/icon images/belt logo.png"),
-                    size: 15,
+                    AssetImage("assets/icon_images/belt_logo.png"),
+                    size: 60,
                   ),
                   const Text(
                     'Belts',
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ],
               ),
