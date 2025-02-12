@@ -28,7 +28,7 @@ class MySelectionApp extends StatelessWidget {
       theme: ThemeData(
         // the App is dark.
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.grey,
+          seedColor: Colors.black,
           brightness: Brightness.dark,
         ),
         useMaterial3: true,
@@ -58,7 +58,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
     return Scaffold(
       appBar: AppBar(
         // background color to AppBar.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
         title: Text(widget.title),

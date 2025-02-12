@@ -8,7 +8,8 @@ class RingsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // background color to AppBar.
+        backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
         title: const Text('Rings'),
