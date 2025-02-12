@@ -60,6 +60,7 @@ class _AccessorySuggestions extends State<AccessorySuggestions> {
         // background color to AppBar.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // widget title.
+        centerTitle: true,
         title: Text(widget.title),
         actions: const [
           // padding for the selections screen page.
