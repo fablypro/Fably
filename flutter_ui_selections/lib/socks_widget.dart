@@ -12,7 +12,7 @@ class SocksWidget extends StatelessWidget {
         backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
-        title: const Text('Socks'),
+        title: const Text('Socks', style: TextStyle(fontWeight: FontWeight.normal)),
         actions: const [
           // padding for the selections screen page.
           Padding(

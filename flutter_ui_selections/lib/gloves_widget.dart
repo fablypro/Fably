@@ -12,7 +12,7 @@ class GlovesWidget extends StatelessWidget {
         backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
-        title: const Text('Gloves'),
+        title: const Text('Gloves', style: TextStyle(fontWeight: FontWeight.normal)),
         actions: const [
           // padding for the selections screen page.
           Padding(

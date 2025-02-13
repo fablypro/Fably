@@ -12,7 +12,7 @@ class GlassesWidget extends StatelessWidget {
         backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
-        title: const Text('Glasses'),
+        title: const Text('Glasses', style: TextStyle(fontWeight: FontWeight.normal)),
         actions: const [
           // padding for the selections screen page.
           Padding(

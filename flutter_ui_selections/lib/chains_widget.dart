@@ -12,7 +12,7 @@ class ChainsWidget extends StatelessWidget {
         backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
-        title: const Text('Chains'),
+        title: const Text('Chains', style: TextStyle(fontWeight: FontWeight.normal)),
         actions: const [
           // padding for the selections screen page.
           Padding(
