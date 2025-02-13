@@ -17,8 +17,8 @@ class Cart {
       required this.image,
     });
 
-  Cart.fromMap(Map<dynamic, dynamic> data)
-      : id = data['id'],
+  Cart.fromMap(Map<dynamic, dynamic> data):
+        id = data['id'],
         productId = data['productId'],
         productName = data['productName'],
         productPrice = data['productPrice'],

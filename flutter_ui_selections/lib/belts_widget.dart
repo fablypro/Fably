@@ -12,7 +12,7 @@ class BeltsWidget extends StatelessWidget {
         backgroundColor: Colors.black,
         // widget title.
         centerTitle: true,
-        title: const Text('Belts'),
+        title: const Text('Belts', style: TextStyle(fontWeight: FontWeight.normal)),
         actions: const [
           // padding for the selections screen page.
           Padding(
