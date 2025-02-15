@@ -34,7 +34,7 @@ class BeltsWidget extends StatelessWidget {
           shrinkWrap: true,
           // selection item buttons.
           children: <Widget>[
-            builder: Builder(context)
+            builder: Builder(context) {},
           ],
         ),
       ),
