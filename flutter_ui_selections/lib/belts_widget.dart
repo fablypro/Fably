@@ -33,7 +33,9 @@ class BeltsWidget extends StatelessWidget {
           // fitting the grid size.
           shrinkWrap: true,
           // selection item buttons.
-          children: <Widget>[],
+          children: <Widget>[
+            builder: Builder(context)
+          ],
         ),
       ),
     );
