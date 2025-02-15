@@ -20,15 +20,13 @@ class BeltsWidget extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        // vertically arranges the buttons.
-        child: Column(
-          // centering the buttons vertically.
-          mainAxisAlignment: MainAxisAlignment.center,
-          // selection buttons.
-          children: <Widget>[
-          ],
-        ),
+      body: Column(
+        // arranges all items in shopping cart.
+        children: [
+          Expanded(
+
+          )
+        ],
       ),
     );
   }
