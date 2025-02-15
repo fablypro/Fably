@@ -22,12 +22,18 @@ class SocksWidget extends StatelessWidget {
       ),
       body: Center(
         // vertically arranges the buttons.
-        child: Column(
-          // centering the buttons vertically.
-          mainAxisAlignment: MainAxisAlignment.center,
-          // selection buttons.
-          children: <Widget>[
-          ],
+        child: GridView.count(
+          // number of columns.
+          crossAxisCount: 2,
+          // spacing between item buttons.
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          // padding around the grid.
+          padding: const EdgeInsets.all(16),
+          // fitting the grid size.
+          shrinkWrap: true,
+          // selection item buttons.
+          children: <Widget>[],
         ),
       ),
     );

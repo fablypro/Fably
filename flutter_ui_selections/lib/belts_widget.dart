@@ -20,13 +20,21 @@ class BeltsWidget extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        // arranges all items in shopping cart.
-        children: [
-          Expanded(
-
-          )
-        ],
+      body: Center(
+        // vertically arranges the buttons.
+        child: GridView.count(
+          // number of columns.
+          crossAxisCount: 2,
+          // spacing between item buttons.
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          // padding around the grid.
+          padding: const EdgeInsets.all(16),
+          // fitting the grid size.
+          shrinkWrap: true,
+          // selection item buttons.
+          children: <Widget>[],
+        ),
       ),
     );
   }
