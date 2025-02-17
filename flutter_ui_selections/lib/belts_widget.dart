@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // importing from other classes.
-import 'package:flutter_ui_selections/lib/cart.dart';
+import '';
 
 // classes for Belts screen.
 class BeltsWidget extends StatelessWidget {
@@ -38,7 +38,11 @@ class BeltsWidget extends StatelessWidget {
           shrinkWrap: true,
           // selection item buttons.
           children: [
-            Expanded(child: Consumer<CartProvider>(builder: ,)),
+            Expanded(
+              child: Consumer<CartProvider>(
+                builder: (BuildContext context, provider, widget) {},
+              ),
+            ),
           ],
         ),
       ),

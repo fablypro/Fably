@@ -1,5 +1,9 @@
 // importing all material from package:flutter/material.dart.
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+// importing from other classes.
+import '';
 
 // classes for Socks screen.
 class SocksWidget extends StatelessWidget {
@@ -33,7 +37,13 @@ class SocksWidget extends StatelessWidget {
           // fitting the grid size.
           shrinkWrap: true,
           // selection item buttons.
-          children: <Widget>[],
+          children: [
+            Expanded(
+              child: Consumer<CartProvider>(
+                builder: (BuildContext context, provider, widget) {},
+              ),
+            ),
+          ],
         ),
       ),
     );
