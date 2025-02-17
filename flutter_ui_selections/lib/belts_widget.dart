@@ -38,7 +38,7 @@ class BeltsWidget extends StatelessWidget {
           shrinkWrap: true,
           // selection item buttons.
           children: [
-            Expanded(child: Consumer<Cart>(builder: ,)),
+            Expanded(child: Consumer<CartProvider>(builder: ,)),
           ],
         ),
       ),
