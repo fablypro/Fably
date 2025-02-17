@@ -1,5 +1,9 @@
 // importing all material from package below.
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+// importing from other classes.
+import 'package:flutter_ui_selections/lib/cart.dart';
 
 // classes for Belts screen.
 class BeltsWidget extends StatelessWidget {
@@ -33,8 +37,8 @@ class BeltsWidget extends StatelessWidget {
           // fitting the grid size.
           shrinkWrap: true,
           // selection item buttons.
-          children: <Widget>[
-           // builder: Builder(context) {},
+          children: [
+            Expanded(child: Consumer<Cart>(builder: ,)),
           ],
         ),
       ),
