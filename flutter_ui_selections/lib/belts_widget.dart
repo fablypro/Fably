@@ -23,12 +23,21 @@ class BeltsWidget extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
           ),
 
+          //shopping bag badge.
           Badge(
             badgeContent: Consumer<CartProvider> (
               builder: (context, value, child) {
-                return Text(, value.getCounter)
-              });
+                return Text(
+                  value.getCounter().toString(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              },
+            ),
           ),
+          const SizedBox(width: 17.5,),
         ],
       ),
       body: Center(
