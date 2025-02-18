@@ -44,10 +44,10 @@ class RingsWidget extends StatelessWidget {
                   if (provider.cart.isEmpty) {
                     return const Center(
                       child: Text(''),
-                    )
+                    );
                   } else {
                     return ListView.builder(itemBuilder: itemBuilder)
-                  },
+                  }
                 },
               ),
             ),
