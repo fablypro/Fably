@@ -43,7 +43,7 @@ class BeltsWidget extends StatelessWidget {
                 builder: (BuildContext context, provider, widget) {
                   if (provider.cart.isEmpty) (
                       return const Center(
-                        child: Text,
+                        child: Text(''),
                   )),
                 },
               ),
