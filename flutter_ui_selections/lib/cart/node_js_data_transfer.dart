@@ -6,3 +6,7 @@ import 'package:dio/';
 class NodeJsDataTransfer {
   static;
 }
+
+class CartProvider with ChangeNotifier {
+  NodeJsDataTransfer nodeJsDataTransfer = NodeJsDataTransfer();
+}
