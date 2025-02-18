@@ -22,6 +22,13 @@ class BeltsWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
           ),
+
+          Badge(
+            badgeContent: Consumer<CartProvider> (
+              builder: (context, value, child) {
+                return Text(, value.getCounter)
+              });
+          ),
         ],
       ),
       body: Center(
