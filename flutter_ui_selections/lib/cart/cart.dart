@@ -3,8 +3,14 @@ class Cart {
   late final int? id;
   final String? productId;
   final String? productName;
+
+  final int? initPrice;
   final int? productPrice;
+
   final int? size;
+
+  final ValueNotifier<int>? quantity;
+
   final String? unitTag;
   final String? image;
   final String? status;
@@ -14,8 +20,10 @@ class Cart {
     {required this.id,
       required this.productId,
       required this.productName,
+      required this.initPrice,
       required this.productPrice,
       required this.size,
+      required this.quantity,
       required this.unitTag,
       required this.image,
       required this.status,
@@ -27,6 +35,7 @@ class Cart {
         productName = data['productName'],
         productPrice = data['productPrice'],
         size = data['size'],
+        initPrice = ValueNotifier(data['initPrice']),
         unitTag = data['unitTag'],
         image = data['image'],
         status = data['status'];
@@ -36,8 +45,10 @@ class Cart {
       'id': id,
       'productId': productId,
       'productName': productName,
+      'initPrice': initPrice,
       'productPrice': productPrice,
       'size': size,
+      'quantity': quantity?.value,
       'unitTag': unitTag,
       'image': image,
       'status': status,
