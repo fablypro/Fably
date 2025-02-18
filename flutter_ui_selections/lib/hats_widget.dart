@@ -40,7 +40,15 @@ class HatsWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Consumer<CartProvider>(
-                builder: (BuildContext context, provider, widget) {},
+                builder: (BuildContext context, provider, widget) {
+                  if (provider.cart.isEmpty) {
+                    return const Center(
+                      child: Text(''),
+                    )
+                  } else {
+                    return ListView.builder(itemBuilder: itemBuilder)
+                  },
+                },
               ),
             ),
           ],
