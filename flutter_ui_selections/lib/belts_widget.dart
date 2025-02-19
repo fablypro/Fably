@@ -1,5 +1,6 @@
 // importing all material from package below.
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_selections/cart/node_js_data_transfer.dart';
 import 'package:provider/provider.dart';
 
 // importing from other classes.
@@ -10,6 +11,8 @@ class BeltsWidget extends StatelessWidget {
   const BeltsWidget({super.key});
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         // background color to AppBar.
@@ -31,10 +34,14 @@ class BeltsWidget extends StatelessWidget {
                   value.getCounter().toString(),
                   style: const TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                    fontWeight: FontWeight.bold),
                 );
               },
+            ),
+            position: const BadgePosition(start: 30, bottom: 30),
+            child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_cart)
             ),
           ),
           const SizedBox(width: 17.5,),
