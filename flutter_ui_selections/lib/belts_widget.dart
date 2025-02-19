@@ -62,7 +62,7 @@ class BeltsWidget extends StatelessWidget {
                         child: Text(''),
                       );
                   } else {
-                    return ListView.builder(itemBuilder: itemBuilder)
+                    return ListView.builder(itemBuilder: ) {},
                   }
                 },
               ),

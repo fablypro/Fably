@@ -17,6 +17,7 @@ class Item {
         required this.status,
       });
 
+  // mapping the data into JSON.
   Map toJson() {
     return {
       "prodName": prodName,

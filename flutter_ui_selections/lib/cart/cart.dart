@@ -29,6 +29,7 @@ class Cart {
       required this.status,
     });
 
+  // getting data variables from mapping of cart.
   Cart.fromMap(Map<dynamic, dynamic> data):
         id = data['id'],
         productId = data['productId'],
