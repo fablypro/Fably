@@ -39,7 +39,7 @@ class BeltsWidget extends StatelessWidget {
             position: const BadgePosition(start: 30, bottom: 30),
             child: IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.shopping_cart)
+                icon: const Icon(Icons.shopping_cart),
             ),
           ),
           const SizedBox(width: 17.5,),
