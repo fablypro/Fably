@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:io' as io;
 import 'package:path_provider/path_provider.dart';
-import 'package:dio/';
+import 'package:dio/dio.dart';
 import 'package:flutter_ui_selections/cart/cart.dart';
 
 class NodeJsDataTransfer {

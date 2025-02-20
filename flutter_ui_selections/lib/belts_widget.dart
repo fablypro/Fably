@@ -32,9 +32,7 @@ class BeltsWidget extends StatelessWidget {
               builder: (context, value, child) {
                 return Text(
                   value.getCounter().toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 );
               },
             ),
