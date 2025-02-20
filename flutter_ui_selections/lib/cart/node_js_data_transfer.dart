@@ -12,4 +12,8 @@ class CartProvider with ChangeNotifier {
   NodeJsDataTransfer nodeJsDataTransfer = NodeJsDataTransfer();
 
   List<Cart> cart = [];
+
+  Future<List<Cart>> getData() async {
+    cart =;
+  }
 }
