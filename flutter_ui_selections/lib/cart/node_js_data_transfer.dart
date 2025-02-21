@@ -1,6 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:io' as io;
 import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_ui_selections/cart/cart.dart';
 
@@ -15,9 +16,10 @@ class CartProvider with ChangeNotifier {
 
   Future<List<Cart>> getData() async {
     cart = await;
+    notifyListeners();
   }
 
-  void addCOunter() {
+  void addCounter() {
     _counter
   }
 
