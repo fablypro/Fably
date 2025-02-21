@@ -16,18 +16,18 @@ class Cart {
   final String? status;
 
   //cart constructor to initialize values.
-  Cart(
-    {required this.id,
-      required this.productId,
-      required this.productName,
-      required this.initPrice,
-      required this.productPrice,
-      required this.size,
-      required this.quantity,
-      required this.unitTag,
-      required this.image,
-      required this.status,
-    });
+  Cart({
+    required this.id,
+    required this.productId,
+    required this.productName,
+    required this.initPrice,
+    required this.productPrice,
+    required this.size,
+    required this.quantity,
+    required this.unitTag,
+    required this.image,
+    required this.status,
+  });
 
   // getting data variables from mapping of cart.
   Cart.fromMap(Map<dynamic, dynamic> data):
