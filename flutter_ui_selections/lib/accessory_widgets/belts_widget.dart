@@ -1,9 +1,10 @@
 // importing all material from package below.
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_selections/cart/node_js_data_transfer.dart';
 import 'package:provider/provider.dart';
+import 'package:badges/badges.dart';
 
 // importing from other classes.
+import 'package:flutter_ui_selections/cart/node_js_data_transfer.dart';
 import '';
 
 // classes for Belts screen.
