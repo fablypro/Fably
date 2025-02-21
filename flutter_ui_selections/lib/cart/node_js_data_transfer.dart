@@ -14,6 +14,22 @@ class CartProvider with ChangeNotifier {
   List<Cart> cart = [];
 
   Future<List<Cart>> getData() async {
-    cart =;
+    cart = await;
+  }
+
+  void addCOunter() {
+    _counter
+  }
+
+  int getQuantity(int quantity) {
+    _getQuantity();
+  }
+
+  double getTotalPrice() {
+    _getPrefItems();
+    return _totalPrice;
+  }
+  void removeTotalPrice() {
+    _totalPrice = _totalPrice - _itemPrice;
   }
 }
