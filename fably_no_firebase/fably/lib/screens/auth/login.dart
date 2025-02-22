@@ -301,7 +301,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: 'Password',
                         obscureText: true,
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 26),
                       AuthButton(
                         text: 'LOGIN',
                         onPressed: _isLoading ? () {} : _handleLogin,
@@ -309,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextButton(
                         onPressed: _isLoading ? null : _handleForgotPassword,
                         child: const Text('Forgot Password?',
-                            style: TextStyle(color: Colors.white)),
+                            style:TextStyle(color: Colors.white, fontFamily: "jura", fontSize: 23, height: 3)),
                       ),
                       TextButton(
                         onPressed: () {
@@ -320,7 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                         child: const Text("Don't have an account? Register",
-                            style: TextStyle(color: Colors.white)),
+                            style: TextStyle(color: Colors.white, fontFamily: "jura", fontSize: 16)),
                       ),
                       if (_message == 'Email not verified. Check your inbox.')
                         ElevatedButton(
@@ -336,7 +336,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 150),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
