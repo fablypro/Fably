@@ -6,19 +6,35 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors')
-
+//to secure dotenv
 require("dotenv").config();
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 // creating the app
 var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// app using all required functions
 app.use(cors());
 app.use(bodyParser.json());
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/', usersRouter);
+
+
+// mongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
+});
 
 // create shopping item schema
 const shoppingItemSchema = new mongoose.Schema({
@@ -34,6 +50,8 @@ const shoppingItemSchema = new mongoose.Schema({
   status: String
 });
 const ShoppingItem = mongoose.model('Shopping Item', shoppingItemSchema);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,8 +88,6 @@ app.update({
 app.delete({
   ;
 });
-
-mongoose.connect();
 
 const PORT = process.env.PORT || 5000;
 
