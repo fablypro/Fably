@@ -20,6 +20,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// create shopping item schema
+const shoppingItemSchema = new mongoose.Schema({
+  id: Number,
+  productId: String,
+  productName: String,
+  initPrice: mongoose.Types.Decimal128,
+  productPrice: mongoose.Types.Decimal128,
+  size: Number,
+  quantity: {type: Number, default: 1},
+  unitTag: String,
+  image: String,
+  status: String
+});
+const ShoppingItem = mongoose.model('Shopping Item', shoppingItemSchema);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -36,18 +51,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const shoppingItemSchema = new mongoose.Schema({
-  id: Number,
-  productId: String,
-  productName: String,
-  initPrice: mongoose.Types.Decimal128,
-  productPrice: mongoose.Types.Decimal128,
-  size: Number,
-  quantity: {type: Number, default: 1},
-  unitTag: String,
-  image: String,
-  status: String
-});
+
 
 // getting cart items
 app.get(function() {
