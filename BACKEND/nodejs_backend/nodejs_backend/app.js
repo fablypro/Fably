@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors')
 
-const {config} = require("dotenv");
-config();
+require("dotenv").config();
 
+// creating the app
 var app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -36,17 +36,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const cart_item = Schema({
+const shoppingItemSchema = new mongoose.Schema({
   id: Number,
   productId: String,
   productName: String,
   initPrice: mongoose.Types.Decimal128,
   productPrice: mongoose.Types.Decimal128,
   size: Number,
-  ValueNotifier<int>? quantity: ,
+  quantity: {type: Number, default: 1},
   unitTag: String,
   image: String,
-  productStatus: String
+  status: String
 });
 
 // getting cart items
@@ -58,7 +58,9 @@ app.post({
   ;
 });
 
-app.update();
+app.update({
+  ;
+});
 
 // deleting cart items
 app.delete({
