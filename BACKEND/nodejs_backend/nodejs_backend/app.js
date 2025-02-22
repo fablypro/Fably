@@ -34,6 +34,8 @@ app.use('/', usersRouter);
 
 // mongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
+  useNewURL: true;
+  : true;
 });
 
 // create shopping item schema
@@ -57,7 +59,6 @@ const ShoppingItem = mongoose.model('Shopping Item', shoppingItemSchema);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
