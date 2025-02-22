@@ -11,6 +11,8 @@ import '';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
 
+final secureStorage = FlutterSecureStorage();
+
 // classes for Belts screen.
 class BeltsWidget extends StatelessWidget {
   const BeltsWidget({super.key});
