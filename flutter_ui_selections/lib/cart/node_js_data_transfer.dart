@@ -7,25 +7,48 @@ import 'package:flutter_ui_selections/cart/cart.dart';
 
 class NodeJsDataTransfer {
   static;
+
+  Future<> deleteItem() async {
+  }
+
+  Future<> updateItem() async {
+  }
+
 }
 
 class CartProvider with ChangeNotifier {
+  static int _counter = 0;
+  int get counter => _counter;
+
+
+  double _totalPrice = 0.0;
+  double get totalPrice => _totalPrice;
+
   NodeJsDataTransfer nodeJsDataTransfer = NodeJsDataTransfer();
 
+  // create cart.
   List<Cart> cart = [];
 
   Future<List<Cart>> getData() async {
     cart = await ;
     notifyListeners();
+    return cart;
   }
 
-  void addCounter() {
+  // getting preferred items.
+  void _getPrefItems() async {}
+  // setting preferred items.
+  void _setPrefItems() async {
+    notifyListeners();
+  }
+
+  void addToCounter() {
     _counter++;
     _setPrefitems();
     notifyListeners();
   }
 
-  void deleteCounter() {
+  void deleteToCounter() {
     _counter--;
     _setPrefitems();
     notifyListeners();
@@ -33,14 +56,28 @@ class CartProvider with ChangeNotifier {
 
   int getQuantity(int quantity) {
     _getQuantity();
+    return;
   }
 
+  // getting total price for all items selected.
   double getTotalPrice() {
     _getPrefItems();
     return _totalPrice;
   }
+  // getting size of cart.
+  int getCounter() {
+    _getPrefItems();
+    return _counter;
+  }
+
+  // method for adding total price.
   void removeTotalPrice() {
-    _totalPrice = _totalPrice + _itemPrice;
+    _totalPrice = _totalPrice + productPrice;
+    notifyListeners();
+  }
+  // method for removing total price.
+  void removeTotalPrice() {
+    _totalPrice = _totalPrice - productPrice;
     notifyListeners();
   }
 }
