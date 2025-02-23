@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+<<<<<<< Updated upstream
 import 'package:http/http.dart' as http;
 import 'dart:convert'; // For JSON decoding, if needed
 import 'dart:async';
@@ -8,8 +9,13 @@ import '../home/home.dart';
 import 'login.dart';
 import 'auth_widget.dart';// Import for AreYouScreen
 import '../../utils/user_preferences.dart';
+=======
+import 'dart:async';
+import '../home/home.dart';
+import 'login.dart';
+import 'auth_widget.dart'; // Import for AreYouScreen
+>>>>>>> Stashed changes
 import '../../utils/requests.dart';
-import '../../utils/prefs.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -172,8 +178,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Text(
                         'Register',
                         style: TextStyle(
-                          fontFamily: 'Italiana',
-                          fontSize: 40,
+                          letterSpacing: 8,
+                          fontFamily: 'jura',
+                          fontSize: 53,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -225,7 +232,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           Text(
                             'Sign up via Google',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontSize: 16),
                           ),
                         ],
                       ),

@@ -200,12 +200,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Center(
       child: ElevatedButton(
         onPressed: submitOrder,
-        child: Text("Submit Order", style: TextStyle(fontSize: 16, color: Colors.white)),
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.blueAccent,
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         ),
+        child: Text("Submit Order", style: TextStyle(fontSize: 16, color: Colors.white)),
       ),
     );
   }

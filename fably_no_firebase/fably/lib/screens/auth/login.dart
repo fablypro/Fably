@@ -347,7 +347,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const Text(
                             'Login via Google',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ],
                       ),

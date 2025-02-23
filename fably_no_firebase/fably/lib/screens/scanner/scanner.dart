@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'camera.dart';
-import '../scanner/scanner.dart';
-import '../home/home.dart';
-import '../shop/wishlist.dart';
-import '../home/widgets/common_drawer.dart';
 import '../../utils/requests.dart';
-import '../shop/cart.dart';
-import '../auth/login.dart';
-import '../home/widgets/bottom_nav_bar.dart';
 
 class ScannerScreen extends StatelessWidget {
   const ScannerScreen({super.key});
@@ -19,7 +12,7 @@ class ScannerScreen extends StatelessWidget {
       onPressed: () => Navigator.of(context).pop(),
     );
 
-    void _showMessage(String message) {
+    void showMessage(String message) {
       print(message);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
     }
@@ -30,10 +23,10 @@ class ScannerScreen extends StatelessWidget {
     try{
       final response = await requests.getRequest('logout');
       if (response.statusCode==200){
-        _showMessage('Logged out successfully');
+        showMessage('Logged out successfully');
       }
     }catch (e) {
-      _showMessage('Error Loging out: $e');
+      showMessage('Error Loging out: $e');
     }
 
   }

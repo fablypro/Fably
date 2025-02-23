@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert'; // For JSON decoding, if needed
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'checkout_screen.dart';
 import '../auth/login.dart';
 import '../../utils/requests.dart';
 import '../../utils/prefs.dart';
-import '../scanner/scanner.dart';
-import '../home/home.dart';
 import '../home/widgets/common_drawer.dart';
 import '../shop/cart.dart';
 import '../shop/product.dart';
@@ -41,6 +37,8 @@ ElevatedButton backButton = ElevatedButton(
   );
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,6 +52,8 @@ class MyApp extends StatelessWidget {
 }
 
 class WishlistPage extends StatefulWidget {
+  const WishlistPage({super.key});
+
   @override
   _WishlistPageState createState() => _WishlistPageState();
 }

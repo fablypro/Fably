@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../shop/wishlist.dart';
-import '../../scanner/scanner.dart';
 import '../home.dart';
 import '../../scanner/add_images.dart';
 
@@ -13,14 +12,14 @@ class CommonBottomNavBar extends StatelessWidget {
   
 
   const CommonBottomNavBar({
-    Key? key,
+    super.key,
     required this.currentIndex,
     //required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    void _showMessage(String message) {
+    void showMessage(String message) {
       print(message);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
     }
@@ -96,7 +95,7 @@ class CommonBottomNavBar extends StatelessWidget {
               case 3:
                 _showMessage('Profile tapped');
                 break;
-            };
+            }
       }
     );
   }

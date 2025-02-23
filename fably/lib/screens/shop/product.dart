@@ -200,7 +200,7 @@ class _ProductPageState extends State<ProductPage> {
                     Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 300,
                           child: PageView.builder(
                             controller: _pageController,
