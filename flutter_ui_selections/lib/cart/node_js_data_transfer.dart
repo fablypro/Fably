@@ -6,9 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_ui_selections/cart/cart.dart';
 
 class NodeJsDataTransfer {
-  static;
 
-  Future<> deleteItem() async {
+  Future<Cart> deleteItem() async {
   }
 
   Future<> updateItem() async {
@@ -72,12 +71,12 @@ class CartProvider with ChangeNotifier {
 
   // method for adding total price.
   void removeTotalPrice() {
-    _totalPrice = _totalPrice + productPrice;
+    _totalPrice += productPrice;
     notifyListeners();
   }
   // method for removing total price.
   void removeTotalPrice() {
-    _totalPrice = _totalPrice - productPrice;
+    _totalPrice -= productPrice;
     notifyListeners();
   }
 }
