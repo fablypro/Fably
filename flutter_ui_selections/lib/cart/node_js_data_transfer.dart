@@ -15,13 +15,20 @@ class CartProvider with ChangeNotifier {
   List<Cart> cart = [];
 
   Future<List<Cart>> getData() async {
-    cart = await database;
+    cart = await ;
     notifyListeners();
   }
 
   void addCounter() {
     _counter++;
     _setPrefitems();
+    notifyListeners();
+  }
+
+  void deleteCounter() {
+    _counter--;
+    _setPrefitems();
+    notifyListeners();
   }
 
   int getQuantity(int quantity) {
