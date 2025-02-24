@@ -1,17 +1,111 @@
-Dear Customer,<br>
-<br>
-Your order was created successfully!<br>
-<br>
-<table border=1>
-    <tr><th>Image</th><th>Item</th><th>Unit Price</th><th>Quantity</th><th>Sum</th></tr>
-    {% for item in return_cart %}
-        <tr>
-            <td><img src="{{item['photos'][0]}}" alt="Product Image" height=100 style="display:block; margin:auto;" ></td>
-            <td>{{item["name"]}}</td>
-            <td>${{item["price"]}}</td>
-            <td>X {{item["quantity"]}}</td>
-            <td>${{(item["quantity"]*item["price"]) | round(2)}}</td>
-        </tr>
-    {% endfor %}
-    <tr><th colspan=4>Total</th><th>{{total_cost}}</th></tr>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            background-color: #000000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .email-header img {
+            max-width: 200px;
+        }
+
+        .email-body {
+            padding: 20px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .email-body h2 {
+            color: #000000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        table th {
+            background-color: #f4f4f9;
+            color: #000000;
+        }
+
+        table img {
+            max-height: 80px;
+            display: block;
+            margin: auto;
+        }
+
+        .email-footer {
+            padding: 10px;
+            text-align: center;
+            background-color: #f4f4f9;
+            font-size: 0.9em;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <img src="https://res.cloudinary.com/dcmelcukm/image/upload/v1740397581/Fably_ruvxxh.png" 
+			alt="Logo">
+        </div>
+        <div class="email-body">
+            <h2>Dear Customer,</h2>
+            <p>Your order was created successfully!</p>
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Item</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Sum</th>
+                </tr>
+                {% for item in return_cart %}
+                <tr>
+                    <td><img src="{{item['photos'][0]}}" alt="Product Image"></td>
+                    <td>{{item["name"]}}</td>
+                    <td>${{item["price"]}}</td>
+                    <td>X {{item["quantity"]}}</td>
+                    <td>${{(item["quantity"]*item["price"]) | round(2)}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="4">Total</th>
+                    <th>${{total_cost}}</th>
+                </tr>
+            </table>
+        </div>
+        <div class="email-footer">
+            Thank you for your purchase! We hope to see you again soon.
+        </div>
+    </div>
+</body>
+</html>

@@ -874,7 +874,7 @@ def password_reset():
 
         
         
-        return "Password successfully reset!"
+        return render_template("password_reset_success.html"), 200
     
     return render_template("reset_password.html"), 200
 
@@ -895,4 +895,4 @@ def customer_logged_in(user_id):
     return True
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=3000)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)
