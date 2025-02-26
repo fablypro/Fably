@@ -58,6 +58,7 @@ class _ProductPageState extends State<ProductPage> {
   int _currentPage = 0;
   bool _isWishlisted = false;
   bool _isLoading = true;
+  double _averageRating = 0.0;
 
   Future<String?> getPrefs(pref) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -286,6 +287,7 @@ class _ProductPageState extends State<ProductPage> {
         setState((){
           _isWishlisted = x;
           _isLoading = false;
+          _averageRating = 2.3;
         });
       });
     });
@@ -441,6 +443,80 @@ class _ProductPageState extends State<ProductPage> {
                     Text(
                       widget.product.description,
                       style: const TextStyle(color: Colors.grey),
+                    ),
+                    const SizedBox(height: 10),
+                    GestureDetector(
+                      onTap: () {
+                        /*Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ReviewsPage()),
+                        );*/
+                      },
+                      child: Card(
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          width: double.infinity, // Set width to the full page width
+                          height: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween, // Arrange items at ends
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // "Average Rating" on the left
+                              const Text(
+                                "Average Rating",
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+
+                              // Dynamic star rating on the right
+                              Row(
+                                children: [
+                                  // Stars
+                                  Row(
+                                    children: List.generate(5, (index) {
+                                      double rating = _averageRating;
+                                      if (_averageRating==0.0){
+                                        print("No reviews yet $_averageRating $index $rating");
+                                        return const Icon(Icons.star_border, color: Colors.grey);
+                                      }
+                                      if (_averageRating % 1 >= 0.1){
+                                        if (index < rating-1) {
+                                          // Full stars
+                                          return const Icon(Icons.star, color: Colors.amber);
+                                        } else if (index == rating ~/ 1) {
+                                          // Half star
+                                          return const Icon(Icons.star_half, color: Colors.amber);
+                                        } else {
+                                          // Empty stars (not applicable here, but for future cases)
+                                          return const Icon(Icons.star_border, color: Colors.grey);
+                                        }
+                                      } else{
+                                        if (index < rating) {
+                                          return const Icon(Icons.star, color: Colors.amber);
+                                        } else{
+                                          return const Icon(Icons.star_border, color: Colors.grey);
+                                        }
+                                      }
+                                    }),
+                                  ),
+                                  const SizedBox(width: 4),
+                                  // Numerical rating
+                                  Text(
+                                    "$_averageRating", // Replace with dynamic value
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Row(
