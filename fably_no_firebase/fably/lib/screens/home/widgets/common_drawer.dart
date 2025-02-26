@@ -1,6 +1,8 @@
+import 'package:fably/screens/auth/login.dart';
 import 'package:fably/screens/home/home.dart';
 import 'package:fably/screens/scanner/add_images.dart';
 import 'package:fably/screens/shop/cart.dart';
+import 'package:fably/screens/shop/order_page.dart';
 import 'package:fably/screens/shop/shopping_history.dart';
 import 'package:fably/screens/shop/wishlist.dart';
 import 'package:flutter/material.dart';
@@ -221,6 +223,30 @@ class CommonDrawer extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => ShoppingHistoryScreen()),
+                      );
+                    },
+                  )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.logout,
+                      color: Colors.white,
+                    ),
+                    title: const Text(
+                      'LOGOUT',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Jura",
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.6),
+                    ),
+                    onTap: () {
+                      signOut(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
                   )

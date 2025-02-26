@@ -201,6 +201,74 @@ def get_orders():
     
     return jsonify(orders)
 
+
+### User Orders
+@app.route('/customer_orders/<user_id>/', methods=['POST'])
+def get_user_orders(user_id):
+    if not customer_logged_in(user_id):
+        return "Unauthorised!", 400
+
+    """Retrieve all orders of user"""
+    orders = list(orders_collection.find({"userId":user_id}))
+    
+    for o in range(len(orders)):
+        order_total = 0
+        for i in range(len(orders[o]['items'])):
+            item = orders[o]['items'][i]
+            try:
+                item_product = items_collection.find_one({'_id': ObjectId(item['_id'])})
+            except:
+                continue
+            order_total += item["quantity"]*item_product["price"]
+        orders[o]["total"] = order_total
+        orders[o]["_id"] = str(orders[o]["_id"])
+        orders[o]["orderDate"] = orders[o]["orderDate"].strftime("%d-%m-%Y")
+    print("orders", orders)        
+    
+    return jsonify(orders), 200
+### User Orders
+
+### User Order
+@app.route('/customer_orders_items/<user_id>/', methods=['POST'])
+def get_user_order_items(user_id):
+    if not customer_logged_in(user_id):
+        return "Unauthorised!", 400
+
+    data = request.get_json()
+    order_id = data["order_id"]
+
+    """Retrieve all items of user order"""
+    orders = list(orders_collection.find({"userId":user_id, "_id": ObjectId(order_id)}))
+    
+    return_order = {}
+
+    return_order["orderDate"] = str(orders[0]["orderDate"].strftime("%d-%m-%Y"))
+    return_order["_id"] = str(orders[0]["_id"])
+    return_order['checkoutInfo'] = {}
+
+    
+    return_items = []
+
+    for i in range(len(orders[0]['items'])):
+        item = orders[0]['items'][i]
+        return_item = {}
+        try:
+            item_product = items_collection.find_one({'_id': ObjectId(item['_id'])})
+        except:
+            continue
+        return_item["quantity"] = item["quantity"]
+        return_item["_id"] = str(item_product["_id"])
+        return_item["photos"] = item_product["photos"]
+        return_item["price"] = item_product["price"]
+        return_item["name"] = item_product["name"]
+        return_items.append(return_item)
+    import json
+    return_order["items"] = return_items
+    print("return_order", json.dumps(return_order, indent = 4))
+    
+    return jsonify(return_order), 200
+### User Order
+
 # ---------------- SELLER & ITEM MANAGEMENT (UNCHANGED) ----------------
 
 @app.route('/register', methods=['GET', 'POST'])
