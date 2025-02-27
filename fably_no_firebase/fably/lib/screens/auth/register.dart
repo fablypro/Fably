@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 //import 'package:firebase_auth/firebase_auth.dart';
+=======
+import 'package:flutter/services.dart';
+>>>>>>> Stashed changes
 import 'package:google_sign_in/google_sign_in.dart';
 <<<<<<< Updated upstream
 import 'package:http/http.dart' as http;
@@ -161,13 +167,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+<<<<<<< Updated upstream
+  Widget @override
+  build(BuildContext context) {
     return Scaffold(
+=======
+Widget build(BuildContext context) {
+  // ignore: deprecated_member_use
+  return WillPopScope(
+    onWillPop: () async {
+      if (Platform.isAndroid) {
+        SystemNavigator.pop(); // For Android
+      } else if (Platform.isIOS) {
+        exit(0); // For iOS and other platforms
+      }
+      return false;
+    },
+    child:Scaffold(
+>>>>>>> Stashed changes
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+<<<<<<< Updated upstream
               const SizedBox(height: 100),
               Align(
                 alignment: Alignment.center,
@@ -240,6 +263,108 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
+=======
+              const SizedBox(height: 50), // Reduced to make room for new title
+              const Text(
+                'FABLY',
+                style: TextStyle(
+                  fontFamily: 'jura',
+                  fontSize: 50,
+                  letterSpacing: 3,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 30), // Added spacing between titles
+              Align(
+                alignment: Alignment.center,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    children: [
+                      const Text(
+                        'REGISTER',
+                        style: TextStyle(
+                          letterSpacing: 8,
+                          fontFamily: 'Jura',
+                          fontSize: 53,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 40),
+
+                      // First Name Field
+                      AuthTextField(
+                        controller: _firstNameController, 
+                        labelText: 'First Name',
+                      ),
+
+                      // Last Name Field
+                      AuthTextField(
+                        controller: _lastNameController, 
+                        labelText: 'Last Name',
+                      ),
+
+                      // Email Field
+                      AuthTextField(
+                        controller: _emailController, 
+                        labelText: 'Email',
+                      ),
+
+                      // Password Field
+                      AuthTextField(
+                        controller: _passwordController,
+                        labelText: 'Password',
+                        obscureText: true,
+                      ),
+
+                      // Confirm Password Field
+                      AuthTextField(
+                        controller: _confirmPasswordController,
+                        labelText: 'Confirm Password',
+                        obscureText: true,
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Register Button
+                      AuthButton(text: 'REGISTER', onPressed: _register),
+
+                      const SizedBox(height: 50),
+
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen()
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Already have an account? Login',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      Text(
+                        _message,
+                        style: const TextStyle(
+                          fontFamily: 'Jura',
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ),
+              ),
+>>>>>>> Stashed changes
               const SizedBox(height: 50),
             ],
           ),

@@ -211,7 +211,7 @@ class _CartPageState extends State<CartPage> {
 
   // Remove an item from the cart
   void removeItem(int index, {int count = 1}) {
-    _showMessage("removed item");
+    //_showMessage("removed item");
     bool status = false;
     removeFromCart(cartItems[index]['_id'], count).then((s){
       status = s;
@@ -381,6 +381,32 @@ class _CartPageState extends State<CartPage> {
                             fit: BoxFit.cover, // Ensures the image fills the space
                           ),
                           title: Text(item['name']),
+<<<<<<< Updated upstream
+=======
+                          trailing: InkWell(
+                            onTap: () {
+                              removeItem(index); // Handle button press
+                            },
+                            borderRadius: BorderRadius.circular(8), // Optional for rounded effect
+                            splashColor: const Color.fromARGB(255, 99, 99, 99).withOpacity(0.3), // Customize ripple color
+                            highlightColor: const Color.fromARGB(255, 99, 99, 99).withOpacity(0.1), // Customize highlight color
+                            child: Container(
+                              padding: EdgeInsets.zero,
+                              width: MediaQuery.of(context).size.width * 0.12, // 12% of the screen width
+                              height: double.infinity, // Fills the height of the card
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 250, 250, 250), 
+                                borderRadius: BorderRadius.circular(8), 
+                              ),
+                              child: Icon(
+                                Icons.exposure_minus_1,
+                                size: 28,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+>>>>>>> Stashed changes
                           onTap: () {
                               onCardTap(index);
                             },

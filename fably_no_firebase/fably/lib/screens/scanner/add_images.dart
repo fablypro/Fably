@@ -1,11 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
-import '../home/widgets/bottom_nav_bar.dart';
-import '../home/widgets/common_drawer.dart';
-import '../shop/cart.dart';
-import '../auth/login.dart';
 import '../../utils/requests.dart';
 import 'select_product.dart';
 
@@ -148,30 +143,7 @@ class _UploadImagesPageState extends State<UploadImagesPage> {
     } else{
       _showMessage("Virtual Try-On function...");
     }
-
     return;
-
-    final requests = BackendRequests();
-
-    try {
-      final uri = Uri.parse('${requests.url}/upload'); // Replace with your backend URL
-      var request = http.MultipartRequest('POST', uri);
-
-      // Add images to the request
-      request.files.add(await http.MultipartFile.fromPath('user_image', _userImage!.path));
-      request.files.add(await http.MultipartFile.fromPath('clothing_image', _clothingImage!.path));
-
-      // Send the request
-      var response = await request.send();
-
-      if (response.statusCode == 200){
-        _showMessage('Images uploaded successfully!');
-      } else {
-        _showMessage('Failed to upload images');
-      }
-    } catch (e) {
-      _showMessage('Error: $e');
-    }
   }
 
   void _showMessage(String message) {
@@ -205,6 +177,7 @@ class _UploadImagesPageState extends State<UploadImagesPage> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return Scaffold(
       appBar: AppBar(
         title: const Text('Upload Image'),
@@ -338,16 +311,168 @@ class _UploadImagesPageState extends State<UploadImagesPage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
+=======
+    return WillPopScope(
+      onWillPop: () async {
+        if (Platform.isAndroid) {
+        SystemNavigator.pop(); // For Android
+      } else if (Platform.isIOS) {
+        exit(0); // For iOS and other platforms
+      }
+      return false;
+      },
+      child:Scaffold(
+        appBar: CommonAppBar(
+          title: 'UPLOAD IMAGE'
+          ),
+        /*appBar: AppBar(
+          title: const Text('Upload Image'),
+          centerTitle: true,
+          backgroundColor: Colors.black,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.shopping_bag_outlined),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(),
+                    //builder: (context) => ProductPage(product: myProduct),
+>>>>>>> Stashed changes
                   ),
-                  label: Text('Upload Image'),
-                ),
-              ],
+                );
+              },
             ),
-          ),]
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                signOut().then((o){
+                  Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  );
+                });
+              },
+            ),
+          ],
+        ),*/
+        drawer: CommonDrawer(),
+        body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Display user image
+                  _userImage != null
+                      ? Image.file(_userImage!, height: 450)
+                      : Container(
+                          height: 450,
+                          width: 300,//double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.man,
+                              size: 300,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                            ),
+                          ),
+                        ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () => _pickImage(true),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        child: Text(
+                          'Select Your Image',
+                          style: TextStyle(fontFamily: "jura", 
+                          fontSize: 18),),
+                        
+                      ),
+                      SizedBox(width: 10),
+                      ElevatedButton.icon(
+                        onPressed: () => _takePicture(true),
+                        icon: Icon(
+                          Icons.camera_alt,
+                          color: Colors.black,
+                          ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        label: Text('Capture'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  // Display clothing image
+                  /*_clothingImage != null
+                      ? Image.file(_clothingImage!, height: 200)
+                      : Container(
+                          height: 200,
+                          width: 200,//double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.checkroom,
+                              size: 200,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                            ),
+                          ),
+                        ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () => _pickImage(false),
+                        child: Text('Select Clothing Image'),
+                      ),
+                      SizedBox(width: 10),
+                      ElevatedButton.icon(
+                        onPressed: () => _takePicture(false),
+                        icon: Icon(Icons.camera_alt),
+                        label: Text('Capture'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 30),*/
+                  ElevatedButton.icon(
+                    onPressed: _uploadImages,
+                    icon: Icon(
+                      Icons.upload,
+                      color: Colors.black,
+                      ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                    ),
+                    label: Text('Upload Image'),
+                  ),
+                ],
+              ),
+            ),]
+          ),
         ),
-      ),
-      bottomNavigationBar: CommonBottomNavBar(
-        currentIndex: 2,
+        bottomNavigationBar: CommonBottomNavBar(
+          currentIndex: 2,
+        ),
       ),
     );
   }

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../home/home.dart';
@@ -269,8 +272,40 @@ class _LoginScreenState extends State<LoginScreen> {
   }*/
 
   @override
-  Widget build(BuildContext context) {
+<<<<<<< Updated upstream
+  Widget @override
+  build(BuildContext context) {
     return Scaffold(
+=======
+  void initState() {
+    super.initState();
+    final request = BackendRequests();
+    final prefs = Prefs();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if(await request.isLoggedIn()){
+        print('User is already logged in');
+        print(prefs.getPrefs('userInfo'));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      }
+    });
+  }
+
+  @override
+Widget build(BuildContext context) {
+  return WillPopScope(
+    onWillPop: () async {
+      if (Platform.isAndroid) {
+        SystemNavigator.pop(); // For Android
+      } else if (Platform.isIOS) {
+        exit(0); // For iOS and other platforms
+      }
+      return false;
+    },
+    child: Scaffold(
+>>>>>>> Stashed changes
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

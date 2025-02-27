@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
+=======
+import 'dart:io';
+
+import 'package:fably/screens/home/widgets/common_appbar.dart';
+>>>>>>> Stashed changes
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'dart:convert'; // For JSON decoding, if needed
 import 'dart:async';
@@ -241,6 +248,7 @@ class _WishlistPageState extends State<WishlistPage> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -327,42 +335,154 @@ class _WishlistPageState extends State<WishlistPage> {
                   );
                 },
               ),
+=======
+    return WillPopScope(
+      onWillPop: () async {
+        if (Platform.isAndroid) {
+          SystemNavigator.pop(); // For Android
+        } else if (Platform.isIOS) {
+          exit(0); // For iOS and other platforms
+        }
+        return false;
+      },
+      child:Scaffold(
+        backgroundColor: Colors.black,
+        appBar: CommonAppBar(
+          title: 'WISHLIST'
+        ),
+        /*appBar: AppBar(
+          title: const Text(
+            'Fably - WISHLIST',
+            style: TextStyle(
+              letterSpacing: 3,
+              fontFamily: "Italiana",
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              fontStyle: FontStyle.italic,
+              color: Colors.white,
+>>>>>>> Stashed changes
             ),
-            Divider(),
-            
-            SizedBox(
-              width: double.infinity,
-              /*child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  textStyle: const TextStyle(fontSize: 25),
-                  minimumSize: const Size.fromHeight(50),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CheckoutScreen()),
+            ),
+          centerTitle: true,
+          backgroundColor: Colors.black,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.shopping_bag_outlined),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(),
+                    //builder: (context) => ProductPage(product: myProduct),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                signOut().then((o){
+                  Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                   );
-                },
-                child: const Text('Add all to cart'),
-              ),*/
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, // Background color
-                  backgroundColor: Colors.white, // Text and icon color
-                ),
-                onPressed: () {
-                },
-                child: Text('Add all to cart'),
-              ),
+                });
+              },
             ),
           ],
+        ),*/
+        drawer: CommonDrawer(),
+              
+        body: isLoading ? Center(child: CircularProgressIndicator()) : cartItems.isEmpty ? Center(child: Text('No Items in Wishlist')) : Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: cartItems.length,// number of items in the cart
+                  itemBuilder: (context, index) {
+                    final item = cartItems[index];
+                    return Slidable(
+                      key: ValueKey(item['name']),
+                      endActionPane: ActionPane(
+                        extentRatio: 0.3,
+                        motion: ScrollMotion(),
+                        children: [
+                          SlidableAction(
+                            onPressed: (context) { 
+                              removeItem(index);
+                              },
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.black,
+                            icon: Icons.delete,
+                            flex: 1, // Takes 1 units of space
+                            //closeOnTap: false, // Prevent slider from closing immediately
+                            label: 'Remove',
+                          ),
+                        ],
+                      ),
+                      child: Card(// cart item display card
+                        margin: EdgeInsets.symmetric(vertical: 5.0),
+                        elevation: 4, // Adds shadow to the card
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+
+                        child: ListTile(
+                          leading: Image.network( // image
+                            item['photos'][0],
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
+                          ),
+                          onTap: () {
+                              onCardTap(index);
+                            },
+                          title: Text(item['name']),
+                          subtitle:
+                              Text('Price: \$${item['price']}'),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Divider(),
+              
+              SizedBox(
+                width: double.infinity,
+                /*child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    textStyle: const TextStyle(fontSize: 25),
+                    minimumSize: const Size.fromHeight(50),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CheckoutScreen()),
+                    );
+                  },
+                  child: const Text('Add all to cart'),
+                ),*/
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black, // Background color
+                    backgroundColor: Colors.white, // Text and icon color
+                  ),
+                  onPressed: () {
+                  },
+                  child: Text('Add all to cart'),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: CommonBottomNavBar(
-        currentIndex: 1,
-        //onTap: _onNavBarTap,
+        bottomNavigationBar: CommonBottomNavBar(
+          currentIndex: 1,
+          //onTap: _onNavBarTap,
+        ),
       ),
     );
   }
