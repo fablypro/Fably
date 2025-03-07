@@ -1,28 +1,66 @@
+import 'package:fably/screens/auth/login.dart';
+import 'package:fably/screens/home/widgets/bottom_nav_bar.dart';
+import 'package:fably/screens/home/widgets/common_drawer.dart';
+import 'package:fably/screens/shop/cart.dart';
+import 'package:fably/screens/shop/product.dart';
 import 'package:flutter/material.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
-import '../auth/login.dart';
-import 'dart:convert';
+import 'screens/auth/login.dart';
+import 'screens/home/home.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:stripe_payment/stripe_payment.dart'; // Stripe dependency
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
-import '../shop/product.dart';
-import '../shop/cart.dart';
-import '../../utils/requests.dart';
-import 'widgets/common_drawer.dart';
-import 'widgets/bottom_nav_bar.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  StripePayment.setOptions(StripeOptions(
+    publishableKey: "pk_test_51QxRgVG8IzWoJC0qBdV4mI4vdKYPi0Wdsvg0NZXLbzVCk9eUAE994wDFibdd9bhcoDvSUvnCRv3SGcANvk2E4AN0004OyoOdxY", // Stripe Publishable Key
+    merchantId: "Test", 
+    androidPayMode: 'test',
+  ));
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Fably',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        primaryColor: Colors.tealAccent,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.tealAccent,
+            foregroundColor: Colors.black,
+          ),
+        ),
+      ),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
+    );
+  }
+}
 
 class ProductService {
-  final requests = BackendRequests();
-  
-   static String _baseUrl = 'http://192.168.1.7:5000/products';
+  final String baseUrl = 'http://192.168.1.7:5000/products';
 
   Future<List<Product>> fetchProducts() async {
-    _baseUrl = '${requests.getUrl()}/products';
     try {
-      final response = await http.get(Uri.parse(_baseUrl));
+      final response = await http.get(Uri.parse(baseUrl));
 
       if (response.statusCode == 200) {
-        // If the server returns a successful response, parse the JSON
         final List<dynamic> data = json.decode(response.body);
         return data.map((json) => Product.fromJson(json)).toList();
       } else {
@@ -50,7 +88,7 @@ class ProductCard extends StatelessWidget {
             child: Image.network(
               product.images.isNotEmpty
                   ? product.images[0]
-                  : '', // Show the first image
+                  : 'https://via.placeholder.com/150',
               fit: BoxFit.cover,
               width: double.infinity,
             ),
@@ -82,8 +120,6 @@ class ProductCard extends StatelessWidget {
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-  
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -91,13 +127,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Product>> futureProducts;
 
-
   // Refresh method to reload data from API
-
   Future<void> _refreshProducts() async {
     setState(() {
-      futureProducts =
-          ProductService().fetchProducts(); // Trigger a fresh fetch
+      futureProducts = ProductService().fetchProducts(); // Trigger a fresh fetch
     });
   }
 
@@ -107,17 +140,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> signOut() async {
-    final requests = BackendRequests();
-
-    try{
-      final response = await requests.getRequest('logout');
-      if (response.statusCode==200){
+    try {
+      final response = await http.get(Uri.parse('http://192.168.1.7:5000/logout'));
+      if (response.statusCode == 200) {
         _showMessage('Logged out successfully');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+        );
       }
-    }catch (e) {
-      _showMessage('Error Loging out: $e');
+    } catch (e) {
+      _showMessage('Error Logging out: $e');
     }
-
   }
 
   @override
@@ -140,8 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CartPage(),
-                  //builder: (context) => ProductPage(product: myProduct),
+                  builder: (context) => const CartPage(),
                 ),
               );
             },
@@ -150,37 +183,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               signOut();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
             },
           ),
         ],
       ),
       drawer: CommonDrawer(),
-      /*drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.tealAccent),
-              child: Text('Menu',
-                  style: TextStyle(color: Colors.black, fontSize: 24)),
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings_backup_restore),
-              title: const Text('Back to Selection Screen'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AreYouScreen()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),*/
       body: LiquidPullToRefresh(
         color: const Color.fromARGB(255, 255, 255, 255),
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
@@ -209,7 +216,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   return GestureDetector(
                     onTap: () {
                       // Navigate to the ProductPage and pass the selected product
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(

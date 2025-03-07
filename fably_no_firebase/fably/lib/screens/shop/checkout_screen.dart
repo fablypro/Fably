@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';  // Import dotenv
-
 import '../auth/login.dart';
 import '../home/home.dart';
 import '../../utils/requests.dart';
@@ -34,7 +33,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   bool processingCheckout = false;
 
   @override
-  void initState() {
+  void initState(dynamic dotenv) {
     super.initState();
     // Initialize Stripe with publishable key from .env
     Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
@@ -225,4 +224,35 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
-       
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          labelStyle: TextStyle(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.tealAccent),
+          ),
+        ),
+        style: TextStyle(color: Colors.white),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return '$label is required';
+          }
+          if (pattern != null && !RegExp(pattern).hasMatch(value)) {
+            return errorMessage;
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
+  Widget _submitButton() {
+    return ElevatedButton(
+      onPressed: submitOrder,
+      child: Text(processingCheckout ? 'Processing...' : 'Confirm Order'),
+    );
+  }
+}
