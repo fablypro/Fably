@@ -9,7 +9,6 @@ import '../../utils/user_preferences.dart';
 import '../../utils/requests.dart';
 import '../../utils/prefs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert'; // For JSON decoding, if needed
 import 'dart:async';
 

@@ -12,7 +12,7 @@ class SelectProductPage extends StatefulWidget {
 
   File? userImage;
 
-  SelectProductPage({this.userImage});
+  SelectProductPage({super.key, this.userImage});
 
 }
 
@@ -111,7 +111,7 @@ class ProductCard extends StatelessWidget {
   final dynamic product;
   final VoidCallback onSelect;
 
-  const ProductCard({Key? key, required this.product, required this.onSelect}) : super(key: key);
+  const ProductCard({super.key, required this.product, required this.onSelect});
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'dart:async';
 import '../home/home.dart';
 import 'login.dart';
 import 'auth_widget.dart'; // Import for AreYouScreen
-import '../../utils/user_preferences.dart';
 import '../../utils/requests.dart';
-import '../../utils/prefs.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

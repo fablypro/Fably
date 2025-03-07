@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../gender/gender_selection.dart';
 
 class CommonDrawer extends StatelessWidget {
+  const CommonDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(

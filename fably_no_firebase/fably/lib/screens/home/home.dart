@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import '../auth/login.dart';
-import '../gender/gender_selection.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 import '../shop/product.dart';
 import '../shop/cart.dart';
-import '../shop/wishlist.dart';
-import '../scanner/scanner.dart';
 import '../../utils/requests.dart';
-import '../../utils/prefs.dart';
 import 'widgets/common_drawer.dart';
 import 'widgets/bottom_nav_bar.dart';
 

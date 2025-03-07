@@ -41,6 +41,8 @@ ElevatedButton backButton = ElevatedButton(
   );
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,6 +56,8 @@ class MyApp extends StatelessWidget {
 }
 
 class WishlistPage extends StatefulWidget {
+  const WishlistPage({super.key});
+
   @override
   _WishlistPageState createState() => _WishlistPageState();
 }

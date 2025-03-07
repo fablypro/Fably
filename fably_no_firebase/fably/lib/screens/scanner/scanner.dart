@@ -19,7 +19,7 @@ class ScannerScreen extends StatelessWidget {
       onPressed: () => Navigator.of(context).pop(),
     );
 
-    void _showMessage(String message) {
+    void showMessage(String message) {
       print(message);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
     }
@@ -30,10 +30,10 @@ class ScannerScreen extends StatelessWidget {
     try{
       final response = await requests.getRequest('logout');
       if (response.statusCode==200){
-        _showMessage('Logged out successfully');
+        showMessage('Logged out successfully');
       }
     }catch (e) {
-      _showMessage('Error Loging out: $e');
+      showMessage('Error Loging out: $e');
     }
 
   }
