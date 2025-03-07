@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';  // Import dotenv
+
 import '../auth/login.dart';
 import '../home/home.dart';
 import '../../utils/requests.dart';
 import '../../utils/prefs.dart';
-
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -35,6 +36,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   void initState() {
     super.initState();
+    // Initialize Stripe with publishable key from .env
     Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
   }
 
@@ -44,7 +46,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   }
 
   Future<void> submitOrder() async {
-    if (processingCheckout){
+    if (processingCheckout) {
       return;
     }
     setState(() {
@@ -52,51 +54,53 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     });
     _showMessage("Processing...");
 
-      final requests = BackendRequests();
-      try{
-        final response = await requests.postRequest(
-          'checkout', 
-          body:{
-            "email": emailController.text,
-            "name": nameController.text,
-            "address": addressController.text,
-            "phone": phoneController.text,
-            "postalCode": postalCodeController.text,
-            "card_number": cardNumberController.text,
-            "expiration": expirationController.text,
-            "cvv": cvvController.text,
-            "payment_method": selectedPaymentMethod,
-          }
-        );
-        if (response.statusCode == 201){
-          _showMessage("Order placed successfully!");
+    try {
+      // Request payment intent from your Flask backend
+      final response = await http.post(
+        Uri.parse('http://your-backend-url/create-payment-intent'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({"amount": 1000}),  // Amount in cents
+      );
 
-          setState(() {
-            processingCheckout = false;
-          });
+      final paymentIntentData = jsonDecode(response.body);
 
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomeScreen(),
-            ),
-          );
+      // Initialize Stripe PaymentSheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: paymentIntentData['clientSecret'],
+          merchantDisplayName: 'Fably',
+        ),
+      );
 
-        }else{
-          _showMessage("Failed to place order.");
-        }
+      // Present the PaymentSheet to the user
+      await Stripe.instance.presentPaymentSheet();
+      _showMessage("Payment successful!");
 
-        
-        
-      
-      } catch (e){
-        _showMessage("Error: $e");
-      }
+      // Save order details to MongoDB after successful payment
+      await http.post(
+        Uri.parse('http://your-backend-url/save-order'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "email": emailController.text,
+          "name": nameController.text,
+          "amount": 1000,
+          "payment_method": "Card",
+          "status": "Paid"
+        }),
+      );
 
-      setState(() {
-        processingCheckout = false;
-      });
-    
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+
+    } catch (e) {
+      _showMessage("Payment failed: $e");
+    }
+
+    setState(() {
+      processingCheckout = false;
+    });
   }
 
   @override
@@ -167,7 +171,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           _buildTextField(emailController, "E-mail", r'^[^@\s]+@[^@\s]+\.[^@\s]+\$', "Enter a valid email address"),
                           _buildTextField(addressController, "Address"),
                           _buildTextField(phoneController, "Phone Number", r'^\+?[0-9]{10,15}\$', "Enter a valid phone number"),
-                          _buildTextField(postalCodeController, "Postal Code", r'^[0-9]{4,10}$', "Enter a valid postal code",),
+                          _buildTextField(postalCodeController, "Postal Code", r'^[0-9]{4,10}$', "Enter a valid postal code"),
                           SizedBox(height: 20),
                           _submitButton(),
                         ],
@@ -221,42 +225,4 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
-        controller: controller,
-        style: TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: TextStyle(color: Colors.white),
-          filled: true,
-          fillColor: Colors.white.withOpacity(0.1),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.blueAccent),
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        validator: (value) {
-          if (value!.isEmpty) return "Enter your $label";
-          if (pattern != null && !RegExp(pattern).hasMatch(value)) return errorMessage;
-          return null;
-        },
-      ),
-    );
-  }
-
-  Widget _submitButton() {
-    return Center(
-      child: ElevatedButton(
-        onPressed: submitOrder,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blueAccent,
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        ),
-        child: Text("Submit Order", style: TextStyle(fontSize: 16, color: Colors.white)),
-      ),
-    );
-  }
-}
+       
