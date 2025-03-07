@@ -4,9 +4,6 @@ import 'package:fably/screens/home/widgets/common_drawer.dart';
 import 'package:fably/screens/shop/cart.dart';
 import 'package:fably/screens/shop/product.dart';
 import 'package:flutter/material.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
-import 'screens/auth/login.dart';
-import 'screens/home/home.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:stripe_payment/stripe_payment.dart'; // Stripe dependency
