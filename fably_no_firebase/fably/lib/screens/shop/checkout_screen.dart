@@ -32,6 +32,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   bool processingCheckout = false;
 
+  @override
+  void initState() {
+    super.initState();
+    Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
+  }
+
   void _showMessage(String message) {
     print(message);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
