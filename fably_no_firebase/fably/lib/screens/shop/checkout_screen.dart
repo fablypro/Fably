@@ -21,3 +21,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     setState(() {
       processingCheckout = true;
     });
+
+    try {
+      //  Request a PaymentIntent from the backend
+      final response = await http.post(
+        Uri.parse("https://your-backend.com/create-payment-intent"),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({"amount": 5000, "currency": "usd"}), // Adjust amount
+      );
+
+      final paymentIntentData = jsonDecode(response.body);
+
+      if (paymentIntentData['clientSecret'] == null) {
+        throw Exception("Failed to get client secret");
+      }
