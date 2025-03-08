@@ -56,3 +56,26 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text("Checkout", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: processingCheckout ? null : makePayment,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent,
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          ),
+          child: processingCheckout ? CircularProgressIndicator() : Text("Pay with Stripe"),
+        ),
+      ),
+    );
+  }
+}
