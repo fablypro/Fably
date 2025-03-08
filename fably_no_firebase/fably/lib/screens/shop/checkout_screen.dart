@@ -35,3 +35,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       if (paymentIntentData['clientSecret'] == null) {
         throw Exception("Failed to get client secret");
       }
+      // Initialize Stripe's Payment Sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: paymentIntentData['clientSecret'],
+          merchantDisplayName: "Your App Name",
+        ),
+      );
