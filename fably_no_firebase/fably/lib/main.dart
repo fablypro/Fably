@@ -9,6 +9,7 @@ void main() async {
   //WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
   Stripe.publishableKey = 'pk_test_51QxRgVG8IzWoJC0qBdV4mI4vdKYPi0Wdsvg0NZXLbzVCk9eUAE994wDFibdd9bhcoDvSUvnCRv3SGcANvk2E4AN0004OyoOdxY'; // stripe publishable key
+  Stripe.urlScheme = 'sk_test_51QxRgVG8IzWoJC0qhizvf6sBgpfEErQexvGlhomL0tRoM18uQymCwi4SweGupBhHijqkFSjfAqes9vJW3s70PPKj00jqzDNXtl';//secret key
   runApp(const MyApp());
 }
 
