@@ -42,3 +42,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           merchantDisplayName: "Your App Name",
         ),
       );
+
+      // Present Payment Sheet
+      await Stripe.instance.presentPaymentSheet();
+
+      _showMessage("Payment Successful!");
+    } catch (e) {
+      _showMessage("Payment failed: $e");
+    } finally {
+      setState(() {
+        processingCheckout = false;
+      });
+    }
+  }
+
