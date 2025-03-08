@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'screens/auth/login.dart';
 import 'screens/auth/register.dart';
