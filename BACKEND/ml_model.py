@@ -38,7 +38,14 @@ def preprocess_image(image):
         if image is None or image.shape != (244, 244):
             raise ValueError("Invalid Image Dimensions.")
 
-
+        # image resizing, normalzing and expanding.
+        img_resized = tf.image.resize(image, (224, 224))
+        img_normalized = preprocess_input(img_resized)
+        img_expanded = np.expand_dims(img_normalized, axis=0)
+        
+        return img_expanded
+    
+    
 
 
 
