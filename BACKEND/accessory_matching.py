@@ -62,6 +62,10 @@ def home():
     return render_template("Index.html")
 
 
+# uploading the file via posting the data.
+@feature.route('/upload', methods=["POST"])
+def upload_file():
+
 
 
 
