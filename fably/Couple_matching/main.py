@@ -72,3 +72,6 @@ class OutfitMatcher:
         }
 
         return {f"Matching {opposite_gender.capitalize()}'s Outfit": outfit}
+
+
+matcher = OutfitMatcher()
