@@ -104,7 +104,10 @@ def extract_main_colors(image, k = 3):
     return extract_dominant_colors
 
 
-
+def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
+    match_found = False
+    for accessory_color in accessory_colors:
+        for outfit_color in outfit_colors:
 
     
     
