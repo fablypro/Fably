@@ -75,6 +75,17 @@ def predict_outfit(image, model):
         # predicting image.
         predicted_model = preprocess_image(image)
         predictions = model.predict(predicted_model)
+        
+        predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
+        confidence = np.max(predictions) # create score of confidence.
+        
+        return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
+    
+    except Exception as e:
+        print(f"Error in Predicting Image: {e}")
+        raise ValueError("Error in Predicting Image.")
+    
+
 
     
     
