@@ -50,7 +50,13 @@ def preprocess_image(image):
         raise ValueError("Error in Image Processing.")
 
 
-
+# function to predicting the accessory whether image matches.
+def predict_accessory(image, model):
+    # validating predictions.
+    try:
+        # predicting image.
+        predicted_model = preprocess_image(image)
+        predictions = model.predict(predicted_model)
 
 
 
