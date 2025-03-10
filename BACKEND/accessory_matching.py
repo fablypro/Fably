@@ -110,5 +110,15 @@ def upload_file():
             pretrained_accessory_model = load_model_via_pretrained_CNN()
             pretrained_outfit_model = load_model_via_pretrained_CNN()
             
+            
+            # finding any match for the accessory.
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            # finding any match for the outfit.
+            pretrained_outfit_confidence, pretrained_outfit_prediction = predict_outfit(outfit_img_inputed, pretrained_outfit_model)
+            pretrained_outfit_match_found = pretrained_outfit_prediction == 1
+
+
+            
 
 
