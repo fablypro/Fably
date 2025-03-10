@@ -43,3 +43,9 @@ class OutfitMatcher:
     def generate_outfit(self, style):
         if style not in self.clothing_items["men"] or style not in self.clothing_items["women"]:
             return "Invalid style. Choose from casual, formal, or sporty."
+        
+        men_outfit = {
+            "top": random.choice(self.clothing_items["men"][style]["top"]),
+            "bottom": random.choice(self.clothing_items["men"][style]["bottom"]),
+            "shoes": random.choice(self.clothing_items["men"][style]["shoes"])
+        }
