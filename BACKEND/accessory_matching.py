@@ -26,7 +26,10 @@ UPLOAD_FOLDER = "static/images/"
 ACCESSORY_FOLDER = os.path.join(UPLOAD_FOLDER, "accessories")
 OUTFIT_FOLDER = os.path.join(UPLOAD_FOLDER, "outfits")
 
-
+# allowed file extensions. 
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+# maximum length of 16MB.
+MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 
 
 # creating feature app for accessory matching.
