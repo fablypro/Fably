@@ -29,7 +29,20 @@ def load_model_via_pretrained_CNN():
         print(f"Error in loading model: {e}")
         raise
     
-    
+
+# pre-processing image through different formatting.
+def preprocess_image(image):
+    # validating image processing.
+    try:
+        # validating image resizing.
+        if image is None or image.shape != (244, 244):
+            raise ValueError("Invalid Image Dimensions.")
+
+
+
+
+
+
     
     
 
