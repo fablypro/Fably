@@ -57,3 +57,9 @@ class OutfitMatcher:
         }
 
         return {"Men's Outfit": men_outfit, "Women's Outfit": women_outfit}
+    
+    def get_matching_outfit(self, gender, style):
+        if gender not in ["men", "women"]:
+            return "Invalid gender. Choose 'men' or 'women'."
+        if style not in self.clothing_items["men"]:
+            return "Invalid style. Choose from casual, formal, or sporty."
