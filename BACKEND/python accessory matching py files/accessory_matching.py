@@ -44,6 +44,7 @@ feature.config["MAX_CONTENT_LENGTH"] = MAX_CONTENT_LENGTH
 os.makedirs(ACCESSORY_FOLDER, exist_ok=True)
 os.makedirs(OUTFIT_FOLDER, exist_ok=True)
 
+
 # to ensure proper configuration for MAX_CONTENT_LENGTH.
 @feature.errorhandler(413)
 def request_too_large(error):
