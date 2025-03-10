@@ -146,4 +146,14 @@ def upload_file():
                 else "No Pretrained Match Found!"
             })
 
+        except Exception as e:
+            print(f"Error in Image Processing: {e}")
+            return jsonify({"error": "Error in Image Processing."}), 500
+
+
+
+
+
+
+
 
