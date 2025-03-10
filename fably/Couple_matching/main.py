@@ -70,3 +70,5 @@ class OutfitMatcher:
             "bottom": random.choice(self.clothing_items[opposite_gender][style]["bottom"]),
             "shoes": random.choice(self.clothing_items[opposite_gender][style]["shoes"])
         }
+
+        return {f"Matching {opposite_gender.capitalize()}'s Outfit": outfit}
