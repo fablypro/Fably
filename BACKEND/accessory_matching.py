@@ -150,10 +150,12 @@ def upload_file():
             print(f"Error in Image Processing: {e}")
             return jsonify({"error": "Error in Image Processing."}), 500
 
+    except Exception as e:
+        print(f"Error in File Uploading: {e}")
+        return jsonify({"error": "Error File Uploading."}), 500
 
 
-
-
-
+if __name__ == "__main__":
+    feature.run(debug = True) # disable debug to 'False' in security of sensitive data or inforamtion.
 
 
