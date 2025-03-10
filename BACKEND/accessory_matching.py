@@ -18,5 +18,18 @@ from ml_model import (
     #load_model
 )
 
+# loading environment variables from .env file.
+load_dotenv()
+
+# uploading files from following file paths.
+UPLOAD_FOLDER = "static/images/"
+ACCESSORY_FOLDER = os.path.join(UPLOAD_FOLDER, "accessories")
+OUTFIT_FOLDER = os.path.join(UPLOAD_FOLDER, "outfits")
+
+
+
+
+
+
 
 
