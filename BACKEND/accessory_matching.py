@@ -97,6 +97,15 @@ def upload_file():
         outfit_file.save(outfit_filepath)
 
 
+        try:
+            # reading the images with color.
+            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
+            outfit_img_inputed = c.imread(os.path.join(outfit_filepath), c.IMREAD_COLOR)
+            # read both images.
+            if accessory_img_inputed is None or outfit_img_inputed is None:
+                raise ValueError("Failed to Read Image.")
+
+
             # using the pretrained model.
             pretrained_accessory_model = load_model_via_pretrained_CNN()
             pretrained_outfit_model = load_model_via_pretrained_CNN()
