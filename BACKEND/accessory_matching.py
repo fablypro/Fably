@@ -97,3 +97,9 @@ def upload_file():
         outfit_file.save(outfit_filepath)
 
 
+            # using the pretrained model.
+            pretrained_accessory_model = load_model_via_pretrained_CNN()
+            pretrained_outfit_model = load_model_via_pretrained_CNN()
+            
+
+
