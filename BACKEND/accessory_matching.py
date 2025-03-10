@@ -66,7 +66,17 @@ def home():
 @feature.route('/upload', methods=["POST"])
 def upload_file():
 
-
+    try:
+        # if the files have No parts for accessory or outfit.
+        if 'accessory' not in request.files or 'outfit' not in request.files:
+            return jsonify({"error": "No File Part."}), 400
+        
+        
+        # requesting the files.
+        accessory_file = request.files['accessory']
+        outfit_file = request.files['outfit']
+        
+        
 
 
 
