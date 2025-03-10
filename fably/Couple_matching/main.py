@@ -19,7 +19,23 @@ class OutfitMatcher:
                     "bottom":["Joggers","Shorts"],
                     "shoes":["Running shoes","Trainers"]
                 }
+            },
+            "women" : {
+                "casual": {
+                    "top": ["Blouse", "Crop Top", "T-shirt"],
+                    "bottom": ["Jeans", "Skirt", "Leggings"],
+                    "shoes": ["Flats", "Sneakers"]
+                },
+                "formal": {
+                    "top": ["Blazer", "Formal Blouse"],
+                    "bottom": ["Pencil Skirt", "Dress Pants"],
+                    "shoes": ["Heels", "Ballet Flats"]
+                },
+                "sporty": {
+                    "top": ["Tank Top", "Sports Bra"],
+                    "bottom": ["Leggings", "Shorts"],
+                    "shoes": ["Running Shoes", "Trainers"]
+                }
             }
 
-            
         }
