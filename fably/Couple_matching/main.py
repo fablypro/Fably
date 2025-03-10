@@ -39,3 +39,7 @@ class OutfitMatcher:
             }
 
         }
+    
+    def generate_outfit(self, style):
+        if style not in self.clothing_items["men"] or style not in self.clothing_items["women"]:
+            return "Invalid style. Choose from casual, formal, or sporty."
