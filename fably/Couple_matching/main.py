@@ -49,3 +49,5 @@ class OutfitMatcher:
             "bottom": random.choice(self.clothing_items["men"][style]["bottom"]),
             "shoes": random.choice(self.clothing_items["men"][style]["shoes"])
         }
+
+        
