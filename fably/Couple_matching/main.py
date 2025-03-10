@@ -63,3 +63,9 @@ class OutfitMatcher:
             return "Invalid gender. Choose 'men' or 'women'."
         if style not in self.clothing_items["men"]:
             return "Invalid style. Choose from casual, formal, or sporty."
+        
+        opposite_gender = "women" if gender == "men" else "men"
+        outfit = {
+            "top": random.choice(self.clothing_items[opposite_gender][style]["top"]),
+            "bottom": random.choice(self.clothing_items[opposite_gender][style]["bottom"]),
+            
