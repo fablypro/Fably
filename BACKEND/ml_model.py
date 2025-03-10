@@ -108,6 +108,15 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
     match_found = False
     for accessory_color in accessory_colors:
         for outfit_color in outfit_colors:
+            # calcuating the euclidean distance between colors.
+            distance = np.linalg.norm(accessory_color - outfit_color)
+            if distance < threshold:
+                match_found = True
+                break
+        if match_found:
+            break
+    
+    return match_found
 
     
     
