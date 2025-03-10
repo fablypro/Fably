@@ -79,3 +79,6 @@ matcher = OutfitMatcher()
 style_choice = "casual"
 outfits = matcher.generate_outfit(style_choice)
 print("Outfits for both genders:", outfits)
+
+
+gender_input = "men" 
