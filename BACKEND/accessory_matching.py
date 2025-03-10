@@ -77,6 +77,13 @@ def upload_file():
         outfit_file = request.files['outfit']
         
         
+        # if file names are null.
+        if accessory_file.filename == '' or outfit_file.filename == '':
+            return jsonify({"error": "No Selected File."}), 400
+        
+        # if files are not allowed.
+        if not (allowed_file(accessory_file.filename) and allowed_file(outfit_file.filename)):
+            return jsonify({"error": "Invalid File Format."}), 400
 
 
 
