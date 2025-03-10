@@ -86,6 +86,13 @@ def predict_outfit(image, model):
         raise ValueError("Error in Predicting Image.")
     
 
+def extract_main_colors(image, k = 3):
+    
+    # accept the image with colors.
+    img_col = c.cvtColor(image, c.COLOR_BGR2RGB)
+    
+    # reshape image into 2D array of pixels.
+    pixels = img_col.reshape(-1, 3)
 
     
     
