@@ -36,7 +36,6 @@ feature = Flask(__name__)
 
 # uploading the folders.
 feature.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
 # file size limit for extra security for the program.
 feature.config["MAX_CONTENT_LENGTH"] = MAX_CONTENT_LENGTH
 
