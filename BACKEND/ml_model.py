@@ -45,7 +45,12 @@ def preprocess_image(image):
         
         return img_expanded
     
-    
+    except Exception as e:
+        print(f"Error in Image Processing: {e}")
+        raise ValueError("Error in Image Processing.")
+
+
+
 
 
 
