@@ -86,5 +86,14 @@ def upload_file():
             return jsonify({"error": "Invalid File Format."}), 400
 
 
+        # saving and securing filenames.
+        accessory_filename = secure_filename(accessory_file.filename)
+        outfit_filename = secure_filename(outfit_file.filename)
+
+        accessory_filepath = os.path.join(ACCESSORY_FOLDER, accessory_filename)
+        outfit_filepath = os.path.join(OUTFIT_FOLDER, outfit_filename)
+        
+        accessory_file.save(accessory_filepath)        
+        outfit_file.save(outfit_filepath)
 
 
