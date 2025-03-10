@@ -68,7 +68,13 @@ def predict_accessory(image, model):
         raise ValueError("Error in Predicting Image.")
 
 
-
+# function to predicting the outfit whether image matches.
+def predict_outfit(image, model):
+    # validating predictions.
+    try:
+        # predicting image.
+        predicted_model = preprocess_image(image)
+        predictions = model.predict(predicted_model)
 
     
     
