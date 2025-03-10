@@ -119,6 +119,16 @@ def upload_file():
             pretrained_outfit_match_found = pretrained_outfit_prediction == 1
 
 
+
+            # extracting colors from the images.
+            extract_colors_from_accessory = extract_main_colors(accessory_img_inputed)
+            extract_colors_from_outfit = extract_main_colors(outfit_img_inputed)
+            
+            # matching thew colors between accessory and outfit.
+            color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_accessory, extract_colors_from_outfit)
+
+
+
             
 
 
