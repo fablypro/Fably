@@ -18,5 +18,19 @@ from sklearn.cluster import KMeans # type: ignore
 load_dotenv()
 
 
+# function for pretraining CNN (i.e. ResNet50).
+def load_model_via_pretrained_CNN():
+    try:
+        model = ResNet50(weights='imagenet')
+        print("Pretrained ResNet50 Model loaded successfully!")
+        return model
+   
+    except Exception as e:
+        print(f"Error in loading model: {e}")
+        raise
+    
+    
+    
+    
 
 
