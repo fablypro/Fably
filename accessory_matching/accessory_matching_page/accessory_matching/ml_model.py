@@ -1,0 +1,135 @@
+import os
+import cv2 as c
+import numpy as np
+from dotenv import load_dotenv # type: ignore
+import tensorflow as tf # type: ignore
+from tensorflow.keras.models import load_model as keras_load_model # type: ignore
+
+# adding AI learning component.
+from tensorflow.keras.applications import ResNet50 # type: ignore
+
+from tensorflow.keras.preprocessing import image # type: ignore
+from tensorflow.keras.applications.resnet50 import preprocess_input # type: ignore
+
+from sklearn.cluster import KMeans # type: ignore
+
+
+# loading environment variables from .env file.
+load_dotenv()
+
+
+# adding model path. 
+#MODEL_PATH = os.getenv("MODEL_PATH")
+#if not MODEL_PATH:
+#    raise ValueError("MODEL_PATH environment variable is Not Set.")
+
+
+# function to loading the model.
+#def load_model():
+#    try:
+#        model = keras_load_model(MODEL_PATH)
+#        print("Model loaded successfully!")
+#        return model
+  
+#    except Exception as e:
+#        print(f"Error in loading model: {e}")
+#        raise
+
+
+# function for pretraining CNN (i.e. ResNet50).
+def load_model_via_pretrained_CNN():
+    try:
+        model = ResNet50(weights='imagenet')
+        print("Pretrained ResNet50 Model loaded successfully!")
+        return model
+   
+    except Exception as e:
+        print(f"Error in loading model: {e}")
+        raise
+
+  
+# pre-processing image through different formatting.
+def preprocess_image(image):
+    # validating image processing.
+    try:
+        # validating image resizing.
+        if image is None or image.shape != (244, 244):
+            raise ValueError("Invalid Image Dimensions.")
+
+        # image resizing, normalzing and expanding.
+        img_resized = tf.image.resize(image, (224, 224))
+        img_normalized = preprocess_input(img_resized)
+        img_expanded = np.expand_dims(img_normalized, axis=0)
+        
+        return img_expanded
+    
+    except Exception as e:
+        print(f"Error in Image Processing: {e}")
+        raise ValueError("Error in Image Processing.")
+
+
+# function to predicting the accessory whether image matches.
+def predict_accessory(image, model):
+    # validating predictions.
+    try:
+        # predicting image.
+        predicted_model = preprocess_image(image)
+        predictions = model.predict(predicted_model)
+        
+        predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
+        confidence = np.max(predictions) # create score of confidence.
+        
+        return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
+    
+    except Exception as e:
+        print(f"Error in Predicting Image: {e}")
+        raise ValueError("Error in Predicting Image.")
+
+# function to predicting the outfit whether image matches.
+def predict_outfit(image, model):
+    # validating predictions.
+    try:
+        # predicting image.
+        predicted_model = preprocess_image(image)
+        predictions = model.predict(predicted_model)
+        
+        predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
+        confidence = np.max(predictions) # create score of confidence.
+        
+        return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
+    
+    except Exception as e:
+        print(f"Error in Predicting Image: {e}")
+        raise ValueError("Error in Predicting Image.")
+
+
+def extract_main_colors(image, k = 3):
+    
+    # accept the image with colors.
+    img_col = c.cvtColor(image, c.COLOR_BGR2RGB)
+    
+    # reshape image into 2D array of pixels.
+    pixels = img_col.reshape(-1, 3)
+    
+    # KMeans clustering for the dominant colors.
+    kMeans = KMeans(n_clusters=k)
+    kMeans.fit(pixels)
+    
+    # compiling all the data of the pixels.
+    extract_dominant_colors = kMeans.cluster_centers_
+    
+    return extract_dominant_colors
+
+def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
+    match_found = False
+    for accessory_color in accessory_colors:
+        for outfit_color in outfit_colors:
+            # calcuating the euclidean distance between colors.
+            distance = np.linalg.norm(accessory_color - outfit_color)
+            if distance < threshold:
+                match_found = True
+                break
+        if match_found:
+            break
+    
+    return match_found

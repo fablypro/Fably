@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aa600429-dd5e-4cc7-947f-6d4d2216abe2" name="Changes" comment="added backend Nodejs" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AvishaiJASAG&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Dashin-sanjana/Fably.git&quot;,
+    &quot;accountId&quot;: &quot;e89741f3-cd11-448f-9eef-ee25b0f8dd1e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2sUPFQfeFgvdedehwm24ENpVoWa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.app.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.bin/www.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.bin\\www.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.users.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.www.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#4 on Avishai&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;23.3.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.0&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/IIT Core Modules Download notes/SDGP Project/SDGP CWK 02/FablyProject/BACKEND/nodejs_backend/nodejs_backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Node.js.app">
+    <configuration name="bin/www" type="NodeJSConfigurationType" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/index.js" working-dir="$PROJECT_DIR$/routes">
+      <method v="2" />
+    </configuration>
+    <configuration name="users.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/routes/users.js" working-dir="$PROJECT_DIR$/routes">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.app" />
+      <item itemvalue="Node.js.bin/www" />
+      <item itemvalue="Node.js.index.js" />
+      <item itemvalue="Node.js.users.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.users.js" />
+        <item itemvalue="Node.js.index.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aa600429-dd5e-4cc7-947f-6d4d2216abe2" name="Changes" comment="" />
+      <created>1738507077103</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738507077103</updated>
+      <workItem from="1738507078053" duration="3146000" />
+      <workItem from="1738549267497" duration="971000" />
+      <workItem from="1738550958742" duration="586000" />
+      <workItem from="1738582494542" duration="2081000" />
+      <workItem from="1738642430296" duration="11337000" />
+      <workItem from="1738823271683" duration="11000" />
+      <workItem from="1738987492828" duration="718000" />
+      <workItem from="1739108835169" duration="54000" />
+      <workItem from="1739251220099" duration="207000" />
+      <workItem from="1739586888024" duration="275000" />
+      <workItem from="1739589924907" duration="332000" />
+      <workItem from="1739678684068" duration="1595000" />
+      <workItem from="1739947205680" duration="70000" />
+      <workItem from="1740046825333" duration="234000" />
+      <workItem from="1740047192946" duration="181000" />
+      <workItem from="1740127854030" duration="11100000" />
+      <workItem from="1740202628188" duration="13096000" />
+    </task>
+    <task id="LOCAL-00001" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1738508274977</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738508274978</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1738511902124</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738511902124</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1738511935231</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738511935231</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1739590205265</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739590205265</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1739680288546</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739680288547</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740128155609</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740128155609</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740147471548</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740147471548</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740147624939</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1740147624939</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740155685251</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740155685251</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740209189380</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1740209189380</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740210442424</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1740210442424</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740212242100</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1740212242100</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added backend Nodejs">
+      <option name="closed" value="true" />
+      <created>1740227149821</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1740227149821</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added backend Nodejs" />
+    <option name="LAST_COMMIT_MESSAGE" value="added backend Nodejs" />
+  </component>
+</project>
