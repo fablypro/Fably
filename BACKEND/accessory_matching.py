@@ -56,6 +56,12 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+# route for home page.
+@feature.route('/')
+def home():
+    return render_template("Index.html")
+
+
 
 
 
