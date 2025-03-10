@@ -14,6 +14,8 @@ from tensorflow.keras.applications.resnet50 import preprocess_input # type: igno
 from sklearn.cluster import KMeans # type: ignore
 
 
+# loading environment variables from .env file.
+load_dotenv()
 
 
 
