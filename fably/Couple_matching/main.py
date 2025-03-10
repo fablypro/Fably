@@ -50,4 +50,8 @@ class OutfitMatcher:
             "shoes": random.choice(self.clothing_items["men"][style]["shoes"])
         }
 
-        
+        women_outfit = {
+            "top": random.choice(self.clothing_items["women"][style]["top"]),
+            "bottom": random.choice(self.clothing_items["women"][style]["bottom"]),
+            "shoes": random.choice(self.clothing_items["women"][style]["shoes"])
+        }
