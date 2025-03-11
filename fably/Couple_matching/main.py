@@ -1,0 +1,86 @@
+import random
+
+class OutfitMatcher:
+    def __init__(self):
+        self.clothing_items = {
+            "men":{
+                "casual":{
+                    "top":["T-shirt","polo shirt","Casual shirt"],
+                    "bottom":["jeans","chinos","Shorts"],
+                    "shoes":["Sneakers","Loafers"]
+                },
+                "formal":{
+                    "top":["Dress shirt","Blazer"],
+                    "bottom":["Dress pants","Suit pants"],
+                    "shoes":["Oxfords","Derby shoes"]
+                },
+                "sporty":{
+                    "top":["Tank top","sporty jersey"],
+                    "bottom":["Joggers","Shorts"],
+                    "shoes":["Running shoes","Trainers"]
+                }
+            },
+            "women" : {
+                "casual": {
+                    "top": ["Blouse", "Crop Top", "T-shirt"],
+                    "bottom": ["Jeans", "Skirt", "Leggings"],
+                    "shoes": ["Flats", "Sneakers"]
+                },
+                "formal": {
+                    "top": ["Blazer", "Formal Blouse"],
+                    "bottom": ["Pencil Skirt", "Dress Pants"],
+                    "shoes": ["Heels", "Ballet Flats"]
+                },
+                "sporty": {
+                    "top": ["Tank Top", "Sports Bra"],
+                    "bottom": ["Leggings", "Shorts"],
+                    "shoes": ["Running Shoes", "Trainers"]
+                }
+            }
+
+        }
+    
+    def generate_outfit(self, style):
+        if style not in self.clothing_items["men"] or style not in self.clothing_items["women"]:
+            return "Invalid style. Choose from casual, formal, or sporty."
+        
+        men_outfit = {
+            "top": random.choice(self.clothing_items["men"][style]["top"]),
+            "bottom": random.choice(self.clothing_items["men"][style]["bottom"]),
+            "shoes": random.choice(self.clothing_items["men"][style]["shoes"])
+        }
+
+        women_outfit = {
+            "top": random.choice(self.clothing_items["women"][style]["top"]),
+            "bottom": random.choice(self.clothing_items["women"][style]["bottom"]),
+            "shoes": random.choice(self.clothing_items["women"][style]["shoes"])
+        }
+
+        return {"Men's Outfit": men_outfit, "Women's Outfit": women_outfit}
+    
+    def get_matching_outfit(self, gender, style):
+        if gender not in ["men", "women"]:
+            return "Invalid gender. Choose 'men' or 'women'."
+        if style not in self.clothing_items["men"]:
+            return "Invalid style. Choose from casual, formal, or sporty."
+        
+        opposite_gender = "women" if gender == "men" else "men"
+        outfit = {
+            "top": random.choice(self.clothing_items[opposite_gender][style]["top"]),
+            "bottom": random.choice(self.clothing_items[opposite_gender][style]["bottom"]),
+            "shoes": random.choice(self.clothing_items[opposite_gender][style]["shoes"])
+        }
+
+        return {f"Matching {opposite_gender.capitalize()}'s Outfit": outfit}
+
+
+matcher = OutfitMatcher()
+
+style_choice = "casual"
+outfits = matcher.generate_outfit(style_choice)
+print("Outfits for both genders:", outfits)
+
+
+gender_input = "men" 
+matching_outfit = matcher.get_matching_outfit(gender_input, style_choice)
+print(f"Matching outfit for {gender_input}:", matching_outfit)
