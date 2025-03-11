@@ -21,6 +21,8 @@ dependencies:
   http: ^1.1.0
   liquid_pull_to_refresh: ^3.0.0
   flutter_slidable: ^4.0.0
+  tflite_flutter: ^0.9.0  # To run ML model
+  flutter_image_compress: ^1.1.0  # To optimize images
   #flutter_slidable: ^0.6.0
   #flutter_stripe: ^8.0.0
 
