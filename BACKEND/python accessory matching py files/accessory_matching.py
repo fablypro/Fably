@@ -5,6 +5,7 @@ import numpy as np
 from sklearn import preprocessing # type: ignore
 from dotenv import load_dotenv # type: ignore
 import tensorflow as tf # type: ignore
+
 import tensorflow_hub as hub # type: ignore
 
 from werkzeug.utils import secure_filename # type: ignore
