@@ -7,23 +7,52 @@
     </head>
 
     <body>
-        <form class="container" id="uploadForm">
-            <h2>Accessory Matching with Outfits</h2>
+        <div class="form_01">
+            <form class="container" id="uploadForm">
+                <h2>Accessory Matching with Outfits</h2>
 
-            <div id="">
-                <label for="accessory"><strong>Upload Accessory Image</strong></label>  
-                <input type="file" id="accessory" accept="image/*" required>
+                <div id="containInput">
+                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                    <input type="file" id="accessory" accept="image/*" required>
 
-                <label for="outfit"><strong>Upload Outfit Image</strong></label>
-                <input type="file" id="outfit" accept="image/*" required>
-            </div>
+                    <label for="outfit"><strong>Upload Outfit Image</strong></label>
+                    <input type="file" id="outfit" accept="image/*" required>
+                </div>
 
-            <button type="button" onClick="uploadForm()">Match Images</button>
+                <button type="button" onClick="uploadForm()">Match Images</button>
 
-            <div id="results"></div>
-        </form>
+                <div id="results"></div>
+            </form>
+        </div>
+
+        <div  class="form_02">
+            <form class="container" id="uploadForm">
+                <h2>Accessory Matching with Outfits</h2>
+
+                <div id="containInput">
+                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                    <input type="file" id="accessory" accept="image/*" required>
+
+                    <label for="outfit"><strong>Upload Outfit Image</strong></label>
+                    <input type="file" id="outfit" accept="image/*" required>
+                </div>
+
+                <button type="button" onClick="uploadForm()">Match Images</button>
+
+                <div id="results"></div>
+            </form>
+        </div>
 
         <script>
+            function chooseColour() {
+                const chosenButton = false;
+                if (chosenButton) {}
+            }
+
+            function chooseOutfitType() {
+                ;
+            }
+
             function uploadForm() {
                 const form = document.getElementById('uploadForm');
                 const resultsCss = document.getElementById('results');

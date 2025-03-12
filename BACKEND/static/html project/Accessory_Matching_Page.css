@@ -44,3 +44,31 @@ p {
     font-size: 16px;
     color: black;
 }
+
+.form_01 {
+    vertical-align: 0cqmax;
+}
+
+.form_02 {
+    vertical-align: 0cqmax;
+}
+
+#button_01 {
+    color: #000;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    float: left;
+
+}
+
+button:hover {
+    background-color: rgb(186, 186, 186);
+    color: rgb(219, 219, 219);
+}
+
+
+
