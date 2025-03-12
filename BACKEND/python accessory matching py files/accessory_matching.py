@@ -109,10 +109,23 @@ def upload_file():
             if accessory_img_inputed is None or outfit_img_inputed is None:
                 raise ValueError("Failed to Read Image.")
 
+ 
+            # using the normal model.
+     #       accessory_model = load_model()
+     #       outfit_model = load_model()
+
 
             # using the pretrained model.
             pretrained_accessory_model = load_model_via_pretrained_CNN()
             pretrained_outfit_model = load_model_via_pretrained_CNN()
+            
+            
+            # finding any match for the accessory.
+     #       accessory_confidence, accessory_prediction = predict_accessory(accessory_img_inputed, accessory_model)
+     #       accessory_match_found = accessory_prediction == 1
+            # finding any match for the outfit.
+     #       outfit_confidence, outfit_prediction = predict_outfit(outfit_img_inputed, outfit_model)
+     #       outfit_match_found = outfit_prediction == 1
             
             
             # finding any match for the accessory.
@@ -133,6 +146,15 @@ def upload_file():
 
             # sending predictions.
             return jsonify({
+                
+     #           "accessory match found": accessory_match_found,
+     #           "accessory confidence": accessory_confidence, 
+     #           "accessory prediction": accessory_prediction,
+                
+     #           "outfit match found": outfit_match_found,
+     #           "outfit confidence": outfit_confidence, 
+     #           "outfit prediction": outfit_prediction,
+                
                 "pretrained accessory match found": bool(pretrained_accessory_match_found), "pretrained accessory confidence": float(pretrained_accessory_confidence), "pretrained accessory prediction": int(pretrained_accessory_prediction),  
                 
                 "pretrained outfit match found": bool(pretrained_outfit_match_found), "pretrained outfit confidence": float(pretrained_outfit_confidence), "pretrained outfit prediction": int(pretrained_outfit_prediction),        
@@ -142,6 +164,13 @@ def upload_file():
                     and pretrained_outfit_match_found 
                     and color_match_found) 
                 else "No Pretrained Match Found!"
+                
+     #           "match found message": "Match Found!" 
+     #           if (accessory_match_found 
+     #               and outfit_match_found 
+     #               and color_match_found) 
+     #           else "No Match Found!"
+
             })
 
         except Exception as e:
