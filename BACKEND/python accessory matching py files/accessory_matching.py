@@ -130,13 +130,9 @@ def upload_file():
 
             # sending predictions.
             return jsonify({
-                "pretrained accessory match found": bool(pretrained_accessory_match_found),
-                "pretrained accessory confidence": float(pretrained_accessory_confidence), 
-                "pretrained accessory prediction": int(pretrained_accessory_prediction),
+                "pretrained accessory match found": bool(pretrained_accessory_match_found), "pretrained accessory confidence": float(pretrained_accessory_confidence), "pretrained accessory prediction": int(pretrained_accessory_prediction),  
                 
-                "pretrained outfit match found": bool(pretrained_outfit_match_found),
-                "pretrained outfit confidence": float(pretrained_outfit_confidence), 
-                "pretrained outfit prediction": int(pretrained_outfit_prediction),
+                "pretrained outfit match found": bool(pretrained_outfit_match_found), "pretrained outfit confidence": float(pretrained_outfit_confidence), "pretrained outfit prediction": int(pretrained_outfit_prediction),        
                 
                 "pretrained match found message": "Pretrained Match Found!" 
                 if (pretrained_accessory_match_found 
