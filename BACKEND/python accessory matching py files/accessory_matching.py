@@ -19,8 +19,10 @@ from ml_model import (
     load_model_via_pretrained_CNN
 )
 
+
 # loading environment variables from .env file.
 load_dotenv()
+
 
 # uploading files from following file paths.
 UPLOAD_FOLDER = "static/images/"
