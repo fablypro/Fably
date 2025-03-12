@@ -45,15 +45,7 @@ p {
     color: black;
 }
 
-.form_01 {
-    vertical-align: 0cqmax;
-}
-
-.form_02 {
-    vertical-align: 0cqmax;
-}
-
-#button_01 {
+#option {
     color: #000;
     width: 100%;
     padding: 10px;
@@ -65,7 +57,7 @@ p {
 
 }
 
-button:hover {
+option:hover {
     background-color: rgb(186, 186, 186);
     color: rgb(219, 219, 219);
 }

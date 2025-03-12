@@ -8,7 +8,7 @@
 
     <body>
         <div class="form_01">
-            <form class="container" id="uploadForm">
+            <form class="container" id="uploadForm" method="get">
                 <h2>Accessory Matching with Outfits</h2>
 
                 <div id="containInput">
@@ -22,31 +22,57 @@
                 <button type="button" onClick="uploadForm()">Match Images</button>
 
                 <div id="results"></div>
-            </form>
-        </div>
 
-        <div  class="form_02">
-            <form class="container" id="uploadForm">
-                <h2>Accessory Matching with Outfits</h2>
-
-                <div id="containInput">
-                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
-                    <input type="file" id="accessory" accept="image/*" required>
-
-                    <label for="outfit"><strong>Upload Outfit Image</strong></label>
-                    <input type="file" id="outfit" accept="image/*" required>
-                </div>
-
-                <button type="button" onClick="uploadForm()">Match Images</button>
-
-                <div id="results"></div>
+                <label for="accessory">Choose Accessory</label>
+                <input list="accessories" id="accessory">
+                <datalist id="accessories">
+                    <option>Belts</option>
+                    <option>Chains</option>
+                    <option>Glasses</option>
+                    <option>Gloves</option>
+                    <option>Handbags</option>
+                    <option>Hats</option>
+                    <option>Rings</option>
+                    <option>Shoes</option>
+                    <option>Socks</option>
+                    <option>Wtackes</option>
+                </datalist>
             </form>
         </div>
 
         <script>
+            function score() {
+                let score = 0;
+                if () {
+                    score = 0;
+                }
+                score++;
+            }
+
             function chooseColour() {
                 const chosenButton = false;
-                if (chosenButton) {}
+                switch() {
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                    case "":
+                        ;
+                }
             }
 
             function chooseOutfitType() {
