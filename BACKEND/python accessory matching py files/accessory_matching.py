@@ -16,7 +16,7 @@ from ml_model import (
     extract_main_colors, 
     predict_accessory, 
     predict_outfit, 
-    load_model_via_pretrained_CNN
+    load_model_via_pretrained_CNN#, load_model
 )
 
 
