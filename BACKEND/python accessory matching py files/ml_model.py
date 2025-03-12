@@ -17,6 +17,24 @@ from sklearn.cluster import KMeans # type: ignore
 load_dotenv()
 
 
+# adding model path. 
+#MODEL_PATH = os.getenv("MODEL_PATH")
+#if not MODEL_PATH:
+#    raise ValueError("MODEL_PATH environment variable is Not Set.")
+
+
+# function to loading the model.
+#def load_model():
+#    try:
+#        model = keras_load_model(MODEL_PATH)
+#        print("Model loaded successfully!")
+#        return model
+  
+#    except Exception as e:
+#        print(f"Error in loading model: {e}")
+#        raise
+
+
 # function for pretraining CNN (i.e. ResNet50).
 def load_model_via_pretrained_CNN():
     try:
