@@ -9,18 +9,22 @@ body {
     justify-content: center;
 }
 
-.first_five_left {
-    margin-left: 500px;
-    display: table-row;
+#arranging_columns {
+    gap: 100px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
 }
 
-.first_five_right {
-    margin-right: 500px;
-    display: table-row;
+.first_five_left, .first_five_right {
+    width: 45%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
 }
 
 .input_style {
-    margin-left: 0cqmax;
+    margin-left: 0;
     display: inline-block;
 }
 
@@ -35,9 +39,13 @@ body {
     padding: 30px;
     border-radius: 100px;
     box-shadow: #999999;
-    width:700px;
-    height:700px;
+    width: 700px;
+    height: 800px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #results {
@@ -70,7 +78,6 @@ p {
     border-radius: 20px;
     cursor: pointer;
     float: left;
-
 }
 
 option:hover {
