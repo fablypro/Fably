@@ -9,6 +9,16 @@ body {
     justify-content: center;
 }
 
+.first_five_left {
+    margin-left: 500px;
+    display: table-row;
+}
+
+.first_five_right {
+    margin-right: 500px;
+    display: table-row;
+}
+
 .input_style {
     margin-left: 0cqmax;
     display: inline-block;
