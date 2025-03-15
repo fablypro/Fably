@@ -52,7 +52,7 @@ os.makedirs(ACCESSORY_FOLDER, exist_ok=True)
 os.makedirs(OUTFIT_FOLDER, exist_ok=True)
 
 
-logging
+logging.basicConfig(level=logging.INFO)
 
 
 # to ensure proper configuration for MAX_CONTENT_LENGTH.

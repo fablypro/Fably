@@ -349,9 +349,38 @@
 
 
                 <div id="containInput">
+
                     <label for="accessory"><strong>Upload Accessory Image</strong></label>  
                     <input type="file" id="accessory" accept="image/*" required>
 
+                            <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                            <input type="file" id="accessory" accept="image/*" required>
+
+                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                    <input type="file" id="accessory" accept="image/*" required>
+
+                            <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                            <input type="file" id="accessory" accept="image/*" required>
+
+                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                    <input type="file" id="accessory" accept="image/*" required>
+
+                            <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                            <input type="file" id="accessory" accept="image/*" required>
+
+                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                    <input type="file" id="accessory" accept="image/*" required>
+
+                            <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                            <input type="file" id="accessory" accept="image/*" required>
+
+                    <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                    <input type="file" id="accessory" accept="image/*" required>
+
+                            <label for="accessory"><strong>Upload Accessory Image</strong></label>  
+                            <input type="file" id="accessory" accept="image/*" required>
+
+                            
                     <label for="outfit"><strong>Upload Outfit Image</strong></label>
                     <input type="file" id="outfit" accept="image/*" required>
                 </div>
@@ -360,7 +389,7 @@
 
                 <div>
                     <p>Results</p>
-                    <div id="results">
+                    <div id="results"></div>
                 </div>
                 <br><br><br><br>
                 <br><br><br><br>
@@ -447,9 +476,14 @@
                 ;}
 
             function uploadForm() {
-                const form = document.getElementById('uploadForm');const resultsCss = document.getElementById('results');const formData = new FormData(form);
+                const form = document.getElementById('uploadForm');
+                const resultsCss = document.getElementById('results');
+                const formData = new FormData(form);
 
                 resultsCss.innerHTML = '';
+                document.getElementById('accessoryPreview').src = '';
+                document.getElementById('outfitPreview').src = '';
+                document.getElementById('').innerHTML = 'resultImages';
                 
                 fetch('/upload', {methods: "POST", body: formData}).then(response => response.json()).then(data => {
                     if (data.error) {
