@@ -10,6 +10,9 @@ import tensorflow_hub as hub # type: ignore
 
 from werkzeug.utils import secure_filename # type: ignore
 
+# logging for potential issues.
+import logging
+
 # importing form machine learning model.
 from ml_model import (
     matching_colors_between_outfits_and_accessories, 
@@ -47,6 +50,9 @@ feature.config["MAX_CONTENT_LENGTH"] = MAX_CONTENT_LENGTH
 # to ensure the accessory and outfit folders exist.
 os.makedirs(ACCESSORY_FOLDER, exist_ok=True)
 os.makedirs(OUTFIT_FOLDER, exist_ok=True)
+
+
+logging
 
 
 # to ensure proper configuration for MAX_CONTENT_LENGTH.
@@ -162,9 +168,7 @@ def upload_file():
      #           "outfit prediction": outfit_prediction,
                 
                 "pretrained accessory match found": bool(pretrained_accessory_match_found), "pretrained accessory confidence": float(pretrained_accessory_confidence), "pretrained accessory prediction": int(pretrained_accessory_prediction),  
-                
                 "pretrained outfit match found": bool(pretrained_outfit_match_found), "pretrained outfit confidence": float(pretrained_outfit_confidence), "pretrained outfit prediction": int(pretrained_outfit_prediction),        
-                
                 "pretrained match found message": "Pretrained Match Found!" 
                 if (pretrained_accessory_match_found 
                     and pretrained_outfit_match_found 

@@ -1,4 +1,3 @@
-import os
 import cv2 as c
 import numpy as np
 from dotenv import load_dotenv # type: ignore
@@ -7,7 +6,6 @@ import tensorflow as tf # type: ignore
 # adding AI learning component.
 from tensorflow.keras.applications import ResNet50 # type: ignore
 
-from tensorflow.keras.preprocessing import image # type: ignore
 from tensorflow.keras.applications.resnet50 import preprocess_input # type: ignore
 
 from sklearn.cluster import KMeans # type: ignore
@@ -73,16 +71,15 @@ def predict_accessory(image, model):
     try:
         # predicting image.
         predicted_model = preprocess_image(image)
-        predictions = model.predict(predicted_model)
-        
+        predictions = model.predict(predicted_model)      
         predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
         confidence = np.max(predictions) # create score of confidence.
         
         return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
     
     except Exception as e:
-        print(f"Error in Predicting Image: {e}")
-        raise ValueError("Error in Predicting Image.")
+        print(f"Error in Predicting Accessory Image: {e}")
+        raise ValueError("Error in Predicting Accessory Image.")
 
 
 # function to predicting the outfit whether image matches.
@@ -91,30 +88,26 @@ def predict_outfit(image, model):
     try:
         # predicting image.
         predicted_model = preprocess_image(image)
-        predictions = model.predict(predicted_model)
-        
+        predictions = model.predict(predicted_model)   
         predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
         confidence = np.max(predictions) # create score of confidence.
         
         return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
     
     except Exception as e:
-        print(f"Error in Predicting Image: {e}")
-        raise ValueError("Error in Predicting Image.")
+        print(f"Error in Predicting Outfit Image: {e}")
+        raise ValueError("Error in Predicting Outfit Image.")
     
 
 def extract_main_colors(image, k = 3):
     
     # accept the image with colors.
     img_col = c.cvtColor(image, c.COLOR_BGR2RGB)
-    
     # reshape image into 2D array of pixels.
     pixels = img_col.reshape(-1, 3)
-    
     # KMeans clustering for the dominant colors.
     kMeans = KMeans(n_clusters=k)
     kMeans.fit(pixels)
-    
     # compiling all the data of the pixels.
     extract_dominant_colors = kMeans.cluster_centers_
     
@@ -122,18 +115,20 @@ def extract_main_colors(image, k = 3):
 
 
 def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
-    match_found = False
-    for accessory_color in accessory_colors:
-        for outfit_color in outfit_colors:
-            # calcuating the euclidean distance between colors.
-            distance = np.linalg.norm(accessory_color - outfit_color)
-            if distance < threshold:
-                match_found = True
-                break
-        if match_found:
-            break
+    # validating them matching.
+    try:
+        for accessory_color in accessory_colors:
+            for outfit_color in outfit_colors:
+                # calcuating the euclidean distance between colors.
+                distance = np.linalg.norm(accessory_color - outfit_color)
+                if distance < threshold:
+                    return True
+                        
+        return False
     
-    return match_found
+    except Exception as e:
+        print(f"Error in Matching Outfits with Accessories: {e}")
+        raise ValueError("Error in Matching Outfits with Accessories.")
 
     
     
