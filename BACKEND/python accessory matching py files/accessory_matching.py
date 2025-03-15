@@ -115,18 +115,18 @@ def upload_file():
      #       outfit_model = load_model()
 
 
-            # using the pretrained model.
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_outfit_model = load_model_via_pretrained_CNN()
-            
-            
             # finding any match for the accessory.
      #       accessory_confidence, accessory_prediction = predict_accessory(accessory_img_inputed, accessory_model)
      #       accessory_match_found = accessory_prediction == 1
             # finding any match for the outfit.
      #       outfit_confidence, outfit_prediction = predict_outfit(outfit_img_inputed, outfit_model)
      #       outfit_match_found = outfit_prediction == 1
-            
+     
+
+            # using the pretrained model.
+            pretrained_accessory_model = load_model_via_pretrained_CNN()
+            pretrained_outfit_model = load_model_via_pretrained_CNN()
+                        
             
             # finding any match for the accessory.
             pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
@@ -146,7 +146,13 @@ def upload_file():
 
             # sending predictions.
             return jsonify({
-                
+
+     #           "match found message": "Match Found!" 
+     #           if (accessory_match_found 
+     #               and outfit_match_found 
+     #               and color_match_found) 
+     #           else "No Match Found!"
+
      #           "accessory match found": accessory_match_found,
      #           "accessory confidence": accessory_confidence, 
      #           "accessory prediction": accessory_prediction,
@@ -165,12 +171,6 @@ def upload_file():
                     and color_match_found) 
                 else "No Pretrained Match Found!"
                 
-     #           "match found message": "Match Found!" 
-     #           if (accessory_match_found 
-     #               and outfit_match_found 
-     #               and color_match_found) 
-     #           else "No Match Found!"
-
             })
 
         except Exception as e:
