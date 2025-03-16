@@ -28,8 +28,19 @@ load_dotenv()
 
 
 # uploading files from following file paths.
+UPLOAD_ACCESSORY_FOLDER = "static/images/accessories/"
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "belts")
+CHAINS_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "chains")
+GLASSES_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "glasses")
+GLOVES_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "gloves")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "accessories")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "accessories")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "accessories")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "accessories")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "accessories")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "accessories")
+
 UPLOAD_FOLDER = "static/images/"
-ACCESSORY_FOLDER = os.path.join(UPLOAD_FOLDER, "accessories")
 OUTFIT_FOLDER = os.path.join(UPLOAD_FOLDER, "outfits")
 
 # allowed file extensions. 
