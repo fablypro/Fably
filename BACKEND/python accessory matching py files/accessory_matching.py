@@ -266,35 +266,35 @@ def upload_file():
                         
             
             # finding any match for each accessory.
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(belts_img_inputed, pretrained_belt_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_belts_confidence, pretrained_belts_prediction = predict_accessory(belts_img_inputed, pretrained_belt_model)
+            pretrained_belts_match_found = pretrained_belts_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(chains_img_inputed, pretrained_chains_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_chains_confidence, pretrained_chains_prediction = predict_accessory(chains_img_inputed, pretrained_chains_model)
+            pretrained_chains_match_found = pretrained_chains_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(glasses_img_inputed, pretrained_glasses_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_glasses_confidence, pretrained_glasses_prediction = predict_accessory(glasses_img_inputed, pretrained_glasses_model)
+            pretrained_glasses_match_found = pretrained_glasses_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(gloves_img_inputed, pretrained_gloves_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_gloves_confidence, pretrained_gloves_prediction = predict_accessory(gloves_img_inputed, pretrained_gloves_model)
+            pretrained_gloves_match_found = pretrained_gloves_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(handbags_img_inputed, pretrained_handbags_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_handbags_confidence, pretrained_handbags_prediction = predict_accessory(handbags_img_inputed, pretrained_handbags_model)
+            pretrained_handbags_match_found = pretrained_handbags_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(hats_img_inputed, pretrained_hats_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_hats_confidence, pretrained_hats_prediction = predict_accessory(hats_img_inputed, pretrained_hats_model)
+            pretrained_hats_match_found = pretrained_hats_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(rings_img_inputed, pretrained_rings_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_rings_confidence, pretrained_rings_prediction = predict_accessory(rings_img_inputed, pretrained_rings_model)
+            pretrained_rings_match_found = pretrained_rings_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(shoes_img_inputed, pretrained_shoes_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_shoes_confidence, pretrained_shoes_prediction = predict_accessory(shoes_img_inputed, pretrained_shoes_model)
+            pretrained_shoes_match_found = pretrained_shoes_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(socks_img_inputed, pretrained_socks_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_socks_confidence, pretrained_socks_prediction = predict_accessory(socks_img_inputed, pretrained_socks_model)
+            pretrained_socks_match_found = pretrained_socks_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(watches_img_inputed, pretrained_watches_model)
-            pretrained_accessory_match_found = pretrained_accessory_prediction == 1
+            pretrained_watches_confidence, pretrained_watches_prediction = predict_accessory(watches_img_inputed, pretrained_watches_model)
+            pretrained_watches_match_found = pretrained_watches_prediction == 1
             
             # finding any match for the outfit.
             pretrained_outfit_confidence, pretrained_outfit_prediction = predict_outfit(outfit_img_inputed, pretrained_outfit_model)
@@ -302,11 +302,30 @@ def upload_file():
 
 
             # extracting colors from the images.
-            extract_colors_from_accessory = extract_main_colors(accessory_img_inputed)
+            extract_colors_from_belts = extract_main_colors(belts_img_inputed)
+            extract_colors_from_chains = extract_main_colors(chains_img_inputed)
+            extract_colors_from_glasses = extract_main_colors(glasses_img_inputed)
+            extract_colors_from_gloves = extract_main_colors(gloves_img_inputed)
+            extract_colors_from_handbags = extract_main_colors(handbags_img_inputed)
+            extract_colors_from_hats = extract_main_colors(hats_img_inputed)
+            extract_colors_from_rings = extract_main_colors(rings_img_inputed)
+            extract_colors_from_shoes = extract_main_colors(shoes_img_inputed)
+            extract_colors_from_socks = extract_main_colors(socks_img_inputed)
+            extract_colors_from_watches = extract_main_colors(watches_img_inputed)
+            
             extract_colors_from_outfit = extract_main_colors(outfit_img_inputed)
             
             # matching thew colors between accessory and outfit.
-            color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_accessory, extract_colors_from_outfit)
+            belts_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_belts, extract_colors_from_outfit)
+            chains_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_chains, extract_colors_from_outfit)
+            glasses_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_glasses, extract_colors_from_outfit)
+            gloves_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_gloves, extract_colors_from_outfit)
+            handbags_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_handbags, extract_colors_from_outfit)
+            hats_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_hats, extract_colors_from_outfit)
+            rings_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_rings, extract_colors_from_outfit)
+            shoes_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_shoes, extract_colors_from_outfit)
+            socks_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_socks, extract_colors_from_outfit)
+            watches_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_watches, extract_colors_from_outfit)
 
 
             # sending predictions.
@@ -327,13 +346,28 @@ def upload_file():
      #           "outfit prediction": outfit_prediction,
                 
                 "pretrained accessory match found": bool(pretrained_accessory_match_found), "pretrained accessory confidence": float(pretrained_accessory_confidence), "pretrained accessory prediction": int(pretrained_accessory_prediction),  
-                "pretrained outfit match found": bool(pretrained_outfit_match_found), "pretrained outfit confidence": float(pretrained_outfit_confidence), "pretrained outfit prediction": int(pretrained_outfit_prediction),        
-                "pretrained match found message": "Pretrained Match Found!" 
-                if (pretrained_accessory_match_found 
-                    and pretrained_outfit_match_found 
-                    and color_match_found) 
-                else "No Pretrained Match Found!"
                 
+                "pretrained outfit match found": bool(pretrained_outfit_match_found), "pretrained outfit confidence": float(pretrained_outfit_confidence), "pretrained outfit prediction": int(pretrained_outfit_prediction),        
+                
+                "pretrained match found message": "Pretrained Match Found!" 
+                if (pretrained_belts_match_found or pretrained_chains_match_found
+                    or pretrained_glasses_match_found or pretrained_gloves_match_found
+                    or pretrained_handbags_match_found or pretrained_hats_match_found
+                    or pretrained_rings_match_found or pretrained_shoes_match_found
+                    or pretrained_socks_match_found or pretrained_watches_match_found
+                                        
+                    or belts_color_match_found
+                    or chains_color_match_found
+                    or glasses_color_match_found
+                    or gloves_color_match_found
+                    or handbags_color_match_found
+                    or hats_color_match_found
+                    or rings_color_match_found
+                    or shoes_color_match_found
+                    or watches_color_match_found
+                    
+                    or pretrained_outfit_match_found) 
+                else "No Pretrained Match Found!"
             })
 
         except Exception as e:
