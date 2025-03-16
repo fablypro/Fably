@@ -180,39 +180,59 @@ def upload_file():
 
         belts_filepath = os.path.join(BELT_FOLDER, belts_filename)
         chains_filepath = os.path.join(CHAINS_FOLDER, chains_filename)
-        glasses_filepath = os.path.join(ACCESSORY_FOLDER, glasses_filename)
-        gloves_filepath = os.path.join(ACCESSORY_FOLDER, gloves_filename)
-        handbags_filepath = os.path.join(ACCESSORY_FOLDER, handbags_filename)
-        hats_filepath = os.path.join(ACCESSORY_FOLDER, hats_filename)
-        rings_filepath = os.path.join(ACCESSORY_FOLDER, rings_filename)
-        shoes_filepath = os.path.join(ACCESSORY_FOLDER, shoes_filename)
-        socks_filepath = os.path.join(ACCESSORY_FOLDER, socks_filename)
-        watches_filepath = os.path.join(ACCESSORY_FOLDER, watches_filename)
+        glasses_filepath = os.path.join(GLASSES_FOLDER, glasses_filename)
+        gloves_filepath = os.path.join(GLOVES_FOLDER, gloves_filename)
+        handbags_filepath = os.path.join(HANDBAG_FOLDER, handbags_filename)
+        hats_filepath = os.path.join(HAT_FOLDER, hats_filename)
+        rings_filepath = os.path.join(RING_FOLDER, rings_filename)
+        shoes_filepath = os.path.join(SHOE_FOLDER, shoes_filename)
+        socks_filepath = os.path.join(SOCK_FOLDER, socks_filename)
+        watches_filepath = os.path.join(WATCH_FOLDER, watches_filename)
         
         outfit_filepath = os.path.join(OUTFIT_FOLDER, outfit_filename)
         
         
-        accessory_file.save(accessory_filepath)
+        belts_file.save(belts_filepath)
+        chains_file.save(chains_filepath)
+        glasses_file.save(glasses_filepath)
+        gloves_file.save(gloves_filepath)
+        handbags_file.save(handbags_filepath)
+        hats_file.save(hats_filepath)
+        rings_file.save(rings_filepath)
+        shoes_file.save(shoes_filepath)
+        socks_file.save(socks_filepath)
+        watches_file.save(watches_filepath)
                
         outfit_file.save(outfit_filepath)
 
 
         try:
             # reading the images with color.
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
-            accessory_img_inputed = c.imread(os.path.join(accessory_filepath), c.IMREAD_COLOR)
+            belts_img_inputed = c.imread(os.path.join(belts_filepath), c.IMREAD_COLOR)
+            chains_img_inputed = c.imread(os.path.join(chains_filepath), c.IMREAD_COLOR)
+            glasses_img_inputed = c.imread(os.path.join(glasses_filepath), c.IMREAD_COLOR)
+            gloves_img_inputed = c.imread(os.path.join(gloves_filepath), c.IMREAD_COLOR)
+            handbags_img_inputed = c.imread(os.path.join(handbags_filepath), c.IMREAD_COLOR)
+            hats_img_inputed = c.imread(os.path.join(hats_filepath), c.IMREAD_COLOR)
+            rings_img_inputed = c.imread(os.path.join(rings_filepath), c.IMREAD_COLOR)
+            shoes_img_inputed = c.imread(os.path.join(shoes_filepath), c.IMREAD_COLOR)
+            socks_img_inputed = c.imread(os.path.join(socks_filepath), c.IMREAD_COLOR)
+            watches_img_inputed = c.imread(os.path.join(watches_filepath), c.IMREAD_COLOR)
             
             outfit_img_inputed = c.imread(os.path.join(outfit_filepath), c.IMREAD_COLOR)
+            
             # read both images.
-            if (accessory_img_inputed is None 
+            if (belts_img_inputed is None
+                or chains_img_inputed is None
+                or glasses_img_inputed is None
+                or gloves_img_inputed is None
+                or handbags_img_inputed is None
+                or hats_img_inputed is None
+                or rings_img_inputed is None
+                or shoes_img_inputed is None
+                or socks_img_inputed is None
+                or watches_img_inputed is None
+                
                 or outfit_img_inputed is None):
                 raise ValueError("Failed to Read Image.")
 
@@ -233,47 +253,47 @@ def upload_file():
             # using the pretrained model.
             pretrained_belt_model = load_model_via_pretrained_CNN()
             pretrained_chains_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
-            pretrained_accessory_model = load_model_via_pretrained_CNN()
+            pretrained_glasses_model = load_model_via_pretrained_CNN()
+            pretrained_gloves_model = load_model_via_pretrained_CNN()
+            pretrained_handbags_model = load_model_via_pretrained_CNN()
+            pretrained_hats_model = load_model_via_pretrained_CNN()
+            pretrained_rings_model = load_model_via_pretrained_CNN()
+            pretrained_shoes_model = load_model_via_pretrained_CNN()
+            pretrained_socks_model = load_model_via_pretrained_CNN()
+            pretrained_watches_model = load_model_via_pretrained_CNN()
             
             pretrained_outfit_model = load_model_via_pretrained_CNN()
                         
             
             # finding any match for each accessory.
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(belts_img_inputed, pretrained_belt_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(chains_img_inputed, pretrained_chains_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(glasses_img_inputed, pretrained_glasses_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(gloves_img_inputed, pretrained_gloves_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(handbags_img_inputed, pretrained_handbags_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(hats_img_inputed, pretrained_hats_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(rings_img_inputed, pretrained_rings_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(shoes_img_inputed, pretrained_shoes_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(socks_img_inputed, pretrained_socks_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
-            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(accessory_img_inputed, pretrained_accessory_model)
+            pretrained_accessory_confidence, pretrained_accessory_prediction = predict_accessory(watches_img_inputed, pretrained_watches_model)
             pretrained_accessory_match_found = pretrained_accessory_prediction == 1
             
             # finding any match for the outfit.
