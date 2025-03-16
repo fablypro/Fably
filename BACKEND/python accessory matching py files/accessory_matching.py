@@ -100,67 +100,38 @@ def home():
 def upload_file():
 
     try:
-        # if the files have No parts for accessory or outfit.
-        if ('belts' not in request.files
-            or 'chains' not in request.files
-            or 'glasses' not in request.files
-            or 'gloves' not in request.files
-            or 'handbags' not in request.files
-            or 'hats' not in request.files
-            or 'rings' not in request.files
-            or 'shoes' not in request.files
-            or 'socks' not in request.files
-            or 'watches' not in request.files
+        # the dictionary of requested accessory and outfit folders.
+        all_accessory_and_outfit_files = {
+            'belts': request.files['belts'] if "" in request.files else None,
+            'chains': request.files['chains'] if "" in request.files else None,
+            'glasses': request.files['glasses'] if "" in request.files else None,
+            'gloves': request.files['gloves'] if "" in request.files else None,
+            'handbags': request.files['handbags'] if "" in request.files else None,
+            'hats': request.files['hats'] if "" in request.files else None,
+            'rings': request.files['rings'] if "" in request.files else None,
+            'shoes': request.files['shoes'] if "" in request.files else None,
+            'socks': request.files['socks'] if "" in request.files else None,
+            'watches': request.files['watches'] if "" in request.files else None,
             
-            or 'outfit' not in request.files):
-            return jsonify({"error": "No File Part."}), 400
+            'outfit': request.files['outfit'] if "" in request.files else None
+        }
         
         
-        # requesting the files.
-        belts_file = request.files['belts']
-        chains_file = request.files['chains']
-        glasses_file = request.files['glasses']
-        gloves_file = request.files['gloves']
-        handbags_file = request.files['handbags']
-        hats_file = request.files['hats']
-        rings_file = request.files['rings']
-        shoes_file = request.files['shoes']
-        socks_file = request.files['socks']
-        watches_file = request.files['watches']
-        
-        outfit_file = request.files['outfit']
         
         
-        # if file names are null.
-        if (belts_file.filename == ''
-            or chains_file.filename == ''
-            or glasses_file.filename == ''
-            or gloves_file.filename == ''
-            or handbags_file.filename == ''
-            or hats_file.filename == ''
-            or rings_file.filename == ''
-            or shoes_file.filename == ''
-            or socks_file.filename == ''
-            or watches_file.filename == ''
-            
-            or outfit_file.filename == ''):
-            return jsonify({"error": "No Selected File."}), 400
         
-        # if files are not allowed.
-        if (not (allowed_file(belts_file.filename) 
-                 and allowed_file(chains_file.filename)
-                 and allowed_file(glasses_file.filename)
-                 and allowed_file(gloves_file.filename)
-                 and allowed_file(handbags_file.filename)
-                 and allowed_file(hats_file.filename)
-                 and allowed_file(rings_file.filename)
-                 and allowed_file(shoes_file.filename)
-                 and allowed_file(socks_file.filename)
-                 and allowed_file(watches_file.filename)
-                 
-                 and allowed_file(outfit_file.filename)
-                 )):
-            return jsonify({"error": "Invalid File Format."}), 400
+        # if file names are null, and if files are not allowed.
+        for file_type, file in all_accessory_and_outfit_files.items():
+            if file.filename == "":
+                return jsonify({"error": f"No Selected File for {file_type}."}), 400
+            if not allowed_file(file.filename):
+                return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
+
+
+        file_paths = {}
+        for file_type, file in files.items():
+            filename = secure_filename(file.filename)
+            folder = os.path.join(folder, filename)
 
 
         # saving and securing filenames.
@@ -346,9 +317,38 @@ def upload_file():
      #           "outfit confidence": outfit_confidence, 
      #           "outfit prediction": outfit_prediction,
                 
-                "pretrained accessory match found": bool(pretrained_accessory_match_found),
-                "pretrained accessory confidence": float(pretrained_accessory_confidence),
-                "pretrained accessory prediction": int(pretrained_accessory_prediction),  
+                "pretrained accessory match found": bool(pretrained_belts_match_found,
+                                                         pretrained_chains_match_found,
+                                                         pretrained_glasses_match_found,
+                                                         pretrained_gloves_match_found,
+                                                         pretrained_handbags_match_found,
+                                                         pretrained_hats_match_found,
+                                                         pretrained_rings_match_found,
+                                                         pretrained_shoes_match_found,
+                                                         pretrained_socks_match_found,
+                                                         pretrained_watches_match_found),
+                
+                "pretrained accessory confidence": float(pretrained_belts_confidence,
+                                                         pretrained_chains_confidence,
+                                                         pretrained_glasses_confidence,
+                                                         pretrained_gloves_confidence,
+                                                         pretrained_handbags_confidence,
+                                                         pretrained_hats_confidence,
+                                                         pretrained_rings_confidence,
+                                                         pretrained_shoes_confidence,
+                                                         pretrained_socks_confidence,
+                                                         pretrained_watches_confidence),
+                
+                "pretrained accessory prediction": int(pretrained_belts_prediction,
+                                                         pretrained_chains_prediction,
+                                                         pretrained_glasses_prediction,
+                                                         pretrained_gloves_prediction,
+                                                         pretrained_handbags_prediction,
+                                                         pretrained_hats_prediction,
+                                                         pretrained_rings_prediction,
+                                                         pretrained_shoes_prediction,
+                                                         pretrained_socks_prediction,
+                                                         pretrained_watches_prediction),  
                 
                 "pretrained outfit match found": bool(pretrained_outfit_match_found),
                 "pretrained outfit confidence": float(pretrained_outfit_confidence),
@@ -360,15 +360,17 @@ def upload_file():
                     or pretrained_handbags_match_found or pretrained_hats_match_found
                     or pretrained_rings_match_found or pretrained_shoes_match_found
                     or pretrained_socks_match_found or pretrained_watches_match_found
-                                        
-                    or belts_color_match_found or chains_color_match_found
+                    
+                    or pretrained_outfit_match_found) 
+                else "No Pretrained Match Found!",
+                
+                "color match found message": "Color Match Found!" 
+                if (belts_color_match_found or chains_color_match_found
                     or glasses_color_match_found or gloves_color_match_found
                     or handbags_color_match_found or hats_color_match_found
                     or rings_color_match_found or shoes_color_match_found
-                    or socks_color_match_found or watches_color_match_found
-                    
-                    or pretrained_outfit_match_found) 
-                else "No Pretrained Match Found!"
+                    or socks_color_match_found or watches_color_match_found) 
+                else "No Color Match Found!"
             })
 
         except Exception as e:

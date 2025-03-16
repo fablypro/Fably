@@ -85,14 +85,8 @@ def predict_accessory(image, model):
 # function to predicting the outfit whether image matches.
 def predict_outfit(image, model):
     # validating predictions.
-    try:
-        # predicting image.
-        predicted_model = preprocess_image(image)
-        predictions = model.predict(predicted_model)   
-        predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
-        confidence = np.max(predictions) # create score of confidence.
-        
-        return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
+    try:       
+        return predict_accessory(image, model)
     
     except Exception as e:
         print(f"Error in Predicting Outfit Image: {e}")
