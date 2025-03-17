@@ -1,12 +1,10 @@
 from flask import Flask, request, render_template, jsonify # type: ignore
 import os
 import cv2 as c
-import numpy as np
-from sklearn import preprocessing # type: ignore
 from dotenv import load_dotenv # type: ignore
 import tensorflow as tf # type: ignore
 
-import tensorflow_hub as hub # type: ignore
+#import tensorflow_hub as hub # type: ignore
 
 from werkzeug.utils import secure_filename # type: ignore
 
@@ -19,7 +17,7 @@ from ml_model import (
     extract_main_colors, 
     predict_accessory, 
     predict_outfit, 
-    load_model_via_pretrained_CNN#, load_model
+    load_model_via_pretrained_CNN
 )
 
 
@@ -122,20 +120,22 @@ def upload_file():
             if file_type not in all_accessory_and_outfit_files:
                 return jsonify({"error": f"No File Part for {file_type}."}), 400
         
-        files = {file_type: request.files[file_type] for file_type in all_accessory_and_outfit_files}
+        required_files = {file_type: request.files[file_type] for file_type in all_accessory_and_outfit_files}
         
         # if file names are null, and if files are not allowed.
-        for file_type, file in files.items():
+        for file_type, file in required_files.items():
             if file.filename == "":
                 return jsonify({"error": f"No Selected File for {file_type}."}), 400
             if not allowed_file(file.filename):
+                return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
+            if len(file.read()) > MAX_CONTENT_LENGTH:
                 return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
 
 
         try:
             # saving and securing filenames.
             file_paths = {}
-            for file_type, file in files.items():
+            for file_type, file in required_files.items():
                 filename = secure_filename(file.filename)
                 given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
                 filepath = os.path.join(given_folder, filename)
@@ -149,25 +149,12 @@ def upload_file():
                 images[file_type] = c.imread(filepath, c.IMREAD_COLOR)
                 if images[file_type] is None:
                     raise ValueError(f"Failed to Read Image for {file_type}.")
-
- 
-            # using the normal model.
-     #       accessory_model = load_model()
-     #       outfit_model = load_model()
-
-
-            # finding any match for the accessory.
-     #       accessory_confidence, accessory_prediction = predict_accessory(accessory_img_inputed, accessory_model)
-     #       accessory_match_found = accessory_prediction == 1
-            # finding any match for the outfit.
-     #       outfit_confidence, outfit_prediction = predict_outfit(outfit_img_inputed, outfit_model)
-     #       outfit_match_found = outfit_prediction == 1
      
 
             # using the pretrained model.
             pretrained_model = load_model_via_pretrained_CNN()
             
-            # fidign matchews for each accessory and for each outfit.
+            # finding matches for each accessory and for each outfit.
             predictions = {}
             for file_type, img in images.items():
                 if file_type != 'outfit':
@@ -175,7 +162,8 @@ def upload_file():
                 else:
                     predictions[file_type] = predict_outfit(img, pretrained_model)
             
-            color_match = {}
+            # finding matches of colors between outfits and accessories.
+            color_matches = {}
             outfit_colors = extract_main_colors(images['outfit'])
             for file_type, img in images.items():
                 if file_type != 'outfit':
@@ -185,55 +173,59 @@ def upload_file():
 
             # sending predictions.
             results = {
-
-     #           "match found message": "Match Found!" 
-     #           if (accessory_match_found 
-     #               and outfit_match_found 
-     #               and color_match_found) 
-     #           else "No Match Found!"
-
-     #           "accessory match found": {},
-     #           "accessory confidence": {}, 
-     #           "accessory prediction": {},
-                
-     #           "outfit match found": outfit_match_found,
-     #           "outfit confidence": outfit_confidence, 
-     #           "outfit prediction": outfit_prediction,
-                
+                         
                 "pretrained accessory prediction": {},
                 "pretrained accessory confidence": {},
                 "pretrained accessory match found": {},
                 
-                "pretrained outfit prediction": bool(pretrained_outfit_match_found),
-                "pretrained outfit confidence": float(pretrained_outfit_confidence),
-                "pretrained outfit match found": int(pretrained_outfit_prediction),
+                "pretrained outfit prediction": predictions['outfit'][1],
+                "pretrained outfit confidence": float(predictions['outfit'][0]),
+                "pretrained outfit match found": int(predictions['outfit'][1] == 1),
                 
-                "pretrained match found message": "Pretrained Match Found!" 
-                if () 
-                else "No Pretrained Match Found!",
+                "pretrained match found message": "No Pretrained Match Found!",
                 
-                "color match found message": "Color Match Found!" 
-                if () 
-                else "No Color Match Found!"
+                "color match found message": "Color Match Found!"
+            
             }
+            
             
             for file_type, prediction in predictions.items():
                 if file_type != 'outfit':
-                    results["pretrained accessory prediction"][file_type] = prediction
-                    results["pretrained accessory confidence"][file_type] = prediction
-                    results["pretrained accessory match found"][file_type] = prediction
+                    results["pretrained accessory prediction"][file_type] = prediction[1]
+                    results["pretrained accessory confidence"][file_type] = float(prediction[0])
+                    results["pretrained accessory match found"][file_type] = prediction[1] == 1
             
             for file_type, color_match in color_matches.items():
                 if color_match == False:
                     results["color match found message"] = "No Color Match Found!"
             
+            any_acc_match = False
+            for file_type, acc_match in color_matches.items():
+                if acc_match:
+                    any_acc_match = True
+                    break
+            if results["pretrained outfit match found"] == 1:
+                any_acc_match = True
+
+            if any_acc_match:
+                results["pretrained match found message"] = "Pretrained Match Found!"
+            
+            
             return jsonify(results)
 
+        except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            return jsonify({"error": str(e)}), 500
         except Exception as e:
             print(f"Error in Image Processing: {e}")
             logging.error(f"Error: {e}")
             return jsonify({"error": "Error in Image Processing."}), 500
 
+    except ValueError as e:
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in File Uploading: {e}")
         logging.error(f"Error: {e}")

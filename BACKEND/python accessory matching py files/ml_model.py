@@ -52,7 +52,7 @@ def preprocess_image(image):
     # validating image processing.
     try:
         # validating image resizing.
-        if image is None or image.shape != (244, 244):
+        if image is None or image.shape != (244, 244, 3):
             raise ValueError("Invalid Image Dimensions.")
 
         # image resizing, normalzing and expanding.
@@ -106,7 +106,7 @@ def extract_main_colors(image, k = 3):
         # reshape image into 2D array of pixels.
         pixels = img_col.reshape(-1, 3)
         # KMeans clustering for the dominant colors.
-        kMeans = KMeans(n_clusters=k)
+        kMeans = KMeans(n_clusters=k, random_state=0, n_init="auto")
         kMeans.fit(pixels)
         # compiling all the data of the pixels.
         extract_dominant_colors = kMeans.cluster_centers_
