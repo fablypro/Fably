@@ -22,16 +22,6 @@ load_dotenv()
 #    raise ValueError("MODEL_PATH environment variable is Not Set.")
 
 
-# function to loading the model.
-#def load_model():
-#    try:
-#        model = keras_load_model(MODEL_PATH)
-#        print("Model loaded successfully!")
-#        return model
-  
-#    except Exception as e:
-#        print(f"Error in loading model: {e}")
-#        raise
 
 
 # function for pretraining CNN (i.e. ResNet50).
@@ -69,7 +59,7 @@ def preprocess_image(image):
 
 
 # function to predicting the accessory whether image matches.
-def predict_accessory(image, model):
+def predict_accessory(image, model, confidence_threshold=0.5):
     # validating predictions.
     try:
         # predicting image.
@@ -78,7 +68,11 @@ def predict_accessory(image, model):
         predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
         confidence = np.max(predictions) # create score of confidence.
         
-        return predicted_class, confidence # binary classification with 1s or 0s for match or not match respectively.
+        # binary classification with 1s or 0s for match or not match respectively.
+        if confidence >= confidence_threshold:
+            return 1, confidence # Match
+        else:
+            return 0, confidence # No Match
     
     except Exception as e:
         print(f"Error in Predicting Accessory Image: {e}")
