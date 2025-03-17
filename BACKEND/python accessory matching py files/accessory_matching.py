@@ -134,7 +134,16 @@ def upload_file():
         file_paths = {}
         for file_type, file in all_accessory_and_outfit_files.items():
             filename = secure_filename(file.filename)
-            folder = os.path.join(folder, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
+            given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
+            filepath = os.path.join(given_folder, filename)
+            file.save(filepath)
+            file_paths[file_type] = filepath
+            
+        images = {}
+        for file_type, filepath in images.items():
+            images[file_type] = c.imread(filepath, c.IMREAD_COLOR)
+            if images[file_type] is None:
+                raise ValueError(f"Failed to Read Image for {file_type}.")
 
 
         # saving and securing filenames.
@@ -199,18 +208,8 @@ def upload_file():
      
 
             # using the pretrained model.
-            pretrained_belt_model = load_model_via_pretrained_CNN()
-            pretrained_chains_model = load_model_via_pretrained_CNN()
-            pretrained_glasses_model = load_model_via_pretrained_CNN()
-            pretrained_gloves_model = load_model_via_pretrained_CNN()
-            pretrained_handbags_model = load_model_via_pretrained_CNN()
-            pretrained_hats_model = load_model_via_pretrained_CNN()
-            pretrained_rings_model = load_model_via_pretrained_CNN()
-            pretrained_shoes_model = load_model_via_pretrained_CNN()
-            pretrained_socks_model = load_model_via_pretrained_CNN()
-            pretrained_watches_model = load_model_via_pretrained_CNN()
             
-            pretrained_outfit_model = load_model_via_pretrained_CNN()
+            pretrained_model = load_model_via_pretrained_CNN()
                         
             
             # finding any match for each accessory.
