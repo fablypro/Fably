@@ -209,21 +209,11 @@ def upload_file():
                 "pretrained outfit match found": int(pretrained_outfit_prediction),
                 
                 "pretrained match found message": "Pretrained Match Found!" 
-                if (pretrained_belts_match_found or pretrained_chains_match_found
-                    or pretrained_glasses_match_found or pretrained_gloves_match_found
-                    or pretrained_handbags_match_found or pretrained_hats_match_found
-                    or pretrained_rings_match_found or pretrained_shoes_match_found
-                    or pretrained_socks_match_found or pretrained_watches_match_found
-                    
-                    or pretrained_outfit_match_found) 
+                if () 
                 else "No Pretrained Match Found!",
                 
                 "color match found message": "Color Match Found!" 
-                if (belts_color_match_found or chains_color_match_found
-                    or glasses_color_match_found or gloves_color_match_found
-                    or handbags_color_match_found or hats_color_match_found
-                    or rings_color_match_found or shoes_color_match_found
-                    or socks_color_match_found or watches_color_match_found) 
+                if () 
                 else "No Color Match Found!"
             }
             
@@ -232,6 +222,10 @@ def upload_file():
                     results["pretrained accessory prediction"][file_type] = prediction
                     results["pretrained accessory confidence"][file_type] = prediction
                     results["pretrained accessory match found"][file_type] = prediction
+            
+            for file_type, color_match in color_matches.items():
+                if color_match == False:
+                    results["color match found message"] = "No Color Match Found!"
             
             return jsonify(results)
 
