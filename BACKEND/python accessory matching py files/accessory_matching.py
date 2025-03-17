@@ -122,76 +122,33 @@ def upload_file():
             if file_type not in all_accessory_and_outfit_files:
                 return jsonify({"error": f"No File Part for {file_type}."}), 400
         
+        files = {file_type: request.files[file_type] for file_type in all_accessory_and_outfit_files}
         
         # if file names are null, and if files are not allowed.
-        for file_type, file in all_accessory_and_outfit_files.items():
+        for file_type, file in files.items():
             if file.filename == "":
                 return jsonify({"error": f"No Selected File for {file_type}."}), 400
             if not allowed_file(file.filename):
                 return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
 
 
-        file_paths = {}
-        for file_type, file in all_accessory_and_outfit_files.items():
-            filename = secure_filename(file.filename)
-            given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
-            filepath = os.path.join(given_folder, filename)
-            file.save(filepath)
-            file_paths[file_type] = filepath
-            
-        images = {}
-        for file_type, filepath in images.items():
-            images[file_type] = c.imread(filepath, c.IMREAD_COLOR)
-            if images[file_type] is None:
-                raise ValueError(f"Failed to Read Image for {file_type}.")
-
-
-        # saving and securing filenames.
-        
-        watches_filename = secure_filename(watches_file.filename)
-        
-        outfit_filename = secure_filename(outfit_file.filename)
-
-    
-        watches_filepath = os.path.join(WATCH_FOLDER, watches_filename)
-        
-        outfit_filepath = os.path.join(OUTFIT_FOLDER, outfit_filename)
-        
-        
-        watches_file.save(watches_filepath)
-               
-        outfit_file.save(outfit_filepath)
-
-
         try:
-            # reading the images with color.
-            belts_img_inputed = c.imread(os.path.join(belts_filepath), c.IMREAD_COLOR)
-            chains_img_inputed = c.imread(os.path.join(chains_filepath), c.IMREAD_COLOR)
-            glasses_img_inputed = c.imread(os.path.join(glasses_filepath), c.IMREAD_COLOR)
-            gloves_img_inputed = c.imread(os.path.join(gloves_filepath), c.IMREAD_COLOR)
-            handbags_img_inputed = c.imread(os.path.join(handbags_filepath), c.IMREAD_COLOR)
-            hats_img_inputed = c.imread(os.path.join(hats_filepath), c.IMREAD_COLOR)
-            rings_img_inputed = c.imread(os.path.join(rings_filepath), c.IMREAD_COLOR)
-            shoes_img_inputed = c.imread(os.path.join(shoes_filepath), c.IMREAD_COLOR)
-            socks_img_inputed = c.imread(os.path.join(socks_filepath), c.IMREAD_COLOR)
-            watches_img_inputed = c.imread(os.path.join(watches_filepath), c.IMREAD_COLOR)
-            
-            outfit_img_inputed = c.imread(os.path.join(outfit_filepath), c.IMREAD_COLOR)
-            
-            # read both images.
-            if (belts_img_inputed is None
-                or chains_img_inputed is None
-                or glasses_img_inputed is None
-                or gloves_img_inputed is None
-                or handbags_img_inputed is None
-                or hats_img_inputed is None
-                or rings_img_inputed is None
-                or shoes_img_inputed is None
-                or socks_img_inputed is None
-                or watches_img_inputed is None
-                
-                or outfit_img_inputed is None):
-                raise ValueError("Failed to Read Image.")
+            # saving and securing filenames.
+            file_paths = {}
+            for file_type, file in files.items():
+                filename = secure_filename(file.filename)
+                given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
+                filepath = os.path.join(given_folder, filename)
+                file.save(filepath)
+                file_paths[file_type] = filepath
+        
+        
+            # reading the images with color.      
+            images = {}
+            for file_type, filepath in images.items():
+                images[file_type] = c.imread(filepath, c.IMREAD_COLOR)
+                if images[file_type] is None:
+                    raise ValueError(f"Failed to Read Image for {file_type}.")
 
  
             # using the normal model.
@@ -208,76 +165,26 @@ def upload_file():
      
 
             # using the pretrained model.
-            
             pretrained_model = load_model_via_pretrained_CNN()
-                        
             
-            # finding any match for each accessory.
-            # belts.
-            pretrained_belts_confidence, pretrained_belts_prediction = predict_accessory(belts_img_inputed, pretrained_belt_model)
-            pretrained_belts_match_found = pretrained_belts_prediction == 1
-            # chains.
-            pretrained_chains_confidence, pretrained_chains_prediction = predict_accessory(chains_img_inputed, pretrained_chains_model)
-            pretrained_chains_match_found = pretrained_chains_prediction == 1
-            # glasses.
-            pretrained_glasses_confidence, pretrained_glasses_prediction = predict_accessory(glasses_img_inputed, pretrained_glasses_model)
-            pretrained_glasses_match_found = pretrained_glasses_prediction == 1
-            # gloves.
-            pretrained_gloves_confidence, pretrained_gloves_prediction = predict_accessory(gloves_img_inputed, pretrained_gloves_model)
-            pretrained_gloves_match_found = pretrained_gloves_prediction == 1
-            # handbags.
-            pretrained_handbags_confidence, pretrained_handbags_prediction = predict_accessory(handbags_img_inputed, pretrained_handbags_model)
-            pretrained_handbags_match_found = pretrained_handbags_prediction == 1
-            # hats.
-            pretrained_hats_confidence, pretrained_hats_prediction = predict_accessory(hats_img_inputed, pretrained_hats_model)
-            pretrained_hats_match_found = pretrained_hats_prediction == 1
-            # rings.
-            pretrained_rings_confidence, pretrained_rings_prediction = predict_accessory(rings_img_inputed, pretrained_rings_model)
-            pretrained_rings_match_found = pretrained_rings_prediction == 1
-            # shoes.
-            pretrained_shoes_confidence, pretrained_shoes_prediction = predict_accessory(shoes_img_inputed, pretrained_shoes_model)
-            pretrained_shoes_match_found = pretrained_shoes_prediction == 1
-            # socks.
-            pretrained_socks_confidence, pretrained_socks_prediction = predict_accessory(socks_img_inputed, pretrained_socks_model)
-            pretrained_socks_match_found = pretrained_socks_prediction == 1
-            # watches.
-            pretrained_watches_confidence, pretrained_watches_prediction = predict_accessory(watches_img_inputed, pretrained_watches_model)
-            pretrained_watches_match_found = pretrained_watches_prediction == 1
+            # fidign matchews for each accessory and for each outfit.
+            predictions = {}
+            for file_type, img in images.items():
+                if file_type != 'outfit':
+                    predictions[file_type] = predict_accessory(img, pretrained_model)
+                else:
+                    predictions[file_type] = predict_outfit(img, pretrained_model)
             
-            # finding any match for the outfit.
-            pretrained_outfit_confidence, pretrained_outfit_prediction = predict_outfit(outfit_img_inputed, pretrained_outfit_model)
-            pretrained_outfit_match_found = pretrained_outfit_prediction == 1
-
-
-            # extracting colors from the images.
-            extract_colors_from_belts = extract_main_colors(belts_img_inputed)
-            extract_colors_from_chains = extract_main_colors(chains_img_inputed)
-            extract_colors_from_glasses = extract_main_colors(glasses_img_inputed)
-            extract_colors_from_gloves = extract_main_colors(gloves_img_inputed)
-            extract_colors_from_handbags = extract_main_colors(handbags_img_inputed)
-            extract_colors_from_hats = extract_main_colors(hats_img_inputed)
-            extract_colors_from_rings = extract_main_colors(rings_img_inputed)
-            extract_colors_from_shoes = extract_main_colors(shoes_img_inputed)
-            extract_colors_from_socks = extract_main_colors(socks_img_inputed)
-            extract_colors_from_watches = extract_main_colors(watches_img_inputed)
+            color_match = {}
+            outfit_colors = extract_main_colors(images['outfit'])
+            for file_type, img in images.items():
+                if file_type != 'outfit':
+                    accessory_colors = extract_main_colors(img)
+                    color_matches[file_type] = matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors)
             
-            extract_colors_from_outfit = extract_main_colors(outfit_img_inputed)
-            
-            # matching thew colors between accessory and outfit.
-            belts_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_belts, extract_colors_from_outfit)
-            chains_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_chains, extract_colors_from_outfit)
-            glasses_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_glasses, extract_colors_from_outfit)
-            gloves_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_gloves, extract_colors_from_outfit)
-            handbags_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_handbags, extract_colors_from_outfit)
-            hats_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_hats, extract_colors_from_outfit)
-            rings_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_rings, extract_colors_from_outfit)
-            shoes_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_shoes, extract_colors_from_outfit)
-            socks_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_socks, extract_colors_from_outfit)
-            watches_color_match_found = matching_colors_between_outfits_and_accessories(extract_colors_from_watches, extract_colors_from_outfit)
-
 
             # sending predictions.
-            return jsonify({
+            results = {
 
      #           "match found message": "Match Found!" 
      #           if (accessory_match_found 
@@ -285,50 +192,21 @@ def upload_file():
      #               and color_match_found) 
      #           else "No Match Found!"
 
-     #           "accessory match found": accessory_match_found,
-     #           "accessory confidence": accessory_confidence, 
-     #           "accessory prediction": accessory_prediction,
+     #           "accessory match found": {},
+     #           "accessory confidence": {}, 
+     #           "accessory prediction": {},
                 
      #           "outfit match found": outfit_match_found,
      #           "outfit confidence": outfit_confidence, 
      #           "outfit prediction": outfit_prediction,
                 
-                "pretrained accessory match found": bool(pretrained_belts_match_found,
-                                                         pretrained_chains_match_found,
-                                                         pretrained_glasses_match_found,
-                                                         pretrained_gloves_match_found,
-                                                         pretrained_handbags_match_found,
-                                                         pretrained_hats_match_found,
-                                                         pretrained_rings_match_found,
-                                                         pretrained_shoes_match_found,
-                                                         pretrained_socks_match_found,
-                                                         pretrained_watches_match_found),
+                "pretrained accessory prediction": {},
+                "pretrained accessory confidence": {},
+                "pretrained accessory match found": {},
                 
-                "pretrained accessory confidence": float(pretrained_belts_confidence,
-                                                         pretrained_chains_confidence,
-                                                         pretrained_glasses_confidence,
-                                                         pretrained_gloves_confidence,
-                                                         pretrained_handbags_confidence,
-                                                         pretrained_hats_confidence,
-                                                         pretrained_rings_confidence,
-                                                         pretrained_shoes_confidence,
-                                                         pretrained_socks_confidence,
-                                                         pretrained_watches_confidence),
-                
-                "pretrained accessory prediction": int(pretrained_belts_prediction,
-                                                         pretrained_chains_prediction,
-                                                         pretrained_glasses_prediction,
-                                                         pretrained_gloves_prediction,
-                                                         pretrained_handbags_prediction,
-                                                         pretrained_hats_prediction,
-                                                         pretrained_rings_prediction,
-                                                         pretrained_shoes_prediction,
-                                                         pretrained_socks_prediction,
-                                                         pretrained_watches_prediction),  
-                
-                "pretrained outfit match found": bool(pretrained_outfit_match_found),
+                "pretrained outfit prediction": bool(pretrained_outfit_match_found),
                 "pretrained outfit confidence": float(pretrained_outfit_confidence),
-                "pretrained outfit prediction": int(pretrained_outfit_prediction),        
+                "pretrained outfit match found": int(pretrained_outfit_prediction),
                 
                 "pretrained match found message": "Pretrained Match Found!" 
                 if (pretrained_belts_match_found or pretrained_chains_match_found
@@ -347,18 +225,28 @@ def upload_file():
                     or rings_color_match_found or shoes_color_match_found
                     or socks_color_match_found or watches_color_match_found) 
                 else "No Color Match Found!"
-            })
+            }
+            
+            for file_type, prediction in predictions.items():
+                if file_type != 'outfit':
+                    results["pretrained accessory prediction"][file_type] = prediction
+                    results["pretrained accessory confidence"][file_type] = prediction
+                    results["pretrained accessory match found"][file_type] = prediction
+            
+            return jsonify(results)
 
         except Exception as e:
             print(f"Error in Image Processing: {e}")
+            logging.error(f"Error: {e}")
             return jsonify({"error": "Error in Image Processing."}), 500
 
     except Exception as e:
         print(f"Error in File Uploading: {e}")
+        logging.error(f"Error: {e}")
         return jsonify({"error": "Error File Uploading."}), 500
 
 
 if __name__ == "__main__":
-    feature.run(debug = True) # disable debug to 'False' in security of sensitive data or inforamtion.
+    feature.run(debug = False) # disable debug to 'False' in security of sensitive data or inforamtion.
 
 

@@ -1,3 +1,4 @@
+import logging
 import cv2 as c
 import numpy as np
 from dotenv import load_dotenv # type: ignore
@@ -42,6 +43,7 @@ def load_model_via_pretrained_CNN():
    
     except Exception as e:
         print(f"Error in loading model: {e}")
+        logging.error(f"Error: {e}")
         raise
     
 
@@ -62,6 +64,7 @@ def preprocess_image(image):
     
     except Exception as e:
         print(f"Error in Image Processing: {e}")
+        logging.error(f"Error: {e}")
         raise ValueError("Error in Image Processing.")
 
 
@@ -79,6 +82,7 @@ def predict_accessory(image, model):
     
     except Exception as e:
         print(f"Error in Predicting Accessory Image: {e}")
+        logging.error(f"Error: {e}")
         raise ValueError("Error in Predicting Accessory Image.")
 
 
@@ -90,22 +94,30 @@ def predict_outfit(image, model):
     
     except Exception as e:
         print(f"Error in Predicting Outfit Image: {e}")
+        logging.error(f"Error: {e}")
         raise ValueError("Error in Predicting Outfit Image.")
     
 
 def extract_main_colors(image, k = 3):
-    
-    # accept the image with colors.
-    img_col = c.cvtColor(image, c.COLOR_BGR2RGB)
-    # reshape image into 2D array of pixels.
-    pixels = img_col.reshape(-1, 3)
-    # KMeans clustering for the dominant colors.
-    kMeans = KMeans(n_clusters=k)
-    kMeans.fit(pixels)
-    # compiling all the data of the pixels.
-    extract_dominant_colors = kMeans.cluster_centers_
-    
-    return extract_dominant_colors
+    # validating color extractions.
+    try:
+        # accept the image with colors.
+        img_col = c.cvtColor(image, c.COLOR_BGR2RGB)
+        # reshape image into 2D array of pixels.
+        pixels = img_col.reshape(-1, 3)
+        # KMeans clustering for the dominant colors.
+        kMeans = KMeans(n_clusters=k)
+        kMeans.fit(pixels)
+        # compiling all the data of the pixels.
+        extract_dominant_colors = kMeans.cluster_centers_
+        
+        return extract_dominant_colors
+
+    except Exception as e:
+        print(f"Error in Matching Outfits with Accessories: {e}")
+        logging.error(f"Error: {e}")
+        raise ValueError("Error in Matching Outfits with Accessories.")
+
 
 
 def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
@@ -122,6 +134,7 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
     
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
+        logging.error(f"Error: {e}")
         raise ValueError("Error in Matching Outfits with Accessories.")
 
     
