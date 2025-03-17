@@ -117,7 +117,10 @@ def upload_file():
         }
         
         
-        
+        # if file names are null, and if files are not allowed.
+        for file_type in all_accessory_and_outfit_files:
+            if file_type not in all_accessory_and_outfit_files:
+                return jsonify({"error": f"No File Part for {file_type}."}), 400
         
         
         # if file names are null, and if files are not allowed.
@@ -129,49 +132,23 @@ def upload_file():
 
 
         file_paths = {}
-        for file_type, file in files.items():
+        for file_type, file in all_accessory_and_outfit_files.items():
             filename = secure_filename(file.filename)
-            folder = os.path.join(folder, filename)
+            folder = os.path.join(folder, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
 
 
         # saving and securing filenames.
-        belts_filename = secure_filename(belts_file.filename)
-        chains_filename = secure_filename(chains_file.filename)
-        glasses_filename = secure_filename(glasses_file.filename)
-        gloves_filename = secure_filename(gloves_file.filename)
-        handbags_filename = secure_filename(handbags_file.filename)
-        hats_filename = secure_filename(hats_file.filename)
-        rings_filename = secure_filename(rings_file.filename)
-        shoes_filename = secure_filename(shoes_file.filename)
-        socks_filename = secure_filename(socks_file.filename)
+        
         watches_filename = secure_filename(watches_file.filename)
         
         outfit_filename = secure_filename(outfit_file.filename)
 
-
-        belts_filepath = os.path.join(BELT_FOLDER, belts_filename)
-        chains_filepath = os.path.join(CHAINS_FOLDER, chains_filename)
-        glasses_filepath = os.path.join(GLASSES_FOLDER, glasses_filename)
-        gloves_filepath = os.path.join(GLOVES_FOLDER, gloves_filename)
-        handbags_filepath = os.path.join(HANDBAG_FOLDER, handbags_filename)
-        hats_filepath = os.path.join(HAT_FOLDER, hats_filename)
-        rings_filepath = os.path.join(RING_FOLDER, rings_filename)
-        shoes_filepath = os.path.join(SHOE_FOLDER, shoes_filename)
-        socks_filepath = os.path.join(SOCK_FOLDER, socks_filename)
+    
         watches_filepath = os.path.join(WATCH_FOLDER, watches_filename)
         
         outfit_filepath = os.path.join(OUTFIT_FOLDER, outfit_filename)
         
         
-        belts_file.save(belts_filepath)
-        chains_file.save(chains_filepath)
-        glasses_file.save(glasses_filepath)
-        gloves_file.save(gloves_filepath)
-        handbags_file.save(handbags_filepath)
-        hats_file.save(hats_filepath)
-        rings_file.save(rings_filepath)
-        shoes_file.save(shoes_filepath)
-        socks_file.save(socks_filepath)
         watches_file.save(watches_filepath)
                
         outfit_file.save(outfit_filepath)
