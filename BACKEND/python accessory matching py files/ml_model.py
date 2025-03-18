@@ -26,7 +26,7 @@ def load_model_via_pretrained_CNN():
     except Exception as e:
         print(f"Error in loading model: {e}")
         logging.error(f"Error: {e}")
-        raise
+        raise ValueError("Error in loading model.")
     
 
 # pre-processing image through different formatting.
