@@ -26,6 +26,10 @@ class AccessoryMatcher extends StatefulWidget {
     _AccessoryMatcherState createState() => _AccessoryMatcherState();
 }
 
+class _AccessoryMatcherState extends State<AccessoryMatcher> {
+    ImagePicker _picker = ImagePicker();
+}
+
 
 
 
