@@ -28,6 +28,44 @@ class AccessoryMatcher extends StatefulWidget {
 
 class _AccessoryMatcherState extends State<AccessoryMatcher> {
     ImagePicker _picker = ImagePicker();
+    Map<String, XFile?> _images = {
+        'belts': null,
+        'chains': null,
+        'glasses': null,
+        'gloves': null,
+        'handbags': null,
+        'hats': null,
+        'rings': null,
+        'shoes': null,
+        'socks': null,
+        'watches': null,
+
+        'outfit': null,
+    };
+
+    Map<String, dynamic> _results = {};
+
+    bool _isLoading = false;
+
+    Future<void> _pickImage(String type) async {
+        XFile? image = await _picker.pickImage(source: ImageResource.gallery);
+        if (image != null) {
+            setState(() {
+                _images[type] = image;
+            });
+        };
+    }
+
+    Future<void> _uploadImages() async {
+        setState(() {
+            _isLoading = true;
+            _results = {};
+        });
+
+        var uri = Uri.parse('uri');
+
+        var request = http.MultipartRequest('POST', uri);
+    }
 }
 
 
