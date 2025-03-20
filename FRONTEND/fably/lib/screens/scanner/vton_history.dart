@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fably/screens/scanner/individual_try_on.dart';
 import 'package:fably/utils/requests.dart';
 import 'package:flutter/material.dart';
 
@@ -106,6 +107,17 @@ class _VtonHistoryPageState extends State<VtonHistoryPage> {
                       String vtonPhoto = vtonHistory[index]['imageUrl'];
 
                       // Navigator.push here.
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TryOnPage(
+                            clothingImageUrl: clothPhoto,
+                            personImageUrl: personImageUrl,
+                            tryOnImageUrl: vtonPhoto,
+                            productName: itemName,
+                          ),
+                        ),
+                      );
 
                     }
                   },
