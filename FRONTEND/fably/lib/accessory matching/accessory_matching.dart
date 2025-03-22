@@ -101,13 +101,13 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             });
             
             _accessoryColors.forEach((key, value) {
-                formData.fields.add(MapEntry('accessory_${key}_color', value))
+                formData.fields.add(MapEntry('accessory_${key}_color', value));
             });
             _outfitTypes.forEach((key, value) {
-                formData.fields.add(MapEntry('outfit_${key}_type', value))
+                formData.fields.add(MapEntry('outfit_${key}_type', value));
             });
             _outfitColors.forEach((key, value) {
-                formData.fields.add(MapEntry('outfit_${key}_color', value))
+                formData.fields.add(MapEntry('outfit_${key}_color', value));
             });
 
             var response = await dio.Dio().post('Fably/BACKEND/python accessory matching py files/static/images', data: formData);
@@ -142,17 +142,69 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                             for (var type in _accessoryTypes) {
                                 Column(
                                     children: [
+                                        Text('Choose ${type.toUpperCase()} Color'),
                                         DropdownButtonFormField<String>(
                                             value: _accessoryColors[type],
                                             items: _colorsList.map((String value) {
-                                                return DropdownMenuItem(
-                                                    child: child
-                                                    )
+                                                return DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(value),
+                                                );
                                             }).toList(), 
-                                            onChanged: onChanged
+                                            onChanged: (String? newValue) {
+                                                setState(() {
+                                                    _accessoryColors[type] = newValue!;
+                                                });
+                                            },
+                                            decoration: InputDecoration(labelText: "Choose ${type.toUpperCase()} Color"),
                                         ),
+                                        SizedBox(height: 10),
+                                        ElevatedButton(
+                                            onPressed: () => _pickImage(type), 
+                                            child: Text('Upload ${type.toUpperCase()} Image'),
+                                        ),
+                                        if (_imageFiles[type] != null)
+                                            Image.file(File(_imageFiles[type]!.path), height: 100,),
+                                        SizedBox(height: 20),
                                     ],
                                 ),
+                                Text('Outfits',
+                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                                for (var type in _ouftitCatgories) {
+                                    Column(
+                                        children: [
+                                            DropdownButtonFormField(
+                                                value: _outfitTypes[type],
+                                                items: items: _ouftitCatgories.map((String value) {
+                                                    return DropdownMenuItem<String>(
+                                                        value: value,
+                                                        child: Text(value),
+                                                    );
+                                                }).toList(), 
+                                                onChanged: (String? newValue) {
+                                                    setState(() {
+                                                        _outfitTypes[type] = newValue!;
+                                                    });
+                                                },
+                                                decoration: InputDecoration(labelText: "Choose Outfit Style"),
+                                            ),
+                                            SizedBox(height: 10),
+                                            ElevatedButton(
+                                                onPressed: () => _pickImage(type), 
+                                                child: Text('Upload ${type.toUpperCase()} Image'),
+                                            ),
+                                            if (_imageFiles[type] != null)
+                                                Image.file(File(_imageFiles[type]!.path), height: 100,),
+                                            SizedBox(height: 20),
+                                        ],
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: _uploadImages,
+                                        child: Text('match Images'),
+                                        if (_results.isNotEmpty)
+                                            Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0),),
+                                    ),
+                                }
                             },
                         ],
                     ),
