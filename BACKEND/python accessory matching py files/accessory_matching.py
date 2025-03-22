@@ -25,7 +25,7 @@ from ml_model import (
 load_dotenv()
 
 
-# uploading files from following file paths.
+# uploading files from following accessories folder paths.
 UPLOAD_ACCESSORY_FOLDER = "static/images/accessories/"
 BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "belts")
 CHAINS_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "chains")
@@ -38,8 +38,21 @@ SHOE_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "shoes")
 SOCK_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "socks")
 WATCH_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "watches")
 
-UPLOAD_FOLDER = "static/images/"
-OUTFIT_FOLDER = os.path.join(UPLOAD_FOLDER, "outfits")
+# uploading files from following outfit folder paths.
+UPLOAD_OUTFIT_FOLDER = "static/images/outfits"
+ACTIVEWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "activewear")
+BOHEMIAN_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "bohemian")
+CASUAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "casual")
+EVENINGWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "eveningwear")
+FORMAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "formal")
+INDIE_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "indie")
+KNITWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "knitwear")
+LOUNGEWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "loungewear")
+RETRO_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "retro")
+ROMANTIC_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "romantic")
+SMARTCASUAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "smartcasual")
+SPORTY_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "sporty")
+VINTAGE_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "vintage")
 
 # allowed file extensions. 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -51,14 +64,14 @@ MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 feature = Flask(__name__)
 
 # uploading the folders.
-feature.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+feature.config["UPLOAD_OUTFIT_FOLDER"] = UPLOAD_OUTFIT_FOLDER
 feature.config["UPLOAD_ACCESSORY_FOLDER"] = UPLOAD_ACCESSORY_FOLDER
 
 # file size limit for extra security for the program.
 feature.config["MAX_CONTENT_LENGTH"] = MAX_CONTENT_LENGTH
 
 
-# to ensure the accessory and outfit folders exist.
+# to ensure the accessory folders exist.
 os.makedirs(BELT_FOLDER, exist_ok=True)
 os.makedirs(CHAINS_FOLDER, exist_ok=True)
 os.makedirs(GLASSES_FOLDER, exist_ok=True)
@@ -70,8 +83,20 @@ os.makedirs(SHOE_FOLDER, exist_ok=True)
 os.makedirs(SOCK_FOLDER, exist_ok=True)
 os.makedirs(WATCH_FOLDER, exist_ok=True)
 
-os.makedirs(OUTFIT_FOLDER, exist_ok=True)
-
+# to ensure the outfit folders exist.
+os.makedirs(ACTIVEWEAR_FOLDER, exist_ok=True)
+os.makedirs(BOHEMIAN_FOLDER, exist_ok=True)
+os.makedirs(CASUAL_FOLDER, exist_ok=True)
+os.makedirs(EVENINGWEAR_FOLDER, exist_ok=True)
+os.makedirs(FORMAL_FOLDER, exist_ok=True)
+os.makedirs(INDIE_FOLDER, exist_ok=True)
+os.makedirs(KNITWEAR_FOLDER, exist_ok=True)
+os.makedirs(LOUNGEWEAR_FOLDER, exist_ok=True)
+os.makedirs(RETRO_FOLDER, exist_ok=True)
+os.makedirs(ROMANTIC_FOLDER, exist_ok=True)
+os.makedirs(SMARTCASUAL_FOLDER, exist_ok=True)
+os.makedirs(SPORTY_FOLDER, exist_ok=True)
+os.makedirs(VINTAGE_FOLDER, exist_ok=True)
 
 logging.basicConfig(level=logging.INFO)
 
@@ -90,7 +115,7 @@ def allowed_file(filename):
 # route for home page.
 @feature.route('/')
 def home():
-    return render_template("Index.html")
+    return render_template("accessory_matching.dart")
 
 
 # uploading the file via posting the data.
@@ -111,7 +136,19 @@ def upload_file():
             'socks': request.files['socks'] if "" in request.files else None,
             'watches': request.files['watches'] if "" in request.files else None,
             
-            'outfit': request.files['outfit'] if "" in request.files else None
+            'activewear': request.files['activewear'] if "" in request.files else None,
+            'bohemian': request.files['bohemian'] if "" in request.files else None,
+            'casual': request.files['casual'] if "" in request.files else None,
+            'eveningwear': request.files['eveningwear'] if "" in request.files else None,
+            'formal': request.files['formal'] if "" in request.files else None,
+            'indie': request.files['indie'] if "" in request.files else None,
+            'knitwear': request.files['knitwear'] if "" in request.files else None,
+            'loungewear': request.files['loungewear'] if "" in request.files else None,
+            'retro': request.files['retro'] if "" in request.files else None,
+            'romantic': request.files['romantic'] if "" in request.files else None,
+            'smartcasual': request.files['smartcasual'] if "" in request.files else None,
+            'sporty': request.files['sporty'] if "" in request.files else None,
+            'vintage': request.files['vintage'] if "" in request.files else None
         }
         
         
@@ -120,7 +157,11 @@ def upload_file():
             if file_type not in all_accessory_and_outfit_files:
                 return jsonify({"error": f"No File Part for {file_type}."}), 400
         
-        required_files = {file_type: request.files[file_type] for file_type in all_accessory_and_outfit_files}
+        required_files = {
+            file_type: request.files[file_type] 
+            for file_type in all_accessory_and_outfit_files
+            if request.files[file_type] is not None
+        }
         
         # if file names are null, and if files are not allowed.
         for file_type, file in required_files.items():
@@ -130,14 +171,24 @@ def upload_file():
                 return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
             if len(file.read()) > MAX_CONTENT_LENGTH:
                 return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
-
+            file.seek(0)
 
         try:
             # saving and securing filenames.
             file_paths = {}
             for file_type, file in required_files.items():
                 filename = secure_filename(file.filename)
-                given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type) if file_type != 'outfit' else OUTFIT_FOLDER
+                if file_type in ['activewear', 'bohemian',
+                                    'casual', 'eveningwear',
+                                    'formal', 'indie',
+                                    'knitwear', 'loungewear',
+                                    'retro', 'romantic',
+                                    'smartcasual', 'sporty',
+                                    'vintage']:
+                    given_folder = os.path.join(UPLOAD_OUTFIT_FOLDER, file_type)
+                else:
+                    given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type)
+                
                 filepath = os.path.join(given_folder, filename)
                 file.save(filepath)
                 file_paths[file_type] = filepath
@@ -157,19 +208,34 @@ def upload_file():
             # finding matches for each accessory and for each outfit.
             predictions = {}
             for file_type, img in images.items():
-                if file_type != 'outfit':
-                    predictions[file_type] = predict_accessory(img, pretrained_model)
-                else:
+                if file_type in ['activewear', 'bohemian',
+                                    'casual', 'eveningwear',
+                                    'formal', 'indie',
+                                    'knitwear', 'loungewear',
+                                    'retro', 'romantic',
+                                    'smartcasual', 'sporty',
+                                    'vintage']:
                     predictions[file_type] = predict_outfit(img, pretrained_model)
+                else:
+                    predictions[file_type] = predict_accessory(img, pretrained_model)
             
             # finding matches of colors between outfits and accessories.
             color_matches = {}
-            outfit_colors = extract_main_colors(images['outfit'])
-            for file_type, img in images.items():
-                if file_type != 'outfit':
-                    accessory_colors = extract_main_colors(img)
-                    color_matches[file_type] = matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors)
-            
+            outfit_file_type = next((ft for ft in images 
+                                     if ft in ['activewear', 'bohemian',
+                                               'casual', 'eveningwear',
+                                               'formal', 'indie',
+                                               'knitwear', 'loungewear',
+                                               'retro', 'romantic',
+                                               'smartcasual', 'sporty',
+                                               'vintage']), None)
+            if outfit_file_type:
+                outfit_colors = extract_main_colors(images[outfit_file_type])
+                for file_type, img in images.items():
+                    if file_type != 'outfit':
+                        accessory_colors = extract_main_colors(img)
+                        color_matches[file_type] = matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors)
+                
 
             # sending predictions.
             results = {
@@ -190,7 +256,13 @@ def upload_file():
             
             
             for file_type, prediction in predictions.items():
-                if file_type != 'outfit':
+                if file_type not in ['activewear', 'bohemian',
+                                               'casual', 'eveningwear',
+                                               'formal', 'indie',
+                                               'knitwear', 'loungewear',
+                                               'retro', 'romantic',
+                                               'smartcasual', 'sporty',
+                                               'vintage']:
                     results["pretrained accessory prediction"][file_type] = prediction[1]
                     results["pretrained accessory confidence"][file_type] = float(prediction[0])
                     results["pretrained accessory match found"][file_type] = prediction[1] == 1
@@ -209,7 +281,6 @@ def upload_file():
 
             if any_acc_match:
                 results["pretrained match found message"] = "Pretrained Match Found!"
-            
             
             return jsonify(results)
 
