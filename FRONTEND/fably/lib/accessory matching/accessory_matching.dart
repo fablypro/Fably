@@ -175,7 +175,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                         children: [
                                             DropdownButtonFormField(
                                                 value: _outfitTypes[type],
-                                                items: items: _ouftitCatgories.map((String value) {
+                                                items: _ouftitCatgories.map((String value) {
                                                     return DropdownMenuItem<String>(
                                                         value: value,
                                                         child: Text(value),
