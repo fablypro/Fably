@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:path/path.dart' as path;
+import 'package:mime/mime.dart';
 
 void main() {
     runApp(MyApp());
@@ -35,11 +34,11 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
 
     final ImagePicker _picker = ImagePicker();
     Map<String, XFile?> _imageFiles = {};
-    Map<String, XFile?> _colors = {};
-    Map<String, XFile?> _results = {};
+    Map<String, String> _accessoryColors = {};
+    Map<String, String> _outfitColors = {};
+    Map<String, String> _outfitTypes = {};
+    Map<String, dynamic> _results = {};
     bool _isLoading = false;
-    String? _selectedOutfitType;
-
 
     final List<String> _accessoryTypes = ['belts', 'chains',
                                     'glasses', 'gloves',
@@ -47,30 +46,41 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                     'rings', 'shoes',
                                     'socks', 'watches'];
 
-    final List<String> _ouftitTypes = ['activewear', 'bohemian',
+    final List<String> _ouftitCatgories = ['activewear', 'bohemian',
                                     'casual', 'eveningwear',
                                     'formal', 'indie',
                                     'knitwear', 'loungewear',
                                     'retro', 'romantic',
-                                    'smartcasual', 'sporty',
-                                    'vintage'];
+                                    'smartcasual', 'sporty', 'vintage'];
+
+    final List<String> _colorsList = ['Amber', 'Black', 'Blue', 'Emerald',
+                                    'Gold', 'Green', 'Grey', 'Indigo',       
+                                    'Jade', 'Lemon', 'Lilac', 'Lime',
+                                    'Midnight Blue', 'Mint Green', 'Navy Blue', 'Olive',
+                                    'Orange', 'Peach', 'Pink', 'Platinum',
+                                    'Plum', 'Purple', 'Red', 'Rose',
+                                    'Ruby', 'Sapphire', 'Scarlet', 'Silver',
+                                    'Turquoise', 'Ultramarine', 'Violet', 'White', 'Yellow', 'Zucchini'];
+    
 
     @override
     void initState() {
         super.initState();
+        for (var type in _accessoryTypes) {
+            _accessoryColors[type] = '';
+            _imageFiles[type] = null;
+        }
+        for (var type in _ouftitCatgories) {
+            _outfitColors[type] = '';
+            _outfitTypes[type] = '';
+        }
     }
 
-    Future<void> _pickImage(String accessoryType, String ouftitType) async {
+    Future<void> _pickImage(String type) async {
         XFile? image = await _picker.pickImage(source: ImageResource.gallery);
         if (image != null) {
             setState(() {
-                _imageFiles[accessoryType] = image;
-            });
-        };
-
-        if (image != null) {
-            setState(() {
-                _imageFiles[accessoryType] = image;
+                _imageFiles[type] = image;
             });
         };
     }
@@ -81,15 +91,29 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             _results = {};
         });
 
-        final var uri = Uri.parse('/upload');
-
         try {
-            var request = http.MultipartRequest('POST', uri);
+            var formData = dio.FormData();
 
-            _imageFiles.forEach((key, file) async {
-                if (file != null) {
-                    request.files.add(await http.MultipartFile.fromPath(key, file.path));
+            _imageFiles.forEach((key, value) async {
+                if (value != null) {
+                    formData.files.add(MapEntry(key, await dio.MultipartFile.fromFile(value.path)));
                 }
+            });
+            
+            _accessoryColors.forEach((key, value) {
+                formData.fields.add(MapEntry('accessory_${key}_color', value))
+            });
+            _outfitTypes.forEach((key, value) {
+                formData.fields.add(MapEntry('outfit_${key}_type', value))
+            });
+            _outfitColors.forEach((key, value) {
+                formData.fields.add(MapEntry('outfit_${key}_color', value))
+            });
+
+            var response = await dio.Dio().post('Fably/BACKEND/python accessory matching py files/static/images', data: formData);
+            setState(() {
+              _results = response.data;
+              _isLoading = true;
             });
         }
         catch (e) {
@@ -104,19 +128,36 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(title: Text('Accessory Matching')),
-            body: _isLoading
-                ? Center(child: CircularProgressIndicator())
-                : SingleChildScrollView(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
+            body: LoadingOverlay(
+                    isLoading: _isLoading, 
+                    child: SingleChildScrollView(
+                        padding: EdgeInsets.all(16.0),
+                        child: Column(
                         children: [
                             Text('Accessory Matching With Outfits',
-                            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
+                                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
                             SizedBox(height: 20),
-                            for ()
+                            Text('Accessories',
+                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            for (var type in _accessoryTypes) {
+                                Column(
+                                    children: [
+                                        DropdownButtonFormField<String>(
+                                            value: _accessoryColors[type],
+                                            items: _colorsList.map((String value) {
+                                                return DropdownMenuItem(
+                                                    child: child
+                                                    )
+                                            }).toList(), 
+                                            onChanged: onChanged
+                                        ),
+                                    ],
+                                ),
+                            },
                         ],
                     ),
                 ),
+            ),
         );
     }
 }
