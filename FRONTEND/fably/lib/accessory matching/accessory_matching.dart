@@ -32,12 +32,13 @@ class AccessoryMatcher extends StatefulWidget {
 }
 
 class _AccessoryMatcherState extends State<AccessoryMatcher> {
+
     final ImagePicker _picker = ImagePicker();
     Map<String, XFile?> _imageFiles = {};
     Map<String, XFile?> _colors = {};
     Map<String, XFile?> _results = {};
-
     bool _isLoading = false;
+    String? _selectedOutfitType;
 
 
     final List<String> _accessoryTypes = ['belts', 'chains',
@@ -57,13 +58,6 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     @override
     void initState() {
         super.initState();
-        for (var type in _accessoryTypes) {
-            _colors[type] = '';
-        }
-
-        for (var type in _ouftitTypes) {
-            _colors[type] = '';
-        }
     }
 
     Future<void> _pickImage(String accessoryType, String ouftitType) async {
@@ -87,10 +81,22 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             _results = {};
         });
 
-        final var uri = Uri.parse('uri');
+        final var uri = Uri.parse('/upload');
 
         try {
             var request = http.MultipartRequest('POST', uri);
+
+            _imageFiles.forEach((key, file) async {
+                if (file != null) {
+                    request.files.add(await http.MultipartFile.fromPath(key, file.path));
+                }
+            });
+        }
+        catch (e) {
+            setState(() {
+              _results = {'error': e.toString()};
+              _isLoading = false;
+            });
         }
     }
 

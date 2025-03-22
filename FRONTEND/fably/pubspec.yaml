@@ -31,6 +31,7 @@ dependencies:
   path_provider: ^2.1.5
   dio: ^5.8.0+1
   image: ^4.5.3
+  async: ^2.11.0
   #flutter_slidable: ^0.6.0
   #flutter_stripe: ^8.0.0
 
