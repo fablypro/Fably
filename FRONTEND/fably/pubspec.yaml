@@ -5,25 +5,20 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  #sdk: ^3.6.0
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"  # Updated for better compatibility
 
 dependencies:
   flutter:
     sdk: flutter
-  #firebase_auth: ^5.3.4
-  #firebase_core: ^3.9.0
   google_sign_in: ^5.2.1
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.2.2
   camera: ^0.10.5+9
-  image_picker: ^1.0.7
+  image_picker: ^1.1.2  # Removed duplicate entry
   http: ^1.1.0
   liquid_pull_to_refresh: ^3.0.0
   flutter_slidable: ^4.0.0
-  #flutter_slidable: ^0.6.0
-  #flutter_stripe: ^8.0.0
-
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
