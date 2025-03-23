@@ -38,6 +38,9 @@ import hmac
 from PIL import Image, ExifTags
 import threading
 import copy
+
+
+
 #import logging
 
 
@@ -153,6 +156,56 @@ def allowed_file(filename):
 @app.route('/')
 def home():
     return render_template('index.html')
+
+def find_best_match(outfit_features, category=None):
+    query = {} if category is None else {"category": category.lower()}
+    accessories = list(accessory_collection.find(query))
+
+    if not accessories:
+        return []
+
+    acc_features_list = [np.frombuffer(acc["features"], dtype=np.float32) for acc in accessories]
+    acc_features_matrix = np.vstack(acc_features_list)
+
+    similarities = cosine_similarity([outfit_features], acc_features_matrix)[0]
+
+    best_matches = sorted(
+        [(acc["name"], acc["image"], acc["category"], sim) for acc, sim in zip(accessories, similarities)],
+        key=lambda x: x[3],
+        reverse=True
+    )
+
+    return best_matches[:5]  # Return top 5 matches
+
+
+@app.route('/upload', methods=['POST'])
+def upload_and_match():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file provided"}), 400
+
+    file = request.files['file']
+    if not allowed_file(file.filename):
+        return jsonify({"error": "Invalid file type"}), 400
+
+    category = request.form.get("category")
+    filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(filepath)
+
+    try:
+        outfit_features = extract_features(filepath)
+        best_matches = find_best_match(outfit_features, category)
+
+        return jsonify({
+            "recommended_accessories": [
+                {"name": acc[0], "image": acc[1], "category": acc[2], "match_score": acc[3]}
+                for acc in best_matches
+            ]
+        })
+    except Exception as e:
+        return jsonify({"error": f"Feature extraction failed: {str(e)}"}), 500
+
+
+
 
 # ---------------- CHECKOUT FUNCTIONALITY ----------------
 
