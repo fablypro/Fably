@@ -207,6 +207,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                     );
                                 }
                             },
+                        ),
                         ],
                     ),
                 ),
