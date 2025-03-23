@@ -1,7 +1,15 @@
 import base64
 from io import BytesIO
 from pathlib import Path
-
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import numpy as np
+import tensorflow as tf
+import os
+import bson  # Binary storage for MongoDB
+from sklearn.metrics.pairwise import cosine_similarity
+from db import accessory_collection  # Import MongoDB connection
+from feature_extraction import extract_features
 import stripe
 import cloudinary
 import cloudinary.uploader
@@ -96,6 +104,10 @@ login_manager.login_view = 'login'
 def load_user(user_id):
     seller_data = sellers_collection.find_one({'_id': ObjectId(user_id)})
     return Seller(seller_data) if seller_data else None
+
+
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Allowed file types for uploads
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
