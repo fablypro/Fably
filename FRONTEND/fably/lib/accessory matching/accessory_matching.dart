@@ -77,7 +77,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     }
 
     Future<void> _pickImage(String type) async {
-        XFile? image = await _picker.pickImage(source: ImageResource.gallery);
+        XFile? image = await _picker.pickImage(source: ImageSource.gallery);
         if (image != null) {
             setState(() {
                 _imageFiles[type] = image;
@@ -200,14 +200,16 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                     );
                                     ElevatedButton(
                                         onPressed: _uploadImages,
-                                        child: Text('Match Images'),
-                                        if (_results.isNotEmpty) {
-                                            Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0))
-                                        },
-                                    );
-                                }
+                                        child: Column(
+                                            children: [
+                                                Text('Match Images'),
+                                                if (_results.isNotEmpty) Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0)),
+                                            ],
+                                        ),
+                                );
+                            };
                             },
-                        ),
+                            ),
                         ],
                     ),
                 ),
