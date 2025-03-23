@@ -7,18 +7,14 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:mime/mime.dart';
 
-void main() {
-    runApp(AccessoryMatchApp());
-}
+void main() { runApp(AccessoryMatchApp()); }
 
 class AccessoryMatchApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
             title: 'Accessory Matcher',
-            theme: ThemeData(
-                primarySwatch: Colors.blue,
-            ),
+            theme: ThemeData( primarySwatch: Colors.blue, ),
             home: AccessoryMatcher(),
         );
     }
@@ -45,7 +41,6 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
 
     final List<String> _colorsList = ['Amber', 'Black', 'Blue', 'Emerald', 'Gold', 'Green', 'Grey', 'Indigo', 'Jade', 'Lemon', 'Lilac', 'Lime', 'Midnight Blue', 'Mint Green', 'Navy Blue', 'Olive', 'Orange', 'Peach', 'Pink', 'Platinum', 'Plum', 'Purple', 'Red', 'Rose', 'Ruby', 'Sapphire', 'Scarlet', 'Silver', 'Turquoise', 'Ultramarine', 'Violet', 'White', 'Yellow', 'Zucchini'];
     
-
     @override
     void initState() {
         super.initState();
@@ -53,6 +48,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             _accessoryColors[type] = '';
             _imageFiles[type] = null;
         }
+
         for (var type in _ouftitCatgories) {
             _outfitColors[type] = '';
             _outfitTypes[type] = '';
@@ -70,7 +66,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
 
     Future<void> _uploadImages() async {
         setState(() {
-            _isLoading = true;
+            _isLoading = false;
             _results = {};
         });
 
@@ -142,47 +138,47 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                         ),
                                         if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100),
                                         SizedBox(height: 20),
+                                    ],
+                                );
+                                Text('Outfits', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500));
+                                for (var type in _ouftitCatgories) {
+                                    Column(
+                                        children: [
+                                            DropdownButtonFormField(
+                                                value: _outfitTypes[type],
+                                                items: _ouftitCatgories.map((String value) {
+                                                    return DropdownMenuItem<String>(
+                                                        value: value,
+                                                        child: Text(value),
+                                                    );
+                                                }).toList(), 
+                                                onChanged: (String? newValue) {
+                                                    setState(() {
+                                                        _outfitTypes[type] = newValue!;
+                                                    });
+                                                },
+                                                decoration: InputDecoration(labelText: "Choose Outfit Style"),
+                                            ),
+                                            SizedBox(height: 10),
+                                            ElevatedButton(
+                                                onPressed: () => _pickImage(type), 
+                                                child: Text('Upload ${type.toUpperCase()} Image'),
+                                            ),
+                                            if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100),
+                                            SizedBox(height: 20),
                                         ],
                                     );
-                                    Text('Outfits', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500));
-                                    for (var type in _ouftitCatgories) {
-                                        Column(
+                                    ElevatedButton(
+                                        onPressed: _uploadImages,
+                                        child: Column(
                                             children: [
-                                                DropdownButtonFormField(
-                                                    value: _outfitTypes[type],
-                                                    items: _ouftitCatgories.map((String value) {
-                                                        return DropdownMenuItem<String>(
-                                                            value: value,
-                                                            child: Text(value),
-                                                        );
-                                                    }).toList(), 
-                                                    onChanged: (String? newValue) {
-                                                        setState(() {
-                                                            _outfitTypes[type] = newValue!;
-                                                        });
-                                                    },
-                                                    decoration: InputDecoration(labelText: "Choose Outfit Style"),
-                                                ),
-                                                SizedBox(height: 10),
-                                                ElevatedButton(
-                                                    onPressed: () => _pickImage(type), 
-                                                    child: Text('Upload ${type.toUpperCase()} Image'),
-                                                ),
-                                                if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100),
-                                                SizedBox(height: 20),
+                                                Text('Match Images'),
+                                                if (_results.isNotEmpty) Text(jsonEncode(_results), style: TextStyle(fontSize: 16.0)),
                                             ],
-                                        );
-                                        ElevatedButton(
-                                            onPressed: _uploadImages,
-                                            child: Column(
-                                                children: [
-                                                    Text('Match Images'),
-                                                    if (_results.isNotEmpty) Text(jsonEncode(_results), style: TextStyle(fontSize: 16.0)),
-                                                ],
-                                            ),
-                                        );
-                                    }
-                                },
+                                        ),
+                                    );
+                                }
+                            },
                             ),
                         ],
                     ),
