@@ -244,9 +244,9 @@ def upload_file():
                 "pretrained accessory confidence": {},
                 "pretrained accessory match found": {},
                 
-                "pretrained outfit prediction": predictions['outfit'][1],
-                "pretrained outfit confidence": float(predictions['outfit'][0]),
-                "pretrained outfit match found": int(predictions['outfit'][1] == 1),
+                "pretrained outfit prediction": predictions.get(outfit_file_type, [0, 0])[1] if outfit_file_type else 0,
+                "pretrained outfit confidence": float(predictions.get(outfit_file_type, [0, 0])[0]) if outfit_file_type else 0.0,
+                "pretrained outfit match found": int(predictions.get(outfit_file_type, [0, 0])[1] == 1) if outfit_file_type else 0,
                 
                 "pretrained match found message": "No Pretrained Match Found!",
                 
@@ -276,6 +276,7 @@ def upload_file():
                 if acc_match:
                     any_acc_match = True
                     break
+                
             if results["pretrained outfit match found"] == 1:
                 any_acc_match = True
 

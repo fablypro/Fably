@@ -16,18 +16,29 @@ from sklearn.cluster import KMeans # type: ignore
 load_dotenv()
 
 
-# function for pretraining CNN (i.e. ResNet50).
-def load_model_via_pretrained_CNN():
+# laod model globally.
+try:
     try:
         model = ResNet50(weights='imagenet')
         print("Pretrained ResNet50 Model loaded successfully!")
-        return model
-   
+        
     except Exception as e:
         print(f"Error in loading model: {e}")
         logging.error(f"Error: {e}")
+        model = None
+        
+except Exception as e:
+        print(f"Unknown Error: {e}")
+        logging.error(f"Error: {e}")
+        raise ValueError("Unknown Error occured.")
+
+
+# function for pretraining CNN (i.e. ResNet50).
+def load_model_via_pretrained_CNN():
+    if model is None:
         raise ValueError("Error in loading model.")
-    
+    return model
+
 
 # pre-processing image through different formatting.
 def preprocess_image(image):
@@ -62,9 +73,9 @@ def predict_accessory(image, model, confidence_threshold=0.5):
         
         # binary classification with 1s or 0s for match or not match respectively.
         if confidence >= confidence_threshold:
-            return 1, confidence # Match
+            return predicted_class, 1, confidence # Match
         else:
-            return 0, confidence # No Match
+            return predicted_class, 0, confidence # No Match
     
     except Exception as e:
         print(f"Error in Predicting Accessory Image: {e}")

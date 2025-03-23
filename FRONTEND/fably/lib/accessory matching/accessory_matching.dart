@@ -163,8 +163,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                             onPressed: () => _pickImage(type), 
                                             child: Text('Upload ${type.toUpperCase()} Image'),
                                         ),
-                                        if (_imageFiles[type] != null)
-                                            Image.file(File(_imageFiles[type]!.path), height: 100,),
+                                        if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100,),
                                         SizedBox(height: 20),
                                     ],
                                 ),
@@ -193,16 +192,14 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                                 onPressed: () => _pickImage(type), 
                                                 child: Text('Upload ${type.toUpperCase()} Image'),
                                             ),
-                                            if (_imageFiles[type] != null)
-                                                Image.file(File(_imageFiles[type]!.path), height: 100,),
+                                            if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100,),
                                             SizedBox(height: 20),
                                         ],
                                     ),
                                     ElevatedButton(
                                         onPressed: _uploadImages,
                                         child: Text('match Images'),
-                                        if (_results.isNotEmpty)
-                                            Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0),),
+                                        if (_results.isNotEmpty) Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0),),
                                     ),
                                 }
                             },
