@@ -200,12 +200,14 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                     );
                                     ElevatedButton(
                                         onPressed: _uploadImages,
-                                        child: Text('match Images');
-                                        if (_results.isNotEmpty) Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0)),
+                                        child: Text('Match Images'),
+                                        if (_results.isNotEmpty) {
+                                            Text(jsonEncode(_results), style: TextStyle(fontStyle: 16.0))
+                                        },
                                     );
                                 }
                             },
-                        ];
+                        ],
                     ),
                 ),
             ),
