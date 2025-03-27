@@ -1,3 +1,4 @@
+from flask import jsonify # type: ignore
 import logging
 import cv2 as c
 import numpy as np
@@ -23,11 +24,19 @@ try:
         model = ResNet50(weights='imagenet')
         print("Pretrained ResNet50 Model loaded successfully!")
         
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in loading model: {e}")
         logging.error(f"Error: {e}")
         model = None
         
+except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            jsonify({"error": str(e)}), 500
 except Exception as e:
         print(f"Unknown Error: {e}")
         logging.error(f"Error: {e}")
@@ -56,6 +65,10 @@ def preprocess_image(image):
         
         return img_expanded
     
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Image Processing: {e}")
         logging.error(f"Error: {e}")
@@ -78,6 +91,10 @@ def predict_accessory(image, model, confidence_threshold=0.5):
         else:
             return predicted_class, 0, confidence # No Match
     
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Predicting Accessory Image: {e}")
         logging.error(f"Error: {e}")
@@ -90,6 +107,10 @@ def predict_outfit(image, model):
     try:       
         return predict_accessory(image, model)
     
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Predicting Outfit Image: {e}")
         logging.error(f"Error: {e}")
@@ -111,6 +132,10 @@ def extract_main_colors(image, k = 3):
         
         return extract_dominant_colors
 
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
         logging.error(f"Error: {e}")
@@ -130,6 +155,10 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
                         
         return False
     
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
         logging.error(f"Error: {e}")
