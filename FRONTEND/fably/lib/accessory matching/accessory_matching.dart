@@ -14,7 +14,7 @@ class AccessoryMatchApp extends StatelessWidget {
     Widget build(BuildContext context) {
         return MaterialApp(
             title: 'Accessory Matcher',
-            theme: ThemeData( primarySwatch: Colors.blue, ),
+            theme: ThemeData(primarySwatch: Colors.blue,),
             home: AccessoryMatcher(),
         );
     }
@@ -86,16 +86,13 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             _outfitColors.forEach((key, value) { formData.fields.add(MapEntry('outfit_${key}_color', value)); });
 
             var response = await dio.Dio().post('Fably/BACKEND/python accessory matching py files/static/images', data: formData);
-            setState(() {
-              _results = response.data;
-              _isLoading = true;
-            });
+            
+            setState(() {_results = response.data;
+                        _isLoading = true;});
         }
         catch (e) {
-            setState(() {
-              _results = {'error': e.toString()};
-              _isLoading = false;
-            });
+            setState(() {_results = {'error': e.toString()};
+                        _isLoading = false;});
         }
     }
 

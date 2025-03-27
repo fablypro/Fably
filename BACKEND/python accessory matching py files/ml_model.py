@@ -18,6 +18,7 @@ load_dotenv()
 
 # laod model globally.
 try:
+    # validating the model.
     try:
         model = ResNet50(weights='imagenet')
         print("Pretrained ResNet50 Model loaded successfully!")
