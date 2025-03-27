@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:image_picker/image_picker.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:mime/mime.dart';
+//import 'package:file_picker/file_picker.dart';
+//import 'package:mime/mime.dart';
 
 void main() { runApp(AccessoryMatchApp()); }
 
@@ -28,10 +28,10 @@ class AccessoryMatcher extends StatefulWidget {
 class _AccessoryMatcherState extends State<AccessoryMatcher> {
 
     final ImagePicker _picker = ImagePicker();
-    Map<String, XFile?> _imageFiles = {};
-    Map<String, String> _accessoryColors = {};
-    Map<String, String> _outfitColors = {};
-    Map<String, String> _outfitTypes = {};
+    final Map<String, XFile?> _imageFiles = {};
+    final Map<String, String> _accessoryColors = {};
+    final Map<String, String> _outfitColors = {};
+    final Map<String, String> _outfitTypes = {};
     Map<String, dynamic> _results = {};
     bool _isLoading = false;
 
@@ -178,7 +178,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                             ),
                                         );
                                     }
-                                }
+                                },
                             ),
                         ],
                     ),
