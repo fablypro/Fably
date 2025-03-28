@@ -5,6 +5,8 @@ import numpy as np
 from dotenv import load_dotenv # type: ignore
 import tensorflow as tf # type: ignore
 
+import efficientnet.tfkeras as efn # type: ignore
+
 # adding AI learning component.
 from tensorflow.keras.applications import ResNet50 # type: ignore
 
@@ -17,12 +19,15 @@ from sklearn.cluster import KMeans # type: ignore
 load_dotenv()
 
 
-# laod model globally.
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
+# laod prediction model globally.
 try:
     # validating the model.
     try:
-        model = ResNet50(weights='imagenet')
-        print("Pretrained ResNet50 Model loaded successfully!")
+        resNet50_model = ResNet50(weights='imagenet')
+        print("Pretrained ResNet50 Model loaded successfully for prediction!")
         
     except ValueError as e:
             print(f"ValueError: {e}")
@@ -31,7 +36,7 @@ try:
     except Exception as e:
         print(f"Error in loading model: {e}")
         logging.error(f"Error: {e}")
-        model = None
+        resNet50_model = None
         
 except ValueError as e:
             print(f"ValueError: {e}")
@@ -44,10 +49,43 @@ except Exception as e:
 
 
 # function for pretraining CNN (i.e. ResNet50).
-def load_model_via_pretrained_CNN():
-    if model is None:
+def load_prediction_model():
+    if resNet50_model is None:
         raise ValueError("Error in loading model.")
-    return model
+    return resNet50_model
+
+
+# laod feature extraction model globally.
+try:
+    # validating the model.
+    try:
+        efficientNetB0_model = efn.EfficientNetB0(weights='imagenet', pooling='avg')
+        print("Pretrained EfficientNetB0 Model loaded successfully for feature extraction!")
+        
+    except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            jsonify({"error": str(e)}), 500
+    except Exception as e:
+        print(f"Error in loading model: {e}")
+        logging.error(f"Error: {e}")
+        efficientNetB0_model = None
+        
+except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            jsonify({"error": str(e)}), 500
+except Exception as e:
+        print(f"Unknown Error: {e}")
+        logging.error(f"Error: {e}")
+        raise ValueError("Unknown Error occured.")
+
+
+# function for pretraining CNN (i.e. EfficientNetB0).
+def load_feature_extraction_model():
+    if efficientNetB0_model is None:
+        raise ValueError("Error in loading model.")
+    return efficientNetB0_model
 
 
 # pre-processing image through different formatting.
@@ -117,18 +155,22 @@ def predict_outfit(image, model):
         raise ValueError("Error in Predicting Outfit Image.")
     
 
-def extract_main_colors(image, k = 3):
+def extract_main_colors(image, k = 5):
     # validating color extractions.
     try:
+        # read the image.
+        img_col = c.imread(image)
+        if img_col is None:
+            return None
         # accept the image with colors.
         img_col = c.cvtColor(image, c.COLOR_BGR2RGB)
         # reshape image into 2D array of pixels.
         pixels = img_col.reshape(-1, 3)
         # KMeans clustering for the dominant colors.
-        kMeans = KMeans(n_clusters=k, random_state=0, n_init="auto")
-        kMeans.fit(pixels)
+        kmeans = KMeans(n_clusters=k, random_state=0, n_init="auto")
+        kmeans.fit(pixels)
         # compiling all the data of the pixels.
-        extract_dominant_colors = kMeans.cluster_centers_
+        extract_dominant_colors = kmeans.cluster_centers_.astype(int).tolist()
         
         return extract_dominant_colors
 
