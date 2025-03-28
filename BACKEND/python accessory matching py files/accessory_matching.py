@@ -303,8 +303,19 @@ def upload_file():
         logging.error(f"Error: {e}")
         return jsonify({"error": "Error File Uploading."}), 500
 
+try:
+    if __name__ == "__main__":
+        feature.run(debug = False) # disable debug to 'False' in security of sensitive data or inforamtion.
 
-if __name__ == "__main__":
-    feature.run(debug = False) # disable debug to 'False' in security of sensitive data or inforamtion.
+except ValueError as e:
+            print(f"ValueError: {e}")
+            logging.error(f"ValueError: {e}")
+            jsonify({"error": str(e)}), 500
+except Exception as e:
+        print(f"Unknown Error: {e}")
+        logging.error(f"Error: {e}")
+        raise ValueError("Unknown Error occured.")
+
+
 
 

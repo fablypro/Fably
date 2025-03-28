@@ -164,7 +164,7 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
         logging.error(f"Error: {e}")
         raise ValueError("Error in Matching Outfits with Accessories.")
 
-    
-    
+
+
 
 
