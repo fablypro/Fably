@@ -142,7 +142,12 @@ def preprocess_image_efficientNetB0(image):
 
 def extract_features_efficientNetB0(image, model):
     try:
+        # processing the image before extracting the features.
         processed_input = preprocess_image_efficientNetB0(image)
+        if processed_input is None:
+            return None
+        features = model.predict(processed_input)
+        return features.flatten()
         
     except ValueError as e:
         print(f"EfficientNetB0 ValueError: {e}")
@@ -161,7 +166,7 @@ def predict_accessory(image, model, confidence_threshold=0.5):
     # validating predictions.
     try:
         # predicting image.
-        predicted_model = preprocess_image(image)
+        predicted_model = preprocess_image_resNet(image)
         predictions = model.predict(predicted_model)      
         predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
         confidence = np.max(predictions) # create score of confidence.
@@ -228,7 +233,7 @@ def extract_main_colors(image, k = 5):
 
 
 def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
-    # validating them matching.
+    # validating the matching.
     try:
         for accessory_color in accessory_colors:
             for outfit_color in outfit_colors:
@@ -249,6 +254,27 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
         raise ValueError("Error in Matching Outfits with Accessories.")
 
 
-
+def calculate_delta_e(rgb1, rgb2):
+    # validating the calucation with delta e.
+    try:
+        # checkign any colors.
+        color_1_rgb = sRGBColor(rgb1[0]/255.0, rgb1[1]/255.0, rgb1[2]/255.0)
+        color_2_rgb = sRGBColor(rgb2[0]/255.0, rgb2[1]/255.0, rgb2[2]/255.0)
+        
+        # converting colors.
+        color_1_lab = convert_color(color_1_rgb, LabColor)
+        color_2_lab = convert_color(color_2_rgb, LabColor)
+        
+        delta_e_calculate = delta_e_ciede2000(color_1_lab, color_2_lab)
+        return delta_e_calculate
+        
+    except ValueError as e:
+        print(f"Delta E ValueError: {e}")
+        logging.error(f"Delta E ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
+    except Exception as e:
+        print(f"Error in Calculating Delta E: {e}")
+        logging.error(f"Delta E Error: {e}")
+        raise ValueError("Error in Calculating Delta E.")
 
 
