@@ -29,62 +29,6 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 
 
-# load prediction model globally.
-try:
-    # validating the model.
-    try:
-        resNet50_model = ResNet50(weights='imagenet')
-        print("Pretrained ResNet50 Model loaded successfully for prediction!")
-        
-    except ValueError as e:
-        print(f"ResNet50 ValueError: {e}")
-        logging.error(f"ResNet50 ValueError: {e}")
-        jsonify({"error": str(e)}), 500
-    except Exception as e:
-        print(f"ResNet50 Error in loading model: {e}")
-        logging.error(f"ResNet50 Error: {e}")
-        resNet50_model = None
-            
-except ValueError as e:
-    print(f"ResNet50 ValueError: {e}")
-    logging.error(f"ResNet50 ValueError: {e}")
-    jsonify({"error": str(e)}), 500
-except Exception as e:
-    print(f"Unknown ResNet50 Error: {e}")
-    logging.error(f"ResNet50 Error: {e}")
-    raise ValueError("Unknown ResNet50 Error occured.")
-
-# function for pretraining CNN (i.e. ResNet50).
-def load_prediction_model():
-    if resNet50_model is None:
-        raise ValueError("Error in loading ResNet50 model.")
-    return resNet50_model
-
-# pre-processing image through different formatting.
-def preprocess_image_resNet(image):
-    # validating image processing.
-    try:
-        # validating image resizing.
-        if image is None or image.shape != (244, 244, 3):
-            raise ValueError("Invalid ResNet50 Image Dimensions.")
-
-        # image resizing, normalzing and expanding.
-        img_resized = tf.image.resize(image, (224, 224))
-        img_normalized = preprocess_input(img_resized)
-        img_expanded = np.expand_dims(img_normalized, axis=0)
-        
-        return img_expanded
-    
-    except ValueError as e:
-        print(f"ResNet50 ValueError: {e}")
-        logging.error(f"ResNet50 ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
-    except Exception as e:
-        print(f"ResNet50 Error in Image Processing: {e}")
-        logging.error(f"ResNet50 Error: {e}")
-        raise ValueError("ResNet50 Error in Image Processing.")
-
-
 # load feature extraction model globally.
 try:
     # validating the model.
@@ -166,7 +110,7 @@ def predict_accessory(image, model, confidence_threshold=0.5):
     # validating predictions.
     try:
         # predicting image.
-        predicted_model = preprocess_image_resNet(image)
+        predicted_model = preprocess_image_efficientNetB0(image)
         predictions = model.predict(predicted_model)      
         predicted_class = np.argmax(predictions, axis=-1) # if model outputs a class probability.
         confidence = np.max(predictions) # create score of confidence.
