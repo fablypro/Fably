@@ -198,6 +198,13 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
         raise ValueError("Error in Matching Outfits with Accessories.")
 
 
+def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
+    if feature_vector_1 and feature_vector_2 is None:
+        return None
+    
+    if feature_vector_1 and feature_vector
+
+
 def calculate_delta_e(rgb1, rgb2):
     # validating the calucation with delta e.
     try:
@@ -220,5 +227,8 @@ def calculate_delta_e(rgb1, rgb2):
         print(f"Error in Calculating Delta E: {e}")
         logging.error(f"Delta E Error: {e}")
         raise ValueError("Error in Calculating Delta E.")
+
+
+
 
 

@@ -124,7 +124,7 @@ def home():
 def upload_file():
 
     try:
-        # the dictionary of requested accessory and outfit folders.
+        # a dictionary of requested accessory and outfit folders.
         all_accessory_and_outfit_files = {
             'belts': request.files.get('belts'),
             'chains': request.files.get('chains'),
@@ -158,21 +158,19 @@ def upload_file():
             if file_type not in all_accessory_and_outfit_files:
                 return jsonify({"error": f"No File Part for {file_type}."}), 400
         
-        required_files = {
-            file_type: request.files[file_type] 
-            for file_type in all_accessory_and_outfit_files
-            if request.files[file_type] is not None
-        }
         
+        required_files = {}
         # if file names are null, and if files are not allowed.
-        for file_type, file in required_files.items():
-            if file.filename == "":
-                return jsonify({"error": f"No Selected File for {file_type}."}), 400
-            if not allowed_file(file.filename):
-                return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
-            if len(file.read()) > MAX_CONTENT_LENGTH:
-                return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
-            file.seek(0)
+        for file_type, file in all_accessory_and_outfit_files.items():
+            if file:
+                if file.filename == "":
+                    return jsonify({"error": f"No Selected File for {file_type}."}), 400
+                if not allowed_file(file.filename):
+                    return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
+                if len(file.read()) > MAX_CONTENT_LENGTH:
+                    return jsonify({"error": f"Invalid File Format for {file_type}."}), 400
+                file.seek(0)
+                required_files[file_type] = file
 
         try:
             # saving and securing filenames.
