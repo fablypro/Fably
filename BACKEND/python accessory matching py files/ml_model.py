@@ -199,10 +199,22 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
 
 
 def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
-    if feature_vector_1 and feature_vector_2 is None:
-        return None
+    # validating the comparsion of feature vectors.
+    try:
+        if feature_vector_1 is None or feature_vector_2 is None:
+            return False, 0.0
     
-    if feature_vector_1 and feature_vector
+        similarity = cosine_similarity(feature_vector_1.reshape(-1, -1), feature_vector_2.reshape(1, 1))
+        return similarity >= threshold, similarity
+    
+    except ValueError as e:
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
+    except Exception as e:
+        print(f"Error in Comparing the feature vectors: {e}")
+        logging.error(f"Error: {e}")
+        raise ValueError("Error in Comparing the feature vectors.")
 
 
 def calculate_delta_e(rgb1, rgb2):
@@ -211,11 +223,11 @@ def calculate_delta_e(rgb1, rgb2):
         # checkign any colors.
         color_1_rgb = sRGBColor(rgb1[0]/255.0, rgb1[1]/255.0, rgb1[2]/255.0)
         color_2_rgb = sRGBColor(rgb2[0]/255.0, rgb2[1]/255.0, rgb2[2]/255.0)
-        
         # converting colors.
         color_1_lab = convert_color(color_1_rgb, LabColor)
         color_2_lab = convert_color(color_2_rgb, LabColor)
         
+        # calucation with delta e.
         delta_e_calculate = delta_e_ciede2000(color_1_lab, color_2_lab)
         return delta_e_calculate
         

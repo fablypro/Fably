@@ -17,7 +17,7 @@ from ml_model import (
     extract_main_colors, 
     predict_accessory, 
     predict_outfit, 
-    load_model_via_pretrained_CNN
+    load_feature_extraction_model
 )
 
 
@@ -239,8 +239,8 @@ def upload_file():
             # sending predictions.
             results = {
                          
-                "pretrained accessory prediction": {},
-                "pretrained accessory confidence": {},
+                "feature_similarity": {},
+                "color_delta_e": {},
                 "pretrained accessory match found": {},
                 
                 "pretrained outfit prediction": predictions.get(outfit_file_type, [0, 0])[1] if outfit_file_type else 0,
