@@ -9,10 +9,15 @@ import efficientnet.tfkeras as efn # type: ignore
 
 # adding AI learning component.
 from tensorflow.keras.applications import ResNet50 # type: ignore
-
 from tensorflow.keras.applications.resnet50 import preprocess_input # type: ignore
 
 from sklearn.cluster import KMeans # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity # type: ignore
+
+# more features for color detection and matching.
+from colormath.color_objects import sRGBColor, LabColor # type: ignore
+from colormath.color_conversions import convert_color # type: ignore
+from colormath.delta_e import delta_e_ciede2000 # type: ignore
 
 
 # loading environment variables from .env file.
@@ -22,7 +27,9 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
-# laod prediction model globally.
+
+
+# load prediction model globally.
 try:
     # validating the model.
     try:
@@ -30,71 +37,36 @@ try:
         print("Pretrained ResNet50 Model loaded successfully for prediction!")
         
     except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            jsonify({"error": str(e)}), 500
+        print(f"ResNet50 ValueError: {e}")
+        logging.error(f"ResNet50 ValueError: {e}")
+        jsonify({"error": str(e)}), 500
     except Exception as e:
-        print(f"Error in loading model: {e}")
-        logging.error(f"Error: {e}")
+        print(f"ResNet50 Error in loading model: {e}")
+        logging.error(f"ResNet50 Error: {e}")
         resNet50_model = None
-        
+            
 except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            jsonify({"error": str(e)}), 500
+    print(f"ResNet50 ValueError: {e}")
+    logging.error(f"ResNet50 ValueError: {e}")
+    jsonify({"error": str(e)}), 500
 except Exception as e:
-        print(f"Unknown Error: {e}")
-        logging.error(f"Error: {e}")
-        raise ValueError("Unknown Error occured.")
-
+    print(f"Unknown ResNet50 Error: {e}")
+    logging.error(f"ResNet50 Error: {e}")
+    raise ValueError("Unknown ResNet50 Error occured.")
 
 # function for pretraining CNN (i.e. ResNet50).
 def load_prediction_model():
     if resNet50_model is None:
-        raise ValueError("Error in loading model.")
+        raise ValueError("Error in loading ResNet50 model.")
     return resNet50_model
 
-
-# laod feature extraction model globally.
-try:
-    # validating the model.
-    try:
-        efficientNetB0_model = efn.EfficientNetB0(weights='imagenet', pooling='avg')
-        print("Pretrained EfficientNetB0 Model loaded successfully for feature extraction!")
-        
-    except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            jsonify({"error": str(e)}), 500
-    except Exception as e:
-        print(f"Error in loading model: {e}")
-        logging.error(f"Error: {e}")
-        efficientNetB0_model = None
-        
-except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            jsonify({"error": str(e)}), 500
-except Exception as e:
-        print(f"Unknown Error: {e}")
-        logging.error(f"Error: {e}")
-        raise ValueError("Unknown Error occured.")
-
-
-# function for pretraining CNN (i.e. EfficientNetB0).
-def load_feature_extraction_model():
-    if efficientNetB0_model is None:
-        raise ValueError("Error in loading model.")
-    return efficientNetB0_model
-
-
 # pre-processing image through different formatting.
-def preprocess_image(image):
+def preprocess_image_resNet(image):
     # validating image processing.
     try:
         # validating image resizing.
         if image is None or image.shape != (244, 244, 3):
-            raise ValueError("Invalid Image Dimensions.")
+            raise ValueError("Invalid ResNet50 Image Dimensions.")
 
         # image resizing, normalzing and expanding.
         img_resized = tf.image.resize(image, (224, 224))
@@ -104,13 +76,84 @@ def preprocess_image(image):
         return img_expanded
     
     except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            return jsonify({"error": str(e)}), 500
+        print(f"ResNet50 ValueError: {e}")
+        logging.error(f"ResNet50 ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
-        print(f"Error in Image Processing: {e}")
-        logging.error(f"Error: {e}")
-        raise ValueError("Error in Image Processing.")
+        print(f"ResNet50 Error in Image Processing: {e}")
+        logging.error(f"ResNet50 Error: {e}")
+        raise ValueError("ResNet50 Error in Image Processing.")
+
+
+# load feature extraction model globally.
+try:
+    # validating the model.
+    try:
+        efficientNetB0_model = efn.EfficientNetB0(weights='imagenet', include_top=False, pooling='avg')
+        print("Pretrained EfficientNetB0 Model loaded successfully for feature extraction!")
+        
+    except ValueError as e:
+        print(f"EfficientNetB0 ValueError: {e}")
+        logging.error(f"EfficientNetB0 ValueError: {e}")
+        jsonify({"error": str(e)}), 500
+    except Exception as e:
+        print(f"EfficientNetB0 Error in loading model: {e}")
+        logging.error(f"EfficientNetB0 Error: {e}")
+        efficientNetB0_model = None
+        
+except ValueError as e:
+    print(f"EfficientNetB0 ValueError: {e}")
+    logging.error(f"EfficientNetB0 ValueError: {e}")
+    jsonify({"error": str(e)}), 500
+except Exception as e:
+    print(f"Unknown EfficientNetB0 Error: {e}")
+    logging.error(f"EfficientNetB0 Error: {e}")
+    raise ValueError("Unknown EfficientNetB0 Error occured.")
+
+# function for pretraining CNN (i.e. EfficientNetB0).
+def load_feature_extraction_model():
+    if efficientNetB0_model is None:
+        raise ValueError("Error in loading EfficientNetB0 model.")
+    return efficientNetB0_model
+
+# pre-processing image through different formatting.
+def preprocess_image_efficientNetB0(image):
+    # validating image processing.
+    try:
+        # validating image resizing.
+        if image is None or image.shape != (244, 244, 3):
+            raise ValueError("Invalid EfficientNetB0 Image Dimensions.")
+
+        # image resizing, normalzing and expanding.
+        img_resized = tf.image.resize(image, (224, 224))
+        img_normalized = preprocess_input(img_resized)
+        img_expanded = np.expand_dims(img_normalized, axis=0)
+        
+        return img_expanded
+    
+    except ValueError as e:
+        print(f"EfficientNetB0 ValueError: {e}")
+        logging.error(f"EfficientNetB0 ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
+    except Exception as e:
+        print(f"EfficientNetB0 Error in Image Processing: {e}")
+        logging.error(f"EfficientNetB0 Error: {e}")
+        raise ValueError("EfficientNetB0 Error in Image Processing.")
+
+def extract_features_efficientNetB0(image, model):
+    try:
+        processed_input = preprocess_image_efficientNetB0(image)
+        
+    except ValueError as e:
+        print(f"EfficientNetB0 ValueError: {e}")
+        logging.error(f"EfficientNetB0 ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
+    except Exception as e:
+        print(f"EfficientNetB0 Error in Image Processing: {e}")
+        logging.error(f"EfficientNetB0 Error: {e}")
+        raise ValueError("EfficientNetB0 Error in Image Processing.")
+
+
 
 
 # function to predicting the accessory whether image matches.
@@ -130,9 +173,9 @@ def predict_accessory(image, model, confidence_threshold=0.5):
             return predicted_class, 0, confidence # No Match
     
     except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            return jsonify({"error": str(e)}), 500
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Predicting Accessory Image: {e}")
         logging.error(f"Error: {e}")
@@ -146,9 +189,9 @@ def predict_outfit(image, model):
         return predict_accessory(image, model)
     
     except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            return jsonify({"error": str(e)}), 500
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Predicting Outfit Image: {e}")
         logging.error(f"Error: {e}")
@@ -175,14 +218,13 @@ def extract_main_colors(image, k = 5):
         return extract_dominant_colors
 
     except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            return jsonify({"error": str(e)}), 500
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
         logging.error(f"Error: {e}")
         raise ValueError("Error in Matching Outfits with Accessories.")
-
 
 
 def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
@@ -198,9 +240,9 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
         return False
     
     except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            return jsonify({"error": str(e)}), 500
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
         logging.error(f"Error: {e}")

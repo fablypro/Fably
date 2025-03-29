@@ -72,31 +72,32 @@ feature.config["MAX_CONTENT_LENGTH"] = MAX_CONTENT_LENGTH
 
 
 # to ensure the accessory folders exist.
-os.makedirs(BELT_FOLDER, exist_ok=True)
-os.makedirs(CHAINS_FOLDER, exist_ok=True)
-os.makedirs(GLASSES_FOLDER, exist_ok=True)
-os.makedirs(GLOVES_FOLDER, exist_ok=True)
-os.makedirs(HANDBAG_FOLDER, exist_ok=True)
-os.makedirs(HAT_FOLDER, exist_ok=True)
-os.makedirs(RING_FOLDER, exist_ok=True)
-os.makedirs(SHOE_FOLDER, exist_ok=True)
-os.makedirs(SOCK_FOLDER, exist_ok=True)
-os.makedirs(WATCH_FOLDER, exist_ok=True)
+for accessory_folder in [BELT_FOLDER, 
+               CHAINS_FOLDER, 
+               GLASSES_FOLDER, 
+               GLOVES_FOLDER, 
+               HANDBAG_FOLDER, 
+               HAT_FOLDER, 
+               RING_FOLDER, 
+               SHOE_FOLDER, 
+               SOCK_FOLDER, 
+               WATCH_FOLDER]: os.makedirs(accessory_folder, exist_ok=True)
 
 # to ensure the outfit folders exist.
-os.makedirs(ACTIVEWEAR_FOLDER, exist_ok=True)
-os.makedirs(BOHEMIAN_FOLDER, exist_ok=True)
-os.makedirs(CASUAL_FOLDER, exist_ok=True)
-os.makedirs(EVENINGWEAR_FOLDER, exist_ok=True)
-os.makedirs(FORMAL_FOLDER, exist_ok=True)
-os.makedirs(INDIE_FOLDER, exist_ok=True)
-os.makedirs(KNITWEAR_FOLDER, exist_ok=True)
-os.makedirs(LOUNGEWEAR_FOLDER, exist_ok=True)
-os.makedirs(RETRO_FOLDER, exist_ok=True)
-os.makedirs(ROMANTIC_FOLDER, exist_ok=True)
-os.makedirs(SMARTCASUAL_FOLDER, exist_ok=True)
-os.makedirs(SPORTY_FOLDER, exist_ok=True)
-os.makedirs(VINTAGE_FOLDER, exist_ok=True)
+for outfit_folder in [ACTIVEWEAR_FOLDER, 
+               BOHEMIAN_FOLDER, 
+               CASUAL_FOLDER, 
+               EVENINGWEAR_FOLDER, 
+               FORMAL_FOLDER, 
+               INDIE_FOLDER, 
+               KNITWEAR_FOLDER, 
+               LOUNGEWEAR_FOLDER, 
+               RETRO_FOLDER, 
+               ROMANTIC_FOLDER, 
+               SMARTCASUAL_FOLDER, 
+               SPORTY_FOLDER,  
+               VINTAGE_FOLDER]: os.makedirs(outfit_folder, exist_ok=True)
+
 
 logging.basicConfig(level=logging.INFO)
 
@@ -119,36 +120,36 @@ def home():
 
 
 # uploading the file via posting the data.
-@feature.route('/upload', methods=["POST"])
+@feature.route('/images', methods=["POST"])
 def upload_file():
 
     try:
         # the dictionary of requested accessory and outfit folders.
         all_accessory_and_outfit_files = {
-            'belts': request.files['belts'] if "" in request.files else None,
-            'chains': request.files['chains'] if "" in request.files else None,
-            'glasses': request.files['glasses'] if "" in request.files else None,
-            'gloves': request.files['gloves'] if "" in request.files else None,
-            'handbags': request.files['handbags'] if "" in request.files else None,
-            'hats': request.files['hats'] if "" in request.files else None,
-            'rings': request.files['rings'] if "" in request.files else None,
-            'shoes': request.files['shoes'] if "" in request.files else None,
-            'socks': request.files['socks'] if "" in request.files else None,
-            'watches': request.files['watches'] if "" in request.files else None,
+            'belts': request.files.get('belts'),
+            'chains': request.files.get('chains'),
+            'glasses': request.files.get('glasses'),
+            'gloves': request.files.get('gloves'),
+            'handbags': request.files.get('handbags'),
+            'hats': request.files.get('hats'),
+            'rings': request.files.get('rings'),
+            'shoes': request.files.get('shoes'),
+            'socks': request.files.get('socks'),
+            'watches': request.files.get('watches'),
             
-            'activewear': request.files['activewear'] if "" in request.files else None,
-            'bohemian': request.files['bohemian'] if "" in request.files else None,
-            'casual': request.files['casual'] if "" in request.files else None,
-            'eveningwear': request.files['eveningwear'] if "" in request.files else None,
-            'formal': request.files['formal'] if "" in request.files else None,
-            'indie': request.files['indie'] if "" in request.files else None,
-            'knitwear': request.files['knitwear'] if "" in request.files else None,
-            'loungewear': request.files['loungewear'] if "" in request.files else None,
-            'retro': request.files['retro'] if "" in request.files else None,
-            'romantic': request.files['romantic'] if "" in request.files else None,
-            'smartcasual': request.files['smartcasual'] if "" in request.files else None,
-            'sporty': request.files['sporty'] if "" in request.files else None,
-            'vintage': request.files['vintage'] if "" in request.files else None
+            'activewear': request.files.get('activewear'),
+            'bohemian': request.files.get('bohemian'),
+            'casual': request.files.get('casual'),
+            'eveningwear': request.files.get('eveningwear'),
+            'formal': request.files.get('formal'),
+            'indie': request.files.get('indie'),
+            'knitwear': request.files.get('knitwear'),
+            'loungewear': request.files.get('loungewear'),
+            'retro': request.files.get('retro'),
+            'romantic': request.files.get('romantic'),
+            'smartcasual': request.files.get('smartcasual'),
+            'sporty': request.files.get('sporty'),
+            'vintage': request.files.get('vintage')
         }
         
         
@@ -308,13 +309,13 @@ try:
         feature.run(debug = False) # disable debug to 'False' in security of sensitive data or inforamtion.
 
 except ValueError as e:
-            print(f"ValueError: {e}")
-            logging.error(f"ValueError: {e}")
-            jsonify({"error": str(e)}), 500
+    print(f"ValueError: {e}")
+    logging.error(f"ValueError: {e}")
+    jsonify({"error": str(e)}), 500
 except Exception as e:
-        print(f"Unknown Error: {e}")
-        logging.error(f"Error: {e}")
-        raise ValueError("Unknown Error occured.")
+    print(f"Unknown Error: {e}")
+    logging.error(f"Error: {e}")
+    raise ValueError("Unknown Error occured.")
 
 
 
