@@ -45,13 +45,14 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     void initState() {
         super.initState();
         for (var type in _accessoryTypes) {
-            _accessoryColors[type] = '';
-            _imageFiles[type] = null;
+            _accessoryColors[type] = ''; // image upload for accessory colors.
+            _imageFiles[type] = null; // image upload for accessories.
         }
 
         for (var type in _ouftitCatgories) {
-            _outfitColors[type] = '';
-            _outfitTypes[type] = '';
+            _outfitColors[type] = ''; // image upload for outfit colors.
+            _outfitTypes[type] = ''; // image upload for outfit types.
+            _imageFiles[type] = null; // image upload for outfits.
         }
     }
 
@@ -86,7 +87,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             _outfitColors.forEach((key, value) { formData.fields.add(MapEntry('outfit_${key}_color', value)); });
 
             var response = await dio.Dio().post(
-              'http://127.0.0.1:5000/images', 
+              'http://127.0.0.1:5000/match', 
               data: formData
             );
             

@@ -201,7 +201,13 @@ def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
     # validating the finding of closest colors.
     try:
         if accessory_colors is None or outfit_colors is None:
-        return False, {}
+            return False, {}
+        color_differences = {}
+        match_found = False
+        
+        for accessory_color in accessory_colors:
+            min_delta_e = float("inf")
+            
     
     except ValueError as e:
         print(f"ValueError: {e}")
@@ -211,8 +217,6 @@ def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
         print(f"Error in Finding closest colors: {e}")
         logging.error(f"Error: {e}")
         return None
-
-
 
 def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
     # validating the comparsion of feature vectors.

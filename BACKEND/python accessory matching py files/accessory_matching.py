@@ -103,17 +103,15 @@ def match_accessories_with_outfits():
     # sending results.
     results = {
                          
-        "feature_similarity": {},
-        "image_color_match": {},
-        "image_color_delta_e": {},
+        "feature similarity": {},
+        "image color match": {},
+        "image color delta e": {},
         
-        "pretrained outfit prediction": predictions.get(outfit_file_type, [0, 0])[1] if outfit_file_type else 0,
-        "pretrained outfit confidence": float(predictions.get(outfit_file_type, [0, 0])[0]) if outfit_file_type else 0.0,
-        "pretrained outfit match found": int(predictions.get(outfit_file_type, [0, 0])[1] == 1) if outfit_file_type else 0,
+        "provided color match": {},
     }
 
     # .
-    outfit_features = {}
+    predictions = {}
     outfit_file_type = None
     pretrained_model = None
     
