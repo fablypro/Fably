@@ -205,9 +205,23 @@ def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
         color_differences = {}
         match_found = False
         
+        # finding the closest colors for each accessory compared to each outfit.
         for accessory_color in accessory_colors:
             min_delta_e = float("inf")
+            closest_outfit_colors = None
             
+            for outfit_color in outfit_colors:
+                delta_e = calculate_delta_e(accessory_color, outfit_color)
+                
+                if delta_e < min_delta_e:
+                    min_delta_e = delta_e
+                    closest_outfit_colors = outfit_color
+                    
+            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_colors, "delta e": min_delta_e}
+            if min_delta_e < delta_e_threshold:
+                match_found = True
+        
+        return match_found, color_differences
     
     except ValueError as e:
         print(f"ValueError: {e}")
@@ -215,6 +229,41 @@ def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
         return None
     except Exception as e:
         print(f"Error in Finding closest colors: {e}")
+        logging.error(f"Error: {e}")
+        return None
+    
+def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
+    # validating the matching of given colors.
+    try:
+        if not accessory_colors or not outfit_colors:
+            return False, {}
+        color_differences = {}
+        match_found = False
+        
+        # finding the closest colors for each accessory compared to each outfit.
+        for accessory_color in accessory_colors:
+            min_delta_e = float("inf")
+            closest_outfit_colors = None
+            
+            for outfit_color in outfit_colors:
+                delta_e = calculate_delta_e(accessory_color, outfit_color)
+                
+                if delta_e < min_delta_e:
+                    min_delta_e = delta_e
+                    closest_outfit_colors = outfit_color
+                    
+            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_colors, "delta e": min_delta_e}
+            if min_delta_e < delta_e_threshold:
+                match_found = True
+        
+        return match_found, color_differences
+    
+    except ValueError as e:
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return None
+    except Exception as e:
+        print(f"Error in Matching the colors: {e}")
         logging.error(f"Error: {e}")
         return None
 
@@ -235,7 +284,6 @@ def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
         print(f"Error in Comparing the feature vectors: {e}")
         logging.error(f"Error: {e}")
         return None
-
 
 def calculate_delta_e(rgb1, rgb2):
     # validating the calucation with delta e.
