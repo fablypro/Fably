@@ -39,7 +39,7 @@ try:
     except ValueError as e:
         print(f"EfficientNetB0 ValueError: {e}")
         logging.error(f"EfficientNetB0 ValueError: {e}")
-        jsonify({"error": str(e)}), 500
+        efficientNetB0_model = None
     except Exception as e:
         print(f"EfficientNetB0 Error in loading model: {e}")
         logging.error(f"EfficientNetB0 Error: {e}")
@@ -78,11 +78,11 @@ def preprocess_image_efficientNetB0(image):
     except ValueError as e:
         print(f"EfficientNetB0 ValueError: {e}")
         logging.error(f"EfficientNetB0 ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"EfficientNetB0 Error in Image Processing: {e}")
         logging.error(f"EfficientNetB0 Error: {e}")
-        raise ValueError("EfficientNetB0 Error in Image Processing.")
+        return None
 
 def extract_features_efficientNetB0(image, model):
     try:
@@ -90,17 +90,18 @@ def extract_features_efficientNetB0(image, model):
         processed_input = preprocess_image_efficientNetB0(image)
         if processed_input is None:
             return None
+        
         features = model.predict(processed_input)
         return features.flatten()
         
     except ValueError as e:
         print(f"EfficientNetB0 ValueError: {e}")
         logging.error(f"EfficientNetB0 ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"EfficientNetB0 Error in Image Processing: {e}")
         logging.error(f"EfficientNetB0 Error: {e}")
-        raise ValueError("EfficientNetB0 Error in Image Processing.")
+        return None
 
 
 
@@ -124,11 +125,11 @@ def predict_accessory(image, model, confidence_threshold=0.5):
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"Error in Predicting Accessory Image: {e}")
         logging.error(f"Error: {e}")
-        raise ValueError("Error in Predicting Accessory Image.")
+        return None
 
 
 # function to predicting the outfit whether image matches.
@@ -140,11 +141,11 @@ def predict_outfit(image, model):
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"Error in Predicting Outfit Image: {e}")
         logging.error(f"Error: {e}")
-        raise ValueError("Error in Predicting Outfit Image.")
+        return None
     
 
 def extract_main_colors(image, k = 5):
@@ -169,12 +170,11 @@ def extract_main_colors(image, k = 5):
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
         logging.error(f"Error: {e}")
-        raise ValueError("Error in Matching Outfits with Accessories.")
-
+        return None
 
 def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_colors, threshold=5):
     # validating the matching.
@@ -191,11 +191,27 @@ def matching_colors_between_outfits_and_accessories(accessory_colors, outfit_col
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"Error in Matching Outfits with Accessories: {e}")
         logging.error(f"Error: {e}")
-        raise ValueError("Error in Matching Outfits with Accessories.")
+        return None
+
+def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
+    # validating the finding of closest colors.
+    try:
+        if accessory_colors is None or outfit_colors is None:
+        return False, {}
+    
+    except ValueError as e:
+        print(f"ValueError: {e}")
+        logging.error(f"ValueError: {e}")
+        return None
+    except Exception as e:
+        print(f"Error in Finding closest colors: {e}")
+        logging.error(f"Error: {e}")
+        return None
+
 
 
 def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
@@ -210,11 +226,11 @@ def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return None
     except Exception as e:
         print(f"Error in Comparing the feature vectors: {e}")
         logging.error(f"Error: {e}")
-        raise ValueError("Error in Comparing the feature vectors.")
+        return None
 
 
 def calculate_delta_e(rgb1, rgb2):
@@ -234,11 +250,14 @@ def calculate_delta_e(rgb1, rgb2):
     except ValueError as e:
         print(f"Delta E ValueError: {e}")
         logging.error(f"Delta E ValueError: {e}")
-        return jsonify({"error": str(e)}), 500
+        return float("inf")
     except Exception as e:
         print(f"Error in Calculating Delta E: {e}")
         logging.error(f"Delta E Error: {e}")
-        raise ValueError("Error in Calculating Delta E.")
+        return float("inf")
+
+
+
 
 
 
