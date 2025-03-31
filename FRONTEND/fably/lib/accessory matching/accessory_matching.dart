@@ -152,75 +152,63 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                         children: [
                             Text('Accessory Matching With Outfits', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
                             SizedBox(height: 20),
-                            Text('Accessories', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
-                            ..._accessoryTypes.map((type) {
-                                    Column(
-                                        children: [
-                                            Text('Choose ${type.toUpperCase()} Color'),
-                                            DropdownButtonFormField<String>(
-                                                value: _accessoryColors[type],
-                                                items: _colorsList.map((String value) {
-                                                    return DropdownMenuItem<String>(
-                                                        value: value,
-                                                        child: Text(value),
-                                                    );
-                                                }).toList(), 
-                                                onChanged: (String? newValue) {
-                                                    setState(() {
-                                                        _accessoryColors[type] = newValue!;
-                                                    });
-                                                },
-                                                decoration: InputDecoration(labelText: "Choose ${type.toUpperCase()} Color"),
-                                            ),
-                                            SizedBox(height: 10),
-                                            ElevatedButton(
-                                                onPressed: () => _pickImage(type), 
-                                                child: Text('Upload ${type.toUpperCase()} Image'),
-                                            ),
-                                            if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100),
-                                            SizedBox(height: 20),
-                                        ],
-                                    );
-                                    Text('Outfits', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500));
-                                    for (var type in _ouftitCatgories) {
-                                        Column(
-                                            children: [
-                                                DropdownButtonFormField(
-                                                    value: _outfitTypes[type],
-                                                    items: _ouftitCatgories.map((String value) {
-                                                        return DropdownMenuItem<String>(
-                                                            value: value,
-                                                            child: Text(value),
-                                                        );
-                                                    }).toList(), 
-                                                    onChanged: (String? newValue) {
-                                                        setState(() {
-                                                            _outfitTypes[type] = newValue!;
-                                                        });
-                                                    },
-                                                    decoration: InputDecoration(labelText: "Choose Outfit Style"),
-                                                ),
-                                                SizedBox(height: 10),
-                                                ElevatedButton(
-                                                    onPressed: () => _pickImage(type), 
-                                                    child: Text('Upload ${type.toUpperCase()} Image'),
-                                                ),
-                                                if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 100),
-                                                SizedBox(height: 20),
-                                            ],
-                                        );
-                                        ElevatedButton(
-                                            onPressed: _uploadImages,
-                                            child: Column(
-                                                children: [
-                                                    Text('Match Images'),
-                                                    if (_results.isNotEmpty) Text(jsonEncode(_results), style: TextStyle(fontSize: 16.0)),
-                                                ],
-                                            ),
-                                        );
-                                    }
-                                },
+                            Text('Outfit Image', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            DropdownButtonFormField<String>(
+                              value: _outfitTypes.keys.firstWhere(
+                                (k) => _imageFiles[k] != null, 
+                                orElse: () => null), 
+                              items: _ouftitCatgories.map((String value) {
+                                return DropdownMenuItem(
+                                  value: value, 
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                // clearing previous outift selections.
+                                setState(() {
+                                  for (var key in _ouftitCatgories) {
+                                    _imageFiles[key] = null;
+                                  }
+                                  _pickImage(newValue!);
+                                });
+                              },
+                              decoration: InputDecoration(labelText: "Choose Outfit Style"),
                             ),
+                            SizedBox(height: 10),
+                            if (_imageFiles.keys.any((k) => _ouftitCatgories.contains(k) &&
+                                 _imageFiles[k] != null))
+                              Image.file(
+                                File(),
+                              ),
+                            
+                            SizedBox(height: 20),
+                            Text('Accessory Images', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            Wrap(
+                              spacing: 8.0,
+                              runSpacing: 8.0,
+                              children: _accessoryTypes.map((type) {
+                                return Column(
+                                );
+                              }).toList(),
+                            ),
+
+                            SizedBox(height: 20),
+                            Text('Accessory Images', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            Wrap(
+                              spacing: 8.0,
+                              runSpacing: 8.0,
+                              children: _accessoryTypes.map((type) {
+                                return Column(
+                                );
+                              }).toList(),
+                            ),
+
+                            SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: _uploadImages, 
+                              child: Text("Match Outfits With Accessories"),
+                            ),
+                            _buildResults(),
                         ],
                     ),
                 ),
