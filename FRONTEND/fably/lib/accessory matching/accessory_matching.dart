@@ -198,7 +198,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                               spacing: 8.0,
                               runSpacing: 8.0,
                               children: _accessoryTypes.map((type) {
-                                return Column(
+                                return DropdownButtonFormField(
                                 );
                               }).toList(),
                             ),
