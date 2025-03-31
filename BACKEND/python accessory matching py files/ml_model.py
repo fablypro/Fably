@@ -208,16 +208,16 @@ def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
         # finding the closest colors for each accessory compared to each outfit.
         for accessory_color in accessory_colors:
             min_delta_e = float("inf")
-            closest_outfit_colors = None
+            closest_outfit_color = None
             
             for outfit_color in outfit_colors:
                 delta_e = calculate_delta_e(accessory_color, outfit_color)
                 
                 if delta_e < min_delta_e:
                     min_delta_e = delta_e
-                    closest_outfit_colors = outfit_color
+                    closest_outfit_color = outfit_color
                     
-            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_colors, "delta e": min_delta_e}
+            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_color, "delta e": min_delta_e}
             if min_delta_e < delta_e_threshold:
                 match_found = True
         
@@ -237,8 +237,8 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
     try:
         if not accessory_colors or not outfit_colors:
             return False, {}
-        color_differences = {}
-        match_found = False
+        min_delta_e = float("inf")
+        closest_outfit_color = None
         
         # finding the closest colors for each accessory compared to each outfit.
         for accessory_color in accessory_colors:
@@ -256,7 +256,7 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
             if min_delta_e < delta_e_threshold:
                 match_found = True
         
-        return match_found, color_differences
+        return min_delta_e, delta_e_threshold
     
     except ValueError as e:
         print(f"ValueError: {e}")

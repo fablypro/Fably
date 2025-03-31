@@ -28,10 +28,12 @@ class AccessoryMatcher extends StatefulWidget {
 class _AccessoryMatcherState extends State<AccessoryMatcher> {
 
     final ImagePicker _picker = ImagePicker();
+    
     final Map<String, XFile?> _imageFiles = {};
     final Map<String, String> _accessoryColors = {};
     final Map<String, String> _outfitColors = {};
     final Map<String, String> _outfitTypes = {};
+
     Map<String, dynamic> _results = {};
     bool _isLoading = false;
 
@@ -102,8 +104,38 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
         }
     }
 
+    Widget _buildSection(String title, Map<String, dynamic> data) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('${title}', style: TextStyle(fontWeight: FontWeight.w500),),
+            for (var key in data.keys)
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text('$key: ${jsonEncode(data[key])}'),
+              ),
+            SizedBox(height: 10,),
+          ],
+      );
+    }
+
     Widget _buildResults() {
       if (_results.isNotEmpty) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20,),
+            Text("Matching Results: ", style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.bold),),
+            SizedBox(height: 10,),
+            if (_results['error'] != null) Text("Error: ${_results['error']}", style: TextStyle(color: Colors.red),),
+
+            if (_results['feature similarity'] != null) _buildSection("Feature Similarity", _results['feature similarity']),
+            if (_results['image color match'] != null) _buildSection("Image Color Match", _results['image color match']),
+            if (_results['image color delta e'] != null) _buildSection("Image Color Delta E", _results['image color delta e']),
+            if (_results['provided color match'] != null) _buildSection("Provided Color Match", _results['provided color match']),
+          ],
+        );
+      } else {
         return SizedBox.shrink();
       }
     }
