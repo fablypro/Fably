@@ -159,10 +159,10 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                             Text('Accessory Matching With Outfits', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
                             SizedBox(height: 20),
                             Text('Outfit Image', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            // creating drop down button field.
                             DropdownButtonFormField<String>(
-                              value: _outfitTypes.keys.firstWhere(
-                                (k) => _imageFiles[k] != null, 
-                                orElse: () => null), 
+                              value: _outfitTypes.keys.firstWhere( (k) => _imageFiles[k] != null, orElse: () => null), 
+                              // creating drop down menu tiems for outfit images.
                               items: _ouftitCatgories.map((String value) {
                                 return DropdownMenuItem(
                                   value: value, 
@@ -180,9 +180,9 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                               },
                               decoration: InputDecoration(labelText: "Choose Outfit Style"),
                             ),
+
                             SizedBox(height: 10),
-                            if (_imageFiles.keys.any((k) => _ouftitCatgories.contains(k) &&
-                                 _imageFiles[k] != null))
+                            if (_imageFiles.keys.any((k) => _ouftitCatgories.contains(k) && _imageFiles[k] != null))
                               Image.file(
                                 File(),
                               ),
@@ -204,9 +204,22 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                               spacing: 8.0,
                               runSpacing: 8.0,
                               children: _accessoryTypes.map((type) {
-                                return DropdownButtonFormField(
+                                return DropdownButtonFormField<String>(
+                                  decoration: InputDecoration(labelText: "Choose ${type.toUpperCase()} Color"),\
+                                  validator: _accessoryColors[type],
+                                  items: _colorsList.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
                                 );
                               }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _accessoryColors[type] = newValue
+                                });
+                              },
                             ),
 
                             SizedBox(height: 20),
