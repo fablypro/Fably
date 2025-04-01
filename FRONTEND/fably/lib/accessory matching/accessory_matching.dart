@@ -33,6 +33,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     final Map<String, String> _accessoryColors = {};
     final Map<String, String> _outfitColors = {};
     final Map<String, String> _outfitTypes = {};
+    List<String> _selectedAccessoryColors = [];
 
     Map<String, dynamic> _results = {};
     bool _isLoading = false;
@@ -81,6 +82,11 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                     formData.files.add(MapEntry(key, await dio.MultipartFile.fromFile(value.path)));
                 }
             });
+
+            // sending accessory colors as a list.
+            for (var color in _selectedAccessoryColors) {
+              formData.fields.add(MapEntry('accessory_colors[]', color));
+            }
             
             _accessoryColors.forEach((key, value) { formData.fields.add(MapEntry('accessory_${key}_color', value)); });
 
