@@ -33,7 +33,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     final Map<String, String> _accessoryColors = {};
     final Map<String, String> _outfitColors = {};
     final Map<String, String> _outfitTypes = {};
-    List<String> _selectedAccessoryColors = [];
+    final List<String> _selectedAccessoryColors = [];
 
     Map<String, dynamic> _results = {};
     bool _isLoading = false;
@@ -101,10 +101,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             _outfitColors.forEach((key, value) { formData.fields.add(MapEntry('outfit_${key}_color', value)); });
 
             // initializing the port url.
-            var response = await dio.Dio().post(
-              'http://127.0.0.1:5000/match', 
-              data: formData
-            );
+            var response = await dio.Dio().post('http://127.0.0.1:5000/match', data: formData,);
             
             setState(() {
               _results = response.data;
@@ -208,10 +205,10 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                                 return Column(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: onPressed, 
-                                      child: child
+                                      onPressed: () => _pickImage(type), 
+                                      child: Text("Upload ${type.toUpperCase()}"),
                                     ),
-                                    if () Image.file(File(_imageFiles[type]!.path), height: 70,);
+                                    if (_imageFiles[type] != null) Image.file(File(_imageFiles[type]!.path), height: 70,),
                                   ],
                                 );
                               }).toList(),
