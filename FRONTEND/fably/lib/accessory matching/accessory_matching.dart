@@ -87,6 +87,12 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             for (var color in _selectedAccessoryColors) {
               formData.fields.add(MapEntry('accessory_colors[]', color));
             }
+
+            // .
+            String? outfitKey = _imageFiles.keys.firstWhere((k) => _ouftitCatgories.contains(k), orElse: () => null);
+            if (outfitKey != null && _imageFiles[outfitKey] != null) {
+              formData.files.add(MapEntry(outfitKey, await dio.MultipartFile.fromFile(_imageFiles[outfitKey]!.path)));
+            }
             
             _accessoryColors.forEach((key, value) { formData.fields.add(MapEntry('accessory_${key}_color', value)); });
 
@@ -94,6 +100,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
 
             _outfitColors.forEach((key, value) { formData.fields.add(MapEntry('outfit_${key}_color', value)); });
 
+            // initializing the port url.
             var response = await dio.Dio().post(
               'http://127.0.0.1:5000/match', 
               data: formData
@@ -133,6 +140,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             SizedBox(height: 20,),
             Text("Matching Results: ", style: TextStyle(fontSize: 18.5, fontWeight: FontWeight.bold),),
             SizedBox(height: 10,),
+            // to display any errors caught by the backend.
             if (_results['error'] != null) Text("Error: ${_results['error']}", style: TextStyle(color: Colors.red),),
 
             if (_results['feature similarity'] != null) _buildSection("Feature Similarity", _results['feature similarity']),
@@ -184,42 +192,59 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                             SizedBox(height: 10),
                             if (_imageFiles.keys.any((k) => _ouftitCatgories.contains(k) && _imageFiles[k] != null))
                               Image.file(
-                                File(),
+                                // uploading the image file.
+                                File(_imageFiles.values.firstWhere((file) => file != null &&
+                                    _ouftitCatgories.contains(_imageFiles.keys.firstWhere((key) => _imageFiles[key] == file)), 
+                                    orElse: () => null)!.path), height: 10,
                               ),
                             
                             SizedBox(height: 20),
                             Text('Accessory Images', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            // choosing accessory images.
                             Wrap(
                               spacing: 8.0,
                               runSpacing: 8.0,
                               children: _accessoryTypes.map((type) {
                                 return Column(
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: onPressed, 
+                                      child: child
+                                    ),
+                                    if () Image.file(File(_imageFiles[type]!.path), height: 70,);
+                                  ],
                                 );
                               }).toList(),
                             ),
 
                             SizedBox(height: 20),
-                            Text('Accessory Images', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
+                            Text('Accessory Colors', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
                             Wrap(
                               spacing: 8.0,
                               runSpacing: 8.0,
+                              // for each accessory type in the form field.
                               children: _accessoryTypes.map((type) {
                                 return DropdownButtonFormField<String>(
-                                  decoration: InputDecoration(labelText: "Choose ${type.toUpperCase()} Color"),\
-                                  validator: _accessoryColors[type],
+                                  decoration: InputDecoration(labelText: "Choose ${type.toUpperCase()} Color"),
+                                  value: _accessoryColors[type],
                                   items: _colorsList.map((String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Text(value),
                                     );
                                   }).toList(),
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      _accessoryColors[type] = newValue!;
+                                      if (newValue.isNotEmpty && !_selectedAccessoryColors.contains(newValue)) {
+                                        _selectedAccessoryColors.add(newValue);
+                                      } else if (newValue.isEmpty && !_selectedAccessoryColors.contains(_accessoryColors[type])) {
+                                        _selectedAccessoryColors.remove(_accessoryColors[type]);
+                                      }
+                                    });
+                                  },
                                 );
                               }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  _accessoryColors[type] = newValue
-                                });
-                              },
                             ),
 
                             SizedBox(height: 20),
