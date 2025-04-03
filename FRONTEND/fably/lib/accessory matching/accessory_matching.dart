@@ -10,6 +10,8 @@ import 'package:loading_overlay/loading_overlay.dart';
 void main() { runApp(AccessoryMatchApp()); }
 
 class AccessoryMatchApp extends StatelessWidget {
+  const AccessoryMatchApp({super.key});
+
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
@@ -21,6 +23,8 @@ class AccessoryMatchApp extends StatelessWidget {
 }
 
 class AccessoryMatcher extends StatefulWidget {
+  const AccessoryMatcher({super.key});
+
     @override
     _AccessoryMatcherState createState() => _AccessoryMatcherState();
 }
@@ -30,18 +34,21 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     final ImagePicker _picker = ImagePicker();
     
     final Map<String, XFile?> _imageFiles = {};
-    final Map<String, String> _accessoryColors = {};
-    final Map<String, String> _outfitColors = {};
-    final Map<String, String> _outfitTypes = {};
-    final List<String> _selectedAccessoryColors = [];
+    final Map<String, String> _accessoryColors = {}; // mapping all the accessory colors.
+    final Map<String, String> _outfitColors = {}; // mapping all the outfit colors.
+    final Map<String, String> _outfitTypes = {}; // mapping all the outfit types.
+    final List<String> _selectedAccessoryColors = []; // mapping all the selected accessory colors.
 
-    Map<String, dynamic> _results = {};
+    Map<String, dynamic> _results = {}; // mapping all the results.
     bool _isLoading = false;
 
+    // all the accessory types.
     final List<String> _accessoryTypes = ['belts', 'chains', 'glasses', 'gloves', 'handbags', 'hats', 'rings', 'shoes', 'socks', 'watches'];
 
+    // all the outfit categories.
     final List<String> _ouftitCatgories = ['activewear', 'bohemian', 'casual', 'eveningwear', 'formal', 'indie', 'knitwear', 'loungewear', 'retro', 'romantic', 'smartcasual', 'sporty', 'vintage'];
 
+    // all the colors listed.
     final List<String> _colorsList = ['Amber', 'Black', 'Blue', 'Emerald', 'Gold', 'Green', 'Grey', 'Indigo', 'Jade', 'Lemon', 'Lilac', 'Lime', 'Midnight Blue', 'Mint Green', 'Navy Blue', 'Olive', 'Orange', 'Peach', 'Pink', 'Platinum', 'Plum', 'Purple', 'Red', 'Rose', 'Ruby', 'Sapphire', 'Scarlet', 'Silver', 'Turquoise', 'Ultramarine', 'Violet', 'White', 'Yellow', 'Zucchini'];
     
     @override
@@ -89,7 +96,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             }
 
             // .
-            String? outfitKey = _imageFiles.keys.firstWhere((k) => _ouftitCatgories.contains(k), orElse: () => null);
+            String? outfitKey = _imageFiles.keys.firstWhere((k) => _ouftitCatgories.contains(k), orElse: () => null!);
             if (outfitKey != null && _imageFiles[outfitKey] != null) {
               formData.files.add(MapEntry(outfitKey, await dio.MultipartFile.fromFile(_imageFiles[outfitKey]!.path)));
             }
@@ -166,7 +173,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
                             Text('Outfit Image', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
                             // creating drop down button field.
                             DropdownButtonFormField<String>(
-                              value: _outfitTypes.keys.firstWhere( (k) => _imageFiles[k] != null, orElse: () => null), 
+                              value: _outfitTypes.keys.firstWhere( (k) => _imageFiles[k] != null, orElse: () => null!), 
                               // creating drop down menu tiems for outfit images.
                               items: _ouftitCatgories.map((String value) {
                                 return DropdownMenuItem(

@@ -100,7 +100,7 @@ def home():
 @feature.route('/images', methods=["POST"])
 def match_accessories_with_outfits():
     
-    # sending results.
+    # sending results to frontend.
     results = {
                          
         "feature similarity": {},
@@ -110,7 +110,7 @@ def match_accessories_with_outfits():
         "provided color match": {},
     }
 
-    # .
+    # initializing the model, outfit_file_type and predictions.
     predictions = {}
     outfit_file_type = None
     pretrained_model = None
