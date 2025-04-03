@@ -1,0 +1,238 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.fably"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/debug/AndroidManifest.xml:6:5-66
+15-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/debug/AndroidManifest.xml:6:22-64
+16    <uses-permission android:name="android.permission.CAMERA" />
+16-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:3:5-65
+16-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:3:22-62
+17
+18    <queries>
+18-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:30:5-35:15
+19        <intent>
+19-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:31:9-34:18
+20            <action android:name="android.intent.action.PROCESS_TEXT" />
+20-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:32:13-72
+20-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:32:21-70
+21
+22            <data android:mimeType="text/plain" />
+22-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:33:13-50
+22-->/Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/android/app/src/main/AndroidManifest.xml:33:19-48
+23        </intent>
+24    </queries>
+25
+26    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+26-->[:camera_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-71
+26-->[:camera_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:22-68
+27
+28    <permission
+28-->[androidx.core:core:1.13.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/b1f75614febb1717ee6d80f13e8c350a/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+29        android:name="com.example.fably.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.13.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/b1f75614febb1717ee6d80f13e8c350a/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.13.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/b1f75614febb1717ee6d80f13e8c350a/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.example.fably.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.13.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/b1f75614febb1717ee6d80f13e8c350a/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.13.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/b1f75614febb1717ee6d80f13e8c350a/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+33
+34    <application
+35        android:name="android.app.Application"
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.13.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/b1f75614febb1717ee6d80f13e8c350a/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+37        android:debuggable="true"
+38        android:extractNativeLibs="false"
+39        android:icon="@mipmap/launcher_icon"
+40        android:label="fably" >
+41        <activity
+42            android:name="com.example.fably.MainActivity"
+43            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+44            android:exported="true"
+45            android:hardwareAccelerated="true"
+46            android:launchMode="singleTop"
+47            android:taskAffinity=""
+48            android:theme="@style/LaunchTheme"
+49            android:windowSoftInputMode="adjustResize" >
+50            <meta-data
+51                android:name="io.flutter.embedding.android.NormalTheme"
+52                android:resource="@style/NormalTheme" />
+53
+54            <intent-filter>
+55                <action android:name="android.intent.action.MAIN" />
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+58            </intent-filter>
+59        </activity>
+60
+61        <meta-data
+62            android:name="flutterEmbedding"
+63            android:value="2" />
+64
+65        <provider
+65-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-17:20
+66            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+66-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-82
+67            android:authorities="com.example.fably.flutter.image_provider"
+67-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+68            android:exported="false"
+68-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+69            android:grantUriPermissions="true" >
+69-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-47
+70            <meta-data
+70-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:75
+71                android:name="android.support.FILE_PROVIDER_PATHS"
+71-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+72                android:resource="@xml/flutter_image_picker_file_paths" />
+72-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-72
+73        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
+74        <service
+74-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-31:19
+75            android:name="com.google.android.gms.metadata.ModuleDependencies"
+75-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-78
+76            android:enabled="false"
+76-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-36
+77            android:exported="false" >
+77-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
+78            <intent-filter>
+78-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-26:29
+79                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+79-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-94
+79-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:25-91
+80            </intent-filter>
+81
+82            <meta-data
+82-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-30:36
+83                android:name="photopicker_activity:0:required"
+83-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-63
+84                android:value="" />
+84-->[:image_picker_android] /Users/binadahettiarachchi/Documents/git_project_fably/Fably/FRONTEND/fably/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-33
+85        </service>
+86
+87        <activity
+87-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:23:9-27:75
+88            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+88-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:24:13-93
+89            android:excludeFromRecents="true"
+89-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:25:13-46
+90            android:exported="false"
+90-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:26:13-37
+91            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+91-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:27:13-72
+92        <!--
+93            Service handling Google Sign-In user revocation. For apps that do not integrate with
+94            Google Sign-In, this service will never be started.
+95        -->
+96        <service
+96-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:33:9-37:51
+97            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+97-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:34:13-89
+98            android:exported="true"
+98-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:35:13-36
+99            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+99-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:36:13-107
+100            android:visibleToInstantApps="true" />
+100-->[com.google.android.gms:play-services-auth:21.0.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/f4977f57085482f047acc34ea1f4e59a/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:37:13-48
+101
+102        <activity
+102-->[com.google.android.gms:play-services-base:18.0.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/75c457198d6747fa58b8f01921f935d8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+103            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+103-->[com.google.android.gms:play-services-base:18.0.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/75c457198d6747fa58b8f01921f935d8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+104            android:exported="false"
+104-->[com.google.android.gms:play-services-base:18.0.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/75c457198d6747fa58b8f01921f935d8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+105            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+105-->[com.google.android.gms:play-services-base:18.0.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/75c457198d6747fa58b8f01921f935d8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+106
+107        <meta-data
+107-->[com.google.android.gms:play-services-basement:18.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/549e2a9b921b97c55cc4862dd4ee9a7a/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:21:9-23:69
+108            android:name="com.google.android.gms.version"
+108-->[com.google.android.gms:play-services-basement:18.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/549e2a9b921b97c55cc4862dd4ee9a7a/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:22:13-58
+109            android:value="@integer/google_play_services_version" />
+109-->[com.google.android.gms:play-services-basement:18.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/549e2a9b921b97c55cc4862dd4ee9a7a/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:23:13-66
+110
+111        <uses-library
+111-->[androidx.window:window:1.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/e8303118f4ea23d4417918f1b1780a72/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+112            android:name="androidx.window.extensions"
+112-->[androidx.window:window:1.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/e8303118f4ea23d4417918f1b1780a72/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+113            android:required="false" />
+113-->[androidx.window:window:1.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/e8303118f4ea23d4417918f1b1780a72/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+114        <uses-library
+114-->[androidx.window:window:1.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/e8303118f4ea23d4417918f1b1780a72/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+115            android:name="androidx.window.sidecar"
+115-->[androidx.window:window:1.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/e8303118f4ea23d4417918f1b1780a72/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+116            android:required="false" />
+116-->[androidx.window:window:1.2.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/e8303118f4ea23d4417918f1b1780a72/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+117
+118        <provider
+118-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+119            android:name="androidx.startup.InitializationProvider"
+119-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:25:13-67
+120            android:authorities="com.example.fably.androidx-startup"
+120-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:26:13-68
+121            android:exported="false" >
+121-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:27:13-37
+122            <meta-data
+122-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+123                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+123-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+124                android:value="androidx.startup" />
+124-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/binadahettiarachchi/.gradle/caches/transforms-3/5d2afbcc96ad477658c0a9a5f7085409/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+125            <meta-data
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+126                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+127                android:value="androidx.startup" />
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+128        </provider>
+129
+130        <receiver
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+131            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+131-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+132            android:directBootAware="false"
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+133            android:enabled="true"
+133-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+134            android:exported="true"
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+135            android:permission="android.permission.DUMP" >
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+136            <intent-filter>
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+137                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+138            </intent-filter>
+139            <intent-filter>
+139-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+140                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+141            </intent-filter>
+142            <intent-filter>
+142-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+143                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+144            </intent-filter>
+145            <intent-filter>
+145-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+146                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/binadahettiarachchi/.gradle/caches/transforms-3/cde04d1fd42b8b6cdd405e9b0110a158/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+147            </intent-filter>
+148        </receiver>
+149    </application>
+150
+151</manifest>

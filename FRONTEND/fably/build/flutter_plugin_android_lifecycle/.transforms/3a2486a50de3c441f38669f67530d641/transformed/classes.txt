@@ -1,0 +1,3 @@
+io/flutter/embedding/engine/plugins/lifecycle/FlutterLifecycleAdapter.class
+io/flutter/plugins/flutter_plugin_android_lifecycle/FlutterAndroidLifecyclePlugin.class
+io/flutter/plugins/flutter_plugin_android_lifecycle/R.class

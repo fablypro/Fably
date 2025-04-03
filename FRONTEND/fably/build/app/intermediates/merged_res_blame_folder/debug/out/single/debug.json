@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-xhdpi_launcher_icon.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-xhdpi/launcher_icon.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/drawable-v21_launch_background.xml.flat",
+        "source": "com.example.fably.app-main-37:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-xxhdpi_launcher_icon.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-xxhdpi/launcher_icon.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-mdpi_launcher_icon.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-mdpi/launcher_icon.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-hdpi_launcher_icon.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-hdpi/launcher_icon.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-xxxhdpi_launcher_icon.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-xxxhdpi/launcher_icon.png"
+    },
+    {
+        "merged": "com.example.fably.app-merged_res-43:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.fably.app-main-37:/mipmap-hdpi/ic_launcher.png"
+    }
+]
