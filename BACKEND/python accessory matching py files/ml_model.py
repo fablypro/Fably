@@ -252,11 +252,11 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
                     min_delta_e = delta_e
                     closest_outfit_colors = outfit_color
                     
-            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_colors, "delta e": min_delta_e}
+            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_colors, "delta e": min_delta_e} # type: ignore
             if min_delta_e < delta_e_threshold:
                 match_found = True
         
-        return min_delta_e, delta_e_threshold
+        return min_delta_e, delta_e_threshold, match_found
     
     except ValueError as e:
         print(f"ValueError: {e}")

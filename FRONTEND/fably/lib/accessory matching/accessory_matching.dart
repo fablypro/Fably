@@ -66,6 +66,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
         }
     }
 
+    // syncrhonized function to prevent threading conflicts, and to pick images.
     Future<void> _pickImage(String type) async {
         XFile? image = await _picker.pickImage(source: ImageSource.gallery);
         if (image != null) {
@@ -95,7 +96,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
               formData.fields.add(MapEntry('accessory_colors[]', color));
             }
 
-            // .
+            // getting the outfit keys for each outfit image.
             String? outfitKey = _imageFiles.keys.firstWhere((k) => _ouftitCatgories.contains(k), orElse: () => null!);
             if (outfitKey != null && _imageFiles[outfitKey] != null) {
               formData.files.add(MapEntry(outfitKey, await dio.MultipartFile.fromFile(_imageFiles[outfitKey]!.path)));

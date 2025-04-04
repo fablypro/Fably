@@ -13,11 +13,14 @@ import logging
 
 # importing form machine learning model.
 from ml_model import (
+    find_closest_colors,
     matching_colors_between_outfits_and_accessories, 
     extract_main_colors, 
     predict_accessory, 
     predict_outfit, 
-    load_feature_extraction_model
+    load_feature_extraction_model,
+    extract_features_efficientNetB0,
+    compare_feature_vectors
 )
 
 
@@ -27,32 +30,11 @@ load_dotenv()
 
 # uploading files from following accessories folder paths.
 UPLOAD_ACCESSORY_FOLDER = "static/images/accessories/"
-BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "belts")
-CHAINS_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "chains")
-GLASSES_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "glasses")
-GLOVES_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "gloves")
-HANDBAG_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "handbags")
-HAT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "hats")
-RING_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "rings")
-SHOE_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "shoes")
-SOCK_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "socks")
-WATCH_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "watches")
+BELT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "belts"), CHAINS_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "chains"), GLASSES_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "glasses"), GLOVES_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "gloves"), HANDBAG_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "handbags"), HAT_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "hats"), RING_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "rings"), SHOE_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "shoes"), SOCK_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "socks"), WATCH_FOLDER = os.path.join(UPLOAD_ACCESSORY_FOLDER, "watches")
 
 # uploading files from following outfit folder paths.
 UPLOAD_OUTFIT_FOLDER = "static/images/outfits"
-ACTIVEWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "activewear")
-BOHEMIAN_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "bohemian")
-CASUAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "casual")
-EVENINGWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "eveningwear")
-FORMAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "formal")
-INDIE_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "indie")
-KNITWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "knitwear")
-LOUNGEWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "loungewear")
-RETRO_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "retro")
-ROMANTIC_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "romantic")
-SMARTCASUAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "smartcasual")
-SPORTY_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "sporty")
-VINTAGE_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "vintage")
+ACTIVEWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "activewear"), BOHEMIAN_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "bohemian"), CASUAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "casual"), EVENINGWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "eveningwear"), FORMAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "formal"), INDIE_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "indie"), KNITWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "knitwear"), LOUNGEWEAR_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "loungewear"), RETRO_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "retro"), ROMANTIC_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "romantic"), SMARTCASUAL_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "smartcasual"), SPORTY_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "sporty"), VINTAGE_FOLDER = os.path.join(UPLOAD_OUTFIT_FOLDER, "vintage")
 
 # allowed file extensions. 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -75,7 +57,7 @@ for accessory_folder in [BELT_FOLDER, CHAINS_FOLDER, GLASSES_FOLDER, GLOVES_FOLD
 # to ensure the outfit folders exist.
 for outfit_folder in [ACTIVEWEAR_FOLDER, BOHEMIAN_FOLDER, CASUAL_FOLDER, EVENINGWEAR_FOLDER, FORMAL_FOLDER, INDIE_FOLDER, KNITWEAR_FOLDER, LOUNGEWEAR_FOLDER, RETRO_FOLDER, ROMANTIC_FOLDER, SMARTCASUAL_FOLDER, SPORTY_FOLDER, VINTAGE_FOLDER]: os.makedirs(outfit_folder, exist_ok=True)
 
-
+# creating a logger for information.
 logging.basicConfig(level=logging.INFO)
 
 
@@ -106,9 +88,11 @@ def match_accessories_with_outfits():
         "feature similarity": {},
         "image color match": {},
         "image color delta e": {},
-        
         "provided color match": {},
     }
+    
+    file_paths = {}
+    outfit_path = N
 
     # initializing the model, outfit_file_type and predictions.
     predictions = {}
@@ -149,18 +133,78 @@ def match_accessories_with_outfits():
                 filename = secure_filename(file.filename)
                 if file_type in ['activewear', 'bohemian','casual', 'eveningwear','formal', 'indie','knitwear', 'loungewear','retro', 'romantic','smartcasual', 'sporty','vintage']:
                     
-                    given_folder = os.path.join(UPLOAD_OUTFIT_FOLDER, file_type)
+                    given_outfit_folder = os.path.join(UPLOAD_OUTFIT_FOLDER, file_type)
+                    
+                    filepath = os.path.join(given_outfit_folder, filename)
+                    file.save(filepath)
+                    file_paths[file_type] = filepath
                 
                 else:
-                    given_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type)
-                
-                filepath = os.path.join(given_folder, filename)
-                file.save(filepath)
-                file_paths[file_type] = filepath
+                    given_accessory_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type)
+                    
+                    filepath = os.path.join(given_accessory_folder, filename)
+                    file.save(filepath)
+                    file_paths[file_type] = filepath
                 
             # using the feature extraction model.
             feature_extraction_model = load_feature_extraction_model()
-        
+            outfit_features = None
+            outfit_colors = None
+            
+            # extracting the amin colors and features of each image file selected.
+            if outfit_path:
+                try:
+                    img = c.imread(path)
+                    if img is not None:
+                        outfit_features = feature_extraction_model(img)
+                        outfit_colors = extract_main_colors(img)
+                        
+                except Exception as e:
+                    results["error"] = {f"Unknown Error in Proccessing ${accessory_type} image: "+str(e)}
+
+
+            # for outfit features nad colors.
+            if outfit_features is not None and outfit_colors is not None:
+                for accessory_type, accessory_path in accessory_paths.items():
+                    try:
+                        accessory_img = c.imread(accessory_path)
+                        if accessory_img is not None:
+                            accessory_features = extract_features_efficientNetB0(accessory_path, feature_extraction_model)
+                            accessory_colors = extract_main_colors(accessory_path)
+                            if accessory_features is not None:
+                                match, similarity = compare_feature_vectors(outfit_features, accessory_features)
+                                results['feature similarity'][accessory_type] = {}
+                            else:
+                                results['feature similarity'][accessory_type] = {}
+                            
+                            if accessory_colors is not None:
+                                color_match, calculate_delta_e = find_closest_colors(accessory_colors, outfit_colors)
+                                results['image color match'][accessory_type] = color_match
+                                results['image color delta e'][accessory_type] = calculate_delta_e
+                            
+                            else:
+                                results['image color match'][accessory_type] = False
+                                results['image color delta e'][accessory_type] = calculate_delta_e
+                                
+                        else:
+                            results['feature similarity'][accessory_type]
+                            results['image color match'][accessory_type] = False
+                            results['image color delta e'][accessory_type]
+                            
+                    except ValueError as e:
+                        results["error"][accessory_type] = {f"Value Error in Proccessing ${accessory_type} image: "+str(e)}
+                        return None
+                    except Exception as e:
+                        results["error"][accessory_type] = {f"Unknown Error in Proccessing ${accessory_type} image: "+str(e)}
+                        return None
+                    
+            elif (outfit_path and not results.get('error')):
+                results['warning'][accessory_type] = {f""}
+
+
+
+
+
             # reading the images with color.      
             images = {}
             for file_type, filepath in images.items():
