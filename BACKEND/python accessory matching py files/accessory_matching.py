@@ -83,19 +83,16 @@ def home():
 def match_accessories_with_outfits():
     
     # sending results to frontend.
-    results = {
-                         
-        "feature similarity": {},
-        "image color match": {},
-        "image color delta e": {},
-        "provided color match": {},
-    }
+    results = {"feature similarity": {},
+               "image color match": {},
+            "image color delta e": {},
+            "provided color match": {},
+        }
     
+    # initializing the list of file_paths, outfit_file_type, outfit_path and accessory_paths.
     file_paths = {}
-    outfit_path = N
-
-    # initializing the model, outfit_file_type and predictions.
-    predictions = {}
+    outfit_path = None
+    accessory_paths = {}
     outfit_file_type = None
     pretrained_model = None
     
