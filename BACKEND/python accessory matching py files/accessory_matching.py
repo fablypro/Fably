@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify # type: ignore
+from flask import Flask, request, jsonify # type: ignore
 import os
 import cv2 as c
 from dotenv import load_dotenv # type: ignore
@@ -75,26 +75,25 @@ def allowed_file(filename):
 # route for home page.
 @feature.route('/')
 def home():
-    return render_template("accessory_matching.dart")
+    return jsonify({"message": "Accessory Matching API is Running."})
 
 
 # matching accessories with outfits via posting the data.
-@feature.route('/images', methods=["POST"])
+@feature.route('/match', methods=["POST"])
 def match_accessories_with_outfits():
     
     # sending results to frontend.
     results = {"feature similarity": {},
                "image color match": {},
-            "image color delta e": {},
-            "provided color match": {},
-        }
+               "image color delta e": {},
+               "provided color match": {},
+            }
     
     # initializing the list of file_paths, outfit_file_type, outfit_path and accessory_paths.
     file_paths = {}
     outfit_path = None
     accessory_paths = {}
-    outfit_file_type = None
-    pretrained_model = None
+    provided_accessory_colors = request.form.getList('accessory_colors[]')
     
 
     try:
@@ -151,14 +150,16 @@ def match_accessories_with_outfits():
             # extracting the amin colors and features of each image file selected.
             if outfit_path:
                 try:
-                    img = c.imread(path)
-                    if img is not None:
-                        outfit_features = feature_extraction_model(img)
-                        outfit_colors = extract_main_colors(img)
+                    outfit_img = c.imread(outfit_path)
+                    if outfit_img is not None:
+                        outfit_features = extract_features_efficientNetB0(outfit_path)
+                        outfit_colors = extract_main_colors(outfit_path)
+                        
+                    else:
+                        results["error"] = "Could Not Read Outfit Image."
                         
                 except Exception as e:
-                    results["error"] = {f"Unknown Error in Proccessing ${accessory_type} image: "+str(e)}
-
+                    results["error"] = {f"Unknown Error in Proccessing ${outfit_img} image: "+str(e)}
 
             # for outfit features nad colors.
             if outfit_features is not None and outfit_colors is not None:
@@ -170,9 +171,9 @@ def match_accessories_with_outfits():
                             accessory_colors = extract_main_colors(accessory_path)
                             if accessory_features is not None:
                                 match, similarity = compare_feature_vectors(outfit_features, accessory_features)
-                                results['feature similarity'][accessory_type] = {}
+                                results['feature similarity'][accessory_type] = {"match": bool(match), "similarity": float(similarity)}
                             else:
-                                results['feature similarity'][accessory_type] = {}
+                                results['feature similarity'][accessory_type] = {"match": False, "similarity": 0.0, "error": "Could Not Extract Features."}
                             
                             if accessory_colors is not None:
                                 color_match, calculate_delta_e = find_closest_colors(accessory_colors, outfit_colors)
@@ -181,12 +182,12 @@ def match_accessories_with_outfits():
                             
                             else:
                                 results['image color match'][accessory_type] = False
-                                results['image color delta e'][accessory_type] = calculate_delta_e
+                                results['image color delta e'][accessory_type] = {"error": "Could Not Extract Features."}
                                 
                         else:
-                            results['feature similarity'][accessory_type]
+                            results['feature similarity'][accessory_type] = {"match": False, "similarity": 0.0, "error": "Could Not Read Accessory Images."}
                             results['image color match'][accessory_type] = False
-                            results['image color delta e'][accessory_type]
+                            results['image color delta e'][accessory_type] = {"error": "Could Not Read Accessory Images."}
                             
                     except ValueError as e:
                         results["error"][accessory_type] = {f"Value Error in Proccessing ${accessory_type} image: "+str(e)}
@@ -196,8 +197,18 @@ def match_accessories_with_outfits():
                         return None
                     
             elif (outfit_path and not results.get('error')):
-                results['warning'][accessory_type] = {f""}
-
+                results['warning'][accessory_type] = {"Could Not Extract Feautre from Outfit Image."}
+                
+            # getting all the selected colors from the frontend and for accessory macthing.
+            if outfit_colors and provided_accessory_colors:
+                for accessory_color in provided_accessory_colors:
+                    try:
+                        accessory_color_rgb = None
+                        if accessory_color.startsWith("#"):
+                            accessory_color_rgb = tuple(accessory_color.split())
+                            
+                        elif accessory_color in _colorsList:
+                            
 
 
 
