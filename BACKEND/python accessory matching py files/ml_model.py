@@ -238,7 +238,9 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
         if not accessory_colors or not outfit_colors:
             return False, {}
         min_delta_e = float("inf")
-        closest_outfit_color = None
+        overall_closest_outfit_color = None
+        
+        closest_matches = {}
         
         # finding the closest colors for each accessory compared to each outfit.
         for accessory_color in accessory_colors:
@@ -256,7 +258,7 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
             if min_delta_e < delta_e_threshold:
                 match_found = True
         
-        return min_delta_e, delta_e_threshold, match_found
+        return match_found, closest_matches
     
     except ValueError as e:
         print(f"ValueError: {e}")

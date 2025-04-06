@@ -161,7 +161,7 @@ def match_accessories_with_outfits():
                 except Exception as e:
                     results["error"] = {f"Unknown Error in Proccessing ${outfit_img} image: "+str(e)}
 
-            # for outfit features nad colors.
+            # feature and color matching between outfits and accessories.
             if outfit_features is not None and outfit_colors is not None:
                 for accessory_type, accessory_path in accessory_paths.items():
                     try:
@@ -169,12 +169,15 @@ def match_accessories_with_outfits():
                         if accessory_img is not None:
                             accessory_features = extract_features_efficientNetB0(accessory_path, feature_extraction_model)
                             accessory_colors = extract_main_colors(accessory_path)
+                            
+                            # returning the match result and similarity.
                             if accessory_features is not None:
                                 match, similarity = compare_feature_vectors(outfit_features, accessory_features)
                                 results['feature similarity'][accessory_type] = {"match": bool(match), "similarity": float(similarity)}
                             else:
                                 results['feature similarity'][accessory_type] = {"match": False, "similarity": 0.0, "error": "Could Not Extract Features."}
                             
+                            # returning the results for color matching between outfits and accessories.
                             if accessory_colors is not None:
                                 color_match, calculate_delta_e = find_closest_colors(accessory_colors, outfit_colors)
                                 results['image color match'][accessory_type] = color_match
@@ -191,10 +194,8 @@ def match_accessories_with_outfits():
                             
                     except ValueError as e:
                         results["error"][accessory_type] = {f"Value Error in Proccessing ${accessory_type} image: "+str(e)}
-                        return None
                     except Exception as e:
                         results["error"][accessory_type] = {f"Unknown Error in Proccessing ${accessory_type} image: "+str(e)}
-                        return None
                     
             elif (outfit_path and not results.get('error')):
                 results['warning'][accessory_type] = {"Could Not Extract Feautre from Outfit Image."}
@@ -205,10 +206,36 @@ def match_accessories_with_outfits():
                     try:
                         accessory_color_rgb = None
                         if accessory_color.startsWith("#"):
+                            accessory_color_rgb = tuple(int(accessory_color[i:i+2], 16) for i in (1, 3, 5))
+                            
+                        elif ',' in accessory_color:
                             accessory_color_rgb = tuple(accessory_color.split())
-                            
+
                         elif accessory_color in _colorsList:
-                            
+                            color_map = {
+                                'Amber': (255, 191, 0), 'Black': (0, 0, 0), 
+                                'Blue': (0, 0, 255), 'Emerald': (), 
+                                'Gold': (), 'Green': (0, 255, 0), 
+                                'Grey': (), 'Indigo': (), 
+                                'Jade': (0, 168, 107), 'Lemon': (255, 247, 0), 
+                                'Lilac': (), 'Lime': (191, 255, 0), 
+                                'Midnight Blue': (), 'Mint Green': (), 
+                                'Navy Blue': (), 'Olive': (), 
+                                'Orange': (), 'Peach': (255, 229, 180), 
+                                'Pink': (255, 192, 203), 'Platinum': (229, 224, 200), 
+                                'Plum': (), 'Purple': (), 
+                                'Red': (255, 0, 0), 'Rose': (), 
+                                'Ruby': (), 'Sapphire': (), 
+                                'Scarlet': (), 'Silver': (), 
+                                'Turquoise': (64, 224, 208), 'Ultramarine': (18, 10, 143), 
+                                'Violet': (), 'White': (255, 255, 255), 
+                                'Yellow': (255, 255, 0), 'Zucchini': ()
+                            }
+                                    
+                    except ValueError as e:
+                        return e
+                    except Exception as e:
+                        return e
 
 
 
