@@ -23,7 +23,7 @@ from colormath.delta_e import delta_e_ciede2000 # type: ignore
 # loading environment variables from .env file.
 load_dotenv()
 
-
+# creating a logger for information.
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
@@ -263,19 +263,19 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
                 
         match_found = any(data["delta e"] < delta_e_threshold for data in closest_matches.values())
         
-        return match_found, {"": closest_matches, 
-                             "": overall_closest_outfit_color, 
-                             "": overall_min_delta_e
+        return match_found, {"closest matches": closest_matches, 
+                             "overall closest outfit color": overall_closest_outfit_color, 
+                             "overall min delta e": overall_min_delta_e
                             }
     
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return None, None
+        return None, None, None
     except Exception as e:
         print(f"Error in Matching the colors: {e}")
         logging.error(f"Error: {e}")
-        return None, None
+        return None, None, None
 
 def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
     # validating the comparsion of feature vectors.
