@@ -235,15 +235,6 @@ def match_accessories_with_outfits():
                         return jsonify({"error": "Unknown Error in Image Processing."}), 500
 
 
-
-
-            # reading the images with color.      
-            images = {}
-            for file_type, filepath in images.items():
-                images[file_type] = c.imread(filepath, c.IMREAD_COLOR)
-                if images[file_type] is None:
-                    raise ValueError(f"Failed to Read Image for {file_type}.")           
-            
             # finding matches for each accessory and for each outfit.
             predictions = {}
             for file_type, img in images.items():
