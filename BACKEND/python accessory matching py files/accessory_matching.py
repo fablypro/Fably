@@ -235,6 +235,10 @@ def match_accessories_with_outfits():
                         return jsonify({"error": "Unknown Error in Image Processing."}), 500
 
 
+
+
+            
+            
             # finding matches for each accessory and for each outfit.
             predictions = {}
             for file_type, img in images.items():
