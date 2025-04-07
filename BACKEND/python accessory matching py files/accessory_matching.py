@@ -14,6 +14,7 @@ import logging
 # importing form machine learning model.
 from ml_model import (
     find_closest_colors,
+    match_given_colors,
     matching_colors_between_outfits_and_accessories, 
     extract_main_colors, 
     predict_accessory, 
@@ -127,6 +128,7 @@ def match_accessories_with_outfits():
             file_paths = {}
             for file_type, file in required_files.items():
                 filename = secure_filename(file.filename)
+                # saving data.
                 if file_type in ['activewear', 'bohemian','casual', 'eveningwear','formal', 'indie','knitwear', 'loungewear','retro', 'romantic','smartcasual', 'sporty','vintage']:
                     
                     given_outfit_folder = os.path.join(UPLOAD_OUTFIT_FOLDER, file_type)
@@ -135,6 +137,7 @@ def match_accessories_with_outfits():
                     file.save(filepath)
                     file_paths[file_type] = filepath
                 
+                # saving data.
                 else:
                     given_accessory_folder = os.path.join(UPLOAD_ACCESSORY_FOLDER, file_type)
                     
@@ -209,28 +212,34 @@ def match_accessories_with_outfits():
                             accessory_color_rgb = tuple(int(accessory_color[i:i+2], 16) for i in (1, 3, 5))
                             
                         elif ',' in accessory_color:
-                            accessory_color_rgb = tuple(accessory_color.split())
+                            accessory_color_rgb = tuple(int(accessory_color.split(',')))
 
                         elif accessory_color in _colorsList:
                             color_map = {
                                 'Amber': (255, 191, 0), 'Black': (0, 0, 0), 
-                                'Blue': (0, 0, 255), 'Emerald': (), 
-                                'Gold': (), 'Green': (0, 255, 0), 
-                                'Grey': (), 'Indigo': (), 
+                                'Blue': (0, 0, 255), 'Emerald': (80, 200, 120), 
+                                'Gold': (255, 215, 0), 'Green': (0, 255, 0), 
+                                'Grey': (128, 128, 128), 'Indigo': (75, 0, 130), 
                                 'Jade': (0, 168, 107), 'Lemon': (255, 247, 0), 
-                                'Lilac': (), 'Lime': (191, 255, 0), 
-                                'Midnight Blue': (), 'Mint Green': (), 
-                                'Navy Blue': (), 'Olive': (), 
-                                'Orange': (), 'Peach': (255, 229, 180), 
+                                'Lilac': (200, 162, 200), 'Lime': (191, 255, 0), 
+                                'Midnight Blue': (25, 25, 112), 'Mint Green': (152, 255, 152), 
+                                'Navy Blue': (0, 0, 128), 'Olive': (128, 128, 0), 
+                                'Orange': (255, 140, 0), 'Peach': (255, 229, 180), 
                                 'Pink': (255, 192, 203), 'Platinum': (229, 224, 200), 
-                                'Plum': (), 'Purple': (), 
-                                'Red': (255, 0, 0), 'Rose': (), 
-                                'Ruby': (), 'Sapphire': (), 
-                                'Scarlet': (), 'Silver': (), 
+                                'Plum': (221, 160, 221), 'Purple': (128, 0, 128), 
+                                'Red': (255, 0, 0), 'Rose': (255, 0, 127), 
+                                'Ruby': (224, 17, 95), 'Sapphire': (15, 82, 186), 
+                                'Scarlet': (255, 36, 0), 'Silver': (192, 192, 192), 
                                 'Turquoise': (64, 224, 208), 'Ultramarine': (18, 10, 143), 
-                                'Violet': (), 'White': (255, 255, 255), 
-                                'Yellow': (255, 255, 0), 'Zucchini': ()
+                                'Violet': (143, 0, 255), 'White': (255, 255, 255), 
+                                'Yellow': (255, 255, 0), 'Zucchini': (81, 97, 56)
                             }
+                            
+                            accessory_color_rgb = color_map.get(accessory_color)
+                            
+                        if accessory_color_rgb:
+                            match, delta_e = match_given_colors()
+                        
                                     
                     except ValueError as e:
                         return e

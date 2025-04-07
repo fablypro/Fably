@@ -226,11 +226,11 @@ def find_closest_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return None
+        return None, None
     except Exception as e:
         print(f"Error in Finding closest colors: {e}")
         logging.error(f"Error: {e}")
-        return None
+        return None, None
     
 def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
     # validating the matching of given colors.
@@ -244,30 +244,31 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
         
         # finding the closest colors for each accessory compared to each outfit.
         for accessory_color in accessory_colors:
-            min_delta_e = float("inf")
-            closest_outfit_colors = None
+            current_min_delta_e = float("inf")
+            current_closest_outfit_color = None
             
             for outfit_color in outfit_colors:
                 delta_e = calculate_delta_e(accessory_color, outfit_color)
                 
                 if delta_e < min_delta_e:
-                    min_delta_e = delta_e
-                    closest_outfit_colors = outfit_color
+                    current_min_delta_e = delta_e
+                    current_closest_outfit_color = outfit_color
                     
-            color_differences[tuple(accessory_color)] = {"closest color": closest_outfit_colors, "delta e": min_delta_e} # type: ignore
-            if min_delta_e < delta_e_threshold:
-                match_found = True
+            color_differences[tuple(accessory_color)] = {"current closest color": current_closest_outfit_colors, "current delta e": current_closest_outfit_colors} # type: ignore
+            if current_min_delta_e < min_delta_e:
+                current_min_delta_e = delta_e
+                overall_closest_outfit_color = current_closest_outfit_color
         
         return match_found, closest_matches
     
     except ValueError as e:
         print(f"ValueError: {e}")
         logging.error(f"ValueError: {e}")
-        return None
+        return None, None
     except Exception as e:
         print(f"Error in Matching the colors: {e}")
         logging.error(f"Error: {e}")
-        return None
+        return None, None
 
 def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
     # validating the comparsion of feature vectors.
