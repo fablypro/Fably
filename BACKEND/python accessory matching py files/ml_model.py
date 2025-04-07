@@ -27,8 +27,6 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
-
-
 # load feature extraction model globally.
 try:
     # validating the model.
@@ -237,7 +235,7 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
     try:
         if not accessory_colors or not outfit_colors:
             return False, {}
-        min_delta_e = float("inf")
+        overall_min_delta_e = float("inf")
         overall_closest_outfit_color = None
         
         closest_matches = {}
@@ -250,16 +248,25 @@ def match_given_colors(accessory_colors, outfit_colors, delta_e_threshold=30):
             for outfit_color in outfit_colors:
                 delta_e = calculate_delta_e(accessory_color, outfit_color)
                 
-                if delta_e < min_delta_e:
+                if delta_e < current_min_delta_e:
                     current_min_delta_e = delta_e
                     current_closest_outfit_color = outfit_color
                     
-            color_differences[tuple(accessory_color)] = {"current closest color": current_closest_outfit_colors, "current delta e": current_closest_outfit_colors} # type: ignore
-            if current_min_delta_e < min_delta_e:
+            closest_matches[tuple(accessory_color)] = {
+                "current closest color": current_closest_outfit_color, 
+                "current delta e": current_min_delta_e
+            }
+            
+            if current_min_delta_e < overall_min_delta_e:
                 current_min_delta_e = delta_e
                 overall_closest_outfit_color = current_closest_outfit_color
+                
+        match_found = any(data["delta e"] < delta_e_threshold for data in closest_matches.values())
         
-        return match_found, closest_matches
+        return match_found, {"": closest_matches, 
+                             "": overall_closest_outfit_color, 
+                             "": overall_min_delta_e
+                            }
     
     except ValueError as e:
         print(f"ValueError: {e}")
@@ -276,7 +283,7 @@ def compare_feature_vectors(feature_vector_1, feature_vector_2, threshold=0.8):
         if feature_vector_1 is None or feature_vector_2 is None:
             return False, 0.0
     
-        similarity = cosine_similarity(feature_vector_1.reshape(-1, -1), feature_vector_2.reshape(1, 1))
+        similarity = cosine_similarity(feature_vector_1.reshape(1, -1), feature_vector_2.reshape(1, -1))[0][0]
         return similarity >= threshold, similarity
     
     except ValueError as e:
@@ -310,10 +317,6 @@ def calculate_delta_e(rgb1, rgb2):
         print(f"Error in Calculating Delta E: {e}")
         logging.error(f"Delta E Error: {e}")
         return float("inf")
-
-
-
-
 
 
 
