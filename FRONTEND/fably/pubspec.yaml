@@ -23,10 +23,10 @@ dependencies:
   liquid_pull_to_refresh: ^3.0.0
   flutter_slidable: ^4.0.0
   loading_overlay: ^0.4.2
-  file_picker: ^9.2.1
+  #file_picker: ^9.2.1
   awesome_dialog: ^3.2.1
   flutter_spinkit: ^5.2.1
-  mime: ^2.0.0
+  #mime: ^2.0.0
   cached_network_image: ^3.4.1
   path_provider: ^2.1.5
   dio: ^5.8.0+1

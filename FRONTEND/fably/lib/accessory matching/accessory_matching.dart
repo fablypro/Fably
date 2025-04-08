@@ -4,8 +4,6 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:image_picker/image_picker.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-//import 'package:file_picker/file_picker.dart';
-//import 'package:mime/mime.dart';
 
 void main() { runApp(AccessoryMatchApp()); }
 
