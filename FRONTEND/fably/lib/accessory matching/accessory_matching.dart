@@ -13,16 +13,13 @@ class AccessoryMatchApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
-            title: 'Accessory Matcher',
-            theme: ThemeData(primarySwatch: Colors.blue,),
-            home: AccessoryMatcher(),
+            title: 'Accessory Matcher', theme: ThemeData(primarySwatch: Colors.blue,), home: AccessoryMatcher(),
         );
     }
 }
 
 class AccessoryMatcher extends StatefulWidget {
   const AccessoryMatcher({super.key});
-
     @override
     _AccessoryMatcherState createState() => _AccessoryMatcherState();
 }
@@ -68,9 +65,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
     Future<void> _pickImage(String type) async {
         XFile? image = await _picker.pickImage(source: ImageSource.gallery);
         if (image != null) {
-            setState(() {
-                _imageFiles[type] = image;
-            });
+            setState(() { _imageFiles[type] = image; });
         }
     }
 
@@ -84,9 +79,7 @@ class _AccessoryMatcherState extends State<AccessoryMatcher> {
             var formData = dio.FormData();
 
             _imageFiles.forEach((key, value) async {
-                if (value != null) {
-                    formData.files.add(MapEntry(key, await dio.MultipartFile.fromFile(value.path)));
-                }
+                if (value != null) { formData.files.add(MapEntry(key, await dio.MultipartFile.fromFile(value.path))); }
             });
 
             // sending accessory colors as a list.
