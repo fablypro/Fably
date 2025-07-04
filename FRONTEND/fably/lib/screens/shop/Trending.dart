@@ -47,3 +47,8 @@ class Trending extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context); // Handle app bar back button
               },
+            ),
+            title: const Text(
+              "Trending",
+              style: TextStyle(color: Colors.white),
+            ),  
