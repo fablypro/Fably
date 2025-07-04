@@ -74,3 +74,8 @@ class Body extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(height: size.height * 0.03),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+            
