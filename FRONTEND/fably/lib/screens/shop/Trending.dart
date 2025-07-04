@@ -37,3 +37,8 @@ class Trending extends StatelessWidget {
         Navigator.pop(context); // Handle physical back button
         return true;
       },
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.black,
+          appBar: AppBar(
+            backgroundColor: Colors.black,
