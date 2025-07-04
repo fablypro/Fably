@@ -60,3 +60,9 @@ class Trending extends StatelessWidget {
     );
   }
 }
+
+class Body extends StatelessWidget {
+  const Body({
+    super.key,
+    required this.size,
+  });
