@@ -86,4 +86,12 @@ class Body extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ), 
+          ),
+                    SizedBox(height: size.height * 0.03),
+          buildTrendSection(size),
+          //buildTrendSection(size),
+          //buildTrendSection(size),
+        ],
+      ),
+    );
+  } 
