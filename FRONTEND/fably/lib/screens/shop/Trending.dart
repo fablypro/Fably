@@ -66,3 +66,5 @@ class Body extends StatelessWidget {
     super.key,
     required this.size,
   });
+
+  final Size size;
