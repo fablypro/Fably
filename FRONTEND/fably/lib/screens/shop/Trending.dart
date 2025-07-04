@@ -31,3 +31,9 @@ class Trending extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pop(context); // Handle physical back button
+        return true;
+      },
