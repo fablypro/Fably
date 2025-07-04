@@ -24,3 +24,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class Trending extends StatelessWidget {
+  const Trending({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
