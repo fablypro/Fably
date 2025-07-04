@@ -68,3 +68,9 @@ class Body extends StatelessWidget {
   });
 
   final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
