@@ -78,4 +78,11 @@ class Body extends StatelessWidget {
           SizedBox(height: size.height * 0.03),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-            
+            child: Text(
+              "New Fashion Trends",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
