@@ -51,4 +51,12 @@ class Trending extends StatelessWidget {
             title: const Text(
               "Trending",
               style: TextStyle(color: Colors.white),
-            ),  
+            ),
+            centerTitle: true,
+          ),
+          body: Body(size: size),
+        ),
+      ),
+    );
+  }
+}
