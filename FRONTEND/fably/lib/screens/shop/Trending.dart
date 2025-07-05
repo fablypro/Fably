@@ -164,3 +164,9 @@ class Body extends StatelessWidget {
 }
 
 //constants
+
+const kHeadingTextStyle = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+  color: Colors.white,
+);
