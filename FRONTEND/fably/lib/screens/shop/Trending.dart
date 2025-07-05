@@ -102,12 +102,12 @@ class Body extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           width: double.infinity,
-                    child: Image(
+          child: Image(
             fit: BoxFit.cover,
             image: AssetImage("assets/beautiful.png"),
           ),
         ),
-                SizedBox(height: size.height * 0.02),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
@@ -115,7 +115,7 @@ class Body extends StatelessWidget {
             style: kHeadingTextStyle,
           ),
         ),
-                SizedBox(height: size.height * 0.02),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
