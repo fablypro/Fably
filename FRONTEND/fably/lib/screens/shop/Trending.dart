@@ -148,17 +148,4 @@ class Body extends StatelessWidget {
             style: kDefaultTextStyle,
           ),
         ),
-        SizedBox(height: size.height * 0.04),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-          width: double.infinity,
-          child: Image(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/beautiful.png"),
-          ),
-        ),
-        SizedBox(height: size.height * 0.02),
-      ],
-    );
-  }
-}
+
