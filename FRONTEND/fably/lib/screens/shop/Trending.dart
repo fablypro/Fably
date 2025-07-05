@@ -140,12 +140,5 @@ class Body extends StatelessWidget {
             style: kHeadingTextStyle,
           ),
         ),
-        SizedBox(height: size.height * 0.02),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-          child: Text(
-            "Today in LosAngelis california Famous singer Ariana Grande launced her clothing brand Ari with over 20 designs just for women.",
-            style: kDefaultTextStyle,
-          ),
-        ),
+
 
