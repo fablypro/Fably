@@ -178,6 +178,11 @@ class _CommonDrawerState extends State<CommonDrawer>
                         onTap: () =>
                             _navigateTo(context, ShoppingHistoryScreen()),
                       ),
+                      _buildMenuItem(
+                        icon: Icons.heat_pump_outlined,
+                        title: "Trending",
+                        onTap: () => _navigateTo(context, Trending()),
+                      ),
                     ],
                   ),
                 ),
