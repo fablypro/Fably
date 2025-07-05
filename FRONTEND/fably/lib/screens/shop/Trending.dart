@@ -119,7 +119,7 @@ class Body extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
-            "We Learned From the Men’s Fashion Week. We’re Officially Obsessed With Everything Drawstring",
+            "Men’s Fashion Week. We’re Officially Obsessed With Everything Drawstring",
             style: kDefaultTextStyle,
           ),
         ),
