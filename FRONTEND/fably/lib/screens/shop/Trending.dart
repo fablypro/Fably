@@ -94,4 +94,16 @@ class Body extends StatelessWidget {
         ],
       ),
     );
-  } 
+  }
+
+    Widget buildTrendSection(Size size) {
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          width: double.infinity,
+          child: Image(
+            fit: BoxFit.cover,
+            image: AssetImage("assets/beautiful.png"),
+          ),
+        ), 
