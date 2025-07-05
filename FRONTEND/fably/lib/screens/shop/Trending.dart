@@ -95,11 +95,3 @@ class Body extends StatelessWidget {
       ),
     );
   }
-
-  Widget buildTrendSection(Size size) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-          width: double.infinity,
-
