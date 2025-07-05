@@ -132,3 +132,11 @@ class Body extends StatelessWidget {
             image: AssetImage("assets/ari.jpeg"),
           ),
         ),
+                SizedBox(height: size.height * 0.02),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          child: Text(
+            "Ariana Grande launches her new clothing brand ARI!",
+            style: kHeadingTextStyle,
+          ),
+        ),
