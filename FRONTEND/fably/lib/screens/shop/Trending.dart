@@ -137,3 +137,6 @@ class Body extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
             "Ariana Grande launches her new clothing brand ARI!",
+            style: kHeadingTextStyle,
+          ),
+        ),
