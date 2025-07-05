@@ -170,3 +170,8 @@ const kHeadingTextStyle = TextStyle(
   fontWeight: FontWeight.w600,
   color: Colors.white,
 );
+
+const kDefaultTextStyle = TextStyle(
+  fontSize: 14,
+  color: Colors.white70,
+);
