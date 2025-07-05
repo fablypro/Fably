@@ -115,4 +115,11 @@ class Body extends StatelessWidget {
             style: kHeadingTextStyle,
           ),
         ),
-        
+                SizedBox(height: size.height * 0.02),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          child: Text(
+            "We Learned From the Men’s Fashion Week. We’re Officially Obsessed With Everything Drawstring",
+            style: kDefaultTextStyle,
+          ),
+        ),
