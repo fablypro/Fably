@@ -96,7 +96,7 @@ class Body extends StatelessWidget {
     );
   }
 
-    Widget buildTrendSection(Size size) {
+  Widget buildTrendSection(Size size) {
     return Column(
       children: [
         Container(
@@ -154,3 +154,11 @@ class Body extends StatelessWidget {
           width: double.infinity,
           child: Image(
             fit: BoxFit.cover,
+            image: AssetImage("assets/beautiful.png"),
+          ),
+        ),
+        SizedBox(height: size.height * 0.02),
+      ],
+    );
+  }
+}
