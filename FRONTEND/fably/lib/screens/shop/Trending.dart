@@ -87,7 +87,7 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-                    SizedBox(height: size.height * 0.03),
+          SizedBox(height: size.height * 0.03),
           buildTrendSection(size),
           //buildTrendSection(size),
           //buildTrendSection(size),
@@ -96,7 +96,7 @@ class Body extends StatelessWidget {
     );
   }
 
-    Widget buildTrendSection(Size size) {
+  Widget buildTrendSection(Size size) {
     return Column(
       children: [
         Container(
@@ -106,8 +106,8 @@ class Body extends StatelessWidget {
             fit: BoxFit.cover,
             image: AssetImage("assets/beautiful.png"),
           ),
-        ), 
-               SizedBox(height: size.height * 0.02),
+        ),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
@@ -115,7 +115,7 @@ class Body extends StatelessWidget {
             style: kHeadingTextStyle,
           ),
         ),
-                SizedBox(height: size.height * 0.02),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
@@ -123,7 +123,7 @@ class Body extends StatelessWidget {
             style: kDefaultTextStyle,
           ),
         ),
-                SizedBox(height: size.height * 0.04),
+        SizedBox(height: size.height * 0.04),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           width: double.infinity,
@@ -132,7 +132,7 @@ class Body extends StatelessWidget {
             image: AssetImage("assets/ari.jpeg"),
           ),
         ),
-                SizedBox(height: size.height * 0.02),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
@@ -140,7 +140,7 @@ class Body extends StatelessWidget {
             style: kHeadingTextStyle,
           ),
         ),
-                SizedBox(height: size.height * 0.02),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           child: Text(
@@ -148,3 +148,17 @@ class Body extends StatelessWidget {
             style: kDefaultTextStyle,
           ),
         ),
+        SizedBox(height: size.height * 0.04),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          width: double.infinity,
+          child: Image(
+            fit: BoxFit.cover,
+            image: AssetImage("assets/beautiful.png"),
+          ),
+        ),
+        SizedBox(height: size.height * 0.02),
+      ],
+    );
+  }
+}
