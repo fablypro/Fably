@@ -107,3 +107,12 @@ class Body extends StatelessWidget {
             image: AssetImage("assets/beautiful.png"),
           ),
         ),
+                SizedBox(height: size.height * 0.02),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          child: Text(
+            "13 Work-Appropriate Vests That’ll Make Dressing",
+            style: kHeadingTextStyle,
+          ),
+        ),
+        
