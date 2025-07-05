@@ -129,7 +129,7 @@ class Body extends StatelessWidget {
           width: double.infinity,
           child: Image(
             fit: BoxFit.cover,
-            image: AssetImage("assets/ari.jpeg"),
+            image: AssetImage("assets/ariana.png"),
           ),
         ),
         SizedBox(height: size.height * 0.02),
