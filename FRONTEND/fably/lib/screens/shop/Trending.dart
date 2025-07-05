@@ -102,8 +102,4 @@ class Body extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           width: double.infinity,
-          child: Image(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/beautiful.png"),
-          ),
-        ),
+
