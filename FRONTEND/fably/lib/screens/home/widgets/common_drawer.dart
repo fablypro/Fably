@@ -153,6 +153,11 @@ class _CommonDrawerState extends State<CommonDrawer>
                         onTap: () => _navigateTo(context, const HomeScreen()),
                       ),
                       _buildMenuItem(
+                        icon: Icons.heat_pump_outlined,
+                        title: "Trending",
+                        onTap: () => _navigateTo(context, Trending()),
+                      ),
+                      _buildMenuItem(
                         icon: Icons.shopping_bag_outlined,
                         title: 'MY CART',
                         onTap: () => _navigateTo(context, CartPage()),
@@ -177,11 +182,6 @@ class _CommonDrawerState extends State<CommonDrawer>
                         title: 'MY ORDERS',
                         onTap: () =>
                             _navigateTo(context, ShoppingHistoryScreen()),
-                      ),
-                      _buildMenuItem(
-                        icon: Icons.heat_pump_outlined,
-                        title: "Trending",
-                        onTap: () => _navigateTo(context, Trending()),
                       ),
                     ],
                   ),
