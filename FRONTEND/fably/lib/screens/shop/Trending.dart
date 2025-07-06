@@ -104,7 +104,7 @@ class Body extends StatelessWidget {
           width: double.infinity,
           child: Image(
             fit: BoxFit.cover,
-            image: AssetImage("assets/beautiful.png"),
+            image: AssetImage("assets/image.png"),
           ),
         ),
         SizedBox(height: size.height * 0.02),
@@ -154,7 +154,7 @@ class Body extends StatelessWidget {
           width: double.infinity,
           child: Image(
             fit: BoxFit.cover,
-            image: AssetImage("assets/beautiful.png"),
+            image: AssetImage("assets/image.png"),
           ),
         ),
         SizedBox(height: size.height * 0.02),
