@@ -1,3 +1,4 @@
+import 'package:fably/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
@@ -34,7 +35,7 @@ class Trending extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pop(context); // Handle physical back button
+        // Handle physical back button
         return true;
       },
       child: SafeArea(
@@ -45,7 +46,12 @@ class Trending extends StatelessWidget {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                Navigator.pop(context); // Handle app bar back button
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const HomeScreen()), // Replace with your actual home screen widget
+                );
               },
             ),
             title: const Text(

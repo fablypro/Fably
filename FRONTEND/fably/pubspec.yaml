@@ -61,6 +61,7 @@ flutter:
     - assets/hoodie.webp
     - assets/ariana.png
     - assets/image.png
+    - assets/ladies.jpg
 
   fonts:
     - family: Italiana
