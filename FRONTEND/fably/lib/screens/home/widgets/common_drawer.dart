@@ -8,6 +8,7 @@ import 'dart:ui';
 import '../../../utils/prefs.dart';
 import '../../../utils/requests.dart';
 import '../../profile/pofile_page.dart';
+import 'package:fably/screens/shop/Trending.dart';
 
 class CommonDrawer extends StatefulWidget {
   const CommonDrawer({super.key});
@@ -16,10 +17,11 @@ class CommonDrawer extends StatefulWidget {
   State<CommonDrawer> createState() => _CommonDrawerState();
 }
 
-class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderStateMixin {
+class _CommonDrawerState extends State<CommonDrawer>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _blurAnimation;
-  
+
   @override
   void initState() {
     super.initState();
@@ -27,18 +29,18 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
-    
+
     _blurAnimation = Tween<double>(begin: 0, end: 10).animate(
       CurvedAnimation(
         parent: _animationController,
         curve: Curves.easeInOut,
       ),
     );
-    
+
     // Start the animation when the drawer opens
     _animationController.forward();
   }
-  
+
   @override
   void dispose() {
     _animationController.dispose();
@@ -62,7 +64,8 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
 
   void _showMessage(BuildContext context, String message) {
     print(message);
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -117,11 +120,11 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
                                 child: Text(
                                   'MENU',
                                   style: TextStyle(
-                                    fontFamily: "jura",
-                                    letterSpacing: 6,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: 24),
+                                      fontFamily: "jura",
+                                      letterSpacing: 6,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                      fontSize: 24),
                                 ),
                               ),
                             ),
@@ -150,6 +153,11 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
                         onTap: () => _navigateTo(context, const HomeScreen()),
                       ),
                       _buildMenuItem(
+                        icon: Icons.heat_pump_outlined,
+                        title: "Trending",
+                        onTap: () => _navigateTo(context, Trending()),
+                      ),
+                      _buildMenuItem(
                         icon: Icons.shopping_bag_outlined,
                         title: 'MY CART',
                         onTap: () => _navigateTo(context, CartPage()),
@@ -172,7 +180,8 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
                       _buildMenuItem(
                         icon: Icons.list_alt,
                         title: 'MY ORDERS',
-                        onTap: () => _navigateTo(context, ShoppingHistoryScreen()),
+                        onTap: () =>
+                            _navigateTo(context, ShoppingHistoryScreen()),
                       ),
                     ],
                   ),
@@ -184,7 +193,7 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
       },
     );
   }
-  
+
   // Helper method to build menu items with consistent styling
   Widget _buildMenuItem({
     required IconData icon,
@@ -216,7 +225,7 @@ class _CommonDrawerState extends State<CommonDrawer> with SingleTickerProviderSt
       ),
     );
   }
-  
+
   // Helper method to navigate to a new screen
   void _navigateTo(BuildContext context, Widget screen) {
     Navigator.pushReplacement(

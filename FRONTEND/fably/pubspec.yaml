@@ -59,6 +59,9 @@ flutter:
     - assets/black_suite_woman.avif
     - assets/black_dress.jpg
     - assets/hoodie.webp
+    - assets/ariana.png
+    - assets/image.png
+    - assets/ladies.jpg
 
   fonts:
     - family: Italiana
