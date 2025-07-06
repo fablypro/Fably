@@ -75,7 +75,7 @@ class Body extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: size.height * 0.03),
+          SizedBox(height: size.height * 0.02),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
             child: Text(
@@ -87,7 +87,7 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: size.height * 0.03),
+          SizedBox(height: size.height * 0.02),
           buildTrendSection(size),
           //buildTrendSection(size),
           //buildTrendSection(size),
@@ -99,6 +99,32 @@ class Body extends StatelessWidget {
   Widget buildTrendSection(Size size) {
     return Column(
       children: [
+        SizedBox(height: size.height * 0.04),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          width: double.infinity,
+          child: Image(
+            fit: BoxFit.cover,
+            image: AssetImage("assets/ladies.jpg"),
+          ),
+        ),
+        SizedBox(height: size.height * 0.02),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          child: Text(
+            "Vintage collection is back!",
+            style: kHeadingTextStyle,
+          ),
+        ),
+        SizedBox(height: size.height * 0.02),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+          child: Text(
+            "Vintage collection available in Fably, place your order today. All men and women love vintage styles. From 70 s to 20th century we are briging back the colourful and bright vibes back.",
+            style: kDefaultTextStyle,
+          ),
+        ),
+        SizedBox(height: size.height * 0.02),
         Container(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
           width: double.infinity,
@@ -148,16 +174,6 @@ class Body extends StatelessWidget {
             style: kDefaultTextStyle,
           ),
         ),
-        SizedBox(height: size.height * 0.04),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-          width: double.infinity,
-          child: Image(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/image.png"),
-          ),
-        ),
-        SizedBox(height: size.height * 0.02),
       ],
     );
   }
