@@ -16,7 +16,7 @@ import 'widgets/bottom_nav_bar.dart';
 
 class ProductService {
   final requests = BackendRequests();
-  
+
   static String _baseUrl = 'http://192.168.1.7:5000/products';
 
   Future<List<Product>> fetchProducts() async {
@@ -31,7 +31,8 @@ class ProductService {
         throw Exception('Failed to load products');
       }
     } catch (e) {
-      throw Exception('Error fetching products: $e');
+      throw Exception(
+          'Error fetching products Server is Expired.we will be live back soon....: $e');
     }
   }
 }
@@ -41,7 +42,7 @@ class ProductCard extends StatelessWidget {
   final double heightFactor;
 
   const ProductCard({
-    super.key, 
+    super.key,
     required this.product,
     this.heightFactor = 1.0,
   });
@@ -77,7 +78,10 @@ class ProductCard extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [Colors.transparent, Colors.black.withOpacity(0.8)],
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withOpacity(0.8)
+                          ],
                         ),
                       ),
                     ),
@@ -131,7 +135,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Product>> futureProducts;
   int _selectedCategory = 0;
-  final List<String> _categories = ['All', 'New', 'Trending', 'Shoes', 'Accessories'];
+  final List<String> _categories = [
+    'All',
+    'New',
+    'Trending',
+    'Shoes',
+    'Accessories'
+  ];
 
   Future<void> _refreshProducts() async {
     setState(() {
@@ -178,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
       statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.black,
     ));
-    
+
     final requests = BackendRequests();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (!await requests.isLoggedIn()) {
@@ -212,12 +222,10 @@ class _HomeScreenState extends State<HomeScreen> {
         }
         return false;
       },
-      child:SafeArea(
-        child:Scaffold(
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.black,
-          appBar: CommonAppBar(
-            title: 'FABLY'
-            ),
+          appBar: CommonAppBar(title: 'FABLY'),
           /*appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.black,
@@ -289,8 +297,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: const EdgeInsets.symmetric(horizontal: 8),
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         decoration: BoxDecoration(
-                          color: _selectedCategory == index 
-                              ? Colors.white 
+                          color: _selectedCategory == index
+                              ? Colors.white
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
@@ -303,8 +311,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           _categories[index],
                           style: TextStyle(
                             fontFamily: 'jura',
-                            color: _selectedCategory == index 
-                                ? Colors.black 
+                            color: _selectedCategory == index
+                                ? Colors.black
                                 : Colors.white,
                             fontWeight: FontWeight.w500,
                           ),
@@ -344,29 +352,35 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       } else if (snapshot.hasData) {
                         final products = snapshot.data!;
-                        
+
                         return GridView.builder(
                           padding: const EdgeInsets.all(16),
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 16,
                             mainAxisSpacing: 16,
-                            childAspectRatio: 0.68, // Taller aspect ratio for all items
+                            childAspectRatio:
+                                0.68, // Taller aspect ratio for all items
                           ),
                           itemCount: products.length,
                           itemBuilder: (context, index) {
                             // Create visual imbalance by applying different padding
                             EdgeInsets padding;
                             if (index % 4 == 0) {
-                              padding = const EdgeInsets.only(bottom: 24); // Push down
+                              padding = const EdgeInsets.only(
+                                  bottom: 24); // Push down
                             } else if (index % 4 == 1) {
-                              padding = const EdgeInsets.only(top: 24); // Push up
+                              padding =
+                                  const EdgeInsets.only(top: 24); // Push up
                             } else if (index % 4 == 2) {
-                              padding = const EdgeInsets.only(bottom: 12); // Slight push down
+                              padding = const EdgeInsets.only(
+                                  bottom: 12); // Slight push down
                             } else {
-                              padding = const EdgeInsets.only(top: 12); // Slight push up
+                              padding = const EdgeInsets.only(
+                                  top: 12); // Slight push up
                             }
-                            
+
                             return Padding(
                               padding: padding,
                               child: GestureDetector(
