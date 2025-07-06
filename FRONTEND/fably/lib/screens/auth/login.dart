@@ -31,19 +31,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-
   Future<String?> getPrefs(String pref) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? prefString = prefs.getString(pref);
-    
+
     return prefString;
   }
 
   void _showMessage(String message) {
     print(message);
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
-
 
   Future<bool> loginCustomer(String email, String password) async {
     final requests = BackendRequests();
@@ -55,56 +54,51 @@ class _LoginScreenState extends State<LoginScreen> {
     // Step 2: Prepare the login data as JSON
 
     // Step 3: Send a POST request to the login endpoint with the CSRF token in headers
-    try{
-    final loginResponse = await requests.postRequest(
-      'login_customer',
-      body:
-        {
-          'email': email,
-          'password': password,
+    try {
+      final loginResponse = await requests.postRequest('login_customer', body: {
+        'email': email,
+        'password': password,
+      });
+
+      // Step 4: Handle the login response
+      if (loginResponse.statusCode == 200) {
+        // Parse the returned user info
+        final Map<String, dynamic> userInfo = jsonDecode(loginResponse.body);
+
+        // Extract cookies from the response headers
+        // Note: The cookie string might include additional attributes
+        final String? cookies = loginResponse.headers['set-cookie'];
+        print("Cookies: $cookies");
+
+        // Step 5: Save the user info and cookies using SharedPreferences
+
+        if (cookies != null) {
+          await prefs.setPrefs('cookies', cookies);
         }
-    );
 
-    // Step 4: Handle the login response
-    if (loginResponse.statusCode == 200) {
-      // Parse the returned user info
-      final Map<String, dynamic> userInfo = jsonDecode(loginResponse.body);
-      
+        await prefs.setPrefs('userInfo', jsonEncode(userInfo));
 
-      // Extract cookies from the response headers
-      // Note: The cookie string might include additional attributes
-      final String? cookies = loginResponse.headers['set-cookie'];
-      print("Cookies: $cookies");
-
-      // Step 5: Save the user info and cookies using SharedPreferences
-      
-      if (cookies != null) {
-        await prefs.setPrefs('cookies', cookies);
-      }
-
-      await prefs.setPrefs('userInfo', jsonEncode(userInfo));
-
-      _showMessage("Login successful");
-      setState(() {
-        _isLoading = true;
-      });
-      return true;
-    } else {
-      if(loginResponse.statusCode==401){
-        _message = "Incorrect Email or Password";
-      }
-      print("Login failed with status code: ${loginResponse.statusCode}");
-      print("Response: ${loginResponse.body}");
-      setState(() {
-        _isLoading = true;
-      });
-    }
-    } catch(e){
-        _message = '$e';
-        print(e);
+        _showMessage("Login successful");
         setState(() {
           _isLoading = true;
         });
+        return true;
+      } else {
+        if (loginResponse.statusCode == 401) {
+          _message = "Incorrect Email or Password";
+        }
+        print("Login failed with status code: ${loginResponse.statusCode}");
+        print("Response: ${loginResponse.body}");
+        setState(() {
+          _isLoading = true;
+        });
+      }
+    } catch (e) {
+      _message = '$e';
+      print(e);
+      setState(() {
+        _isLoading = true;
+      });
       return false;
     }
     setState(() {
@@ -114,27 +108,22 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void forgotPassword(String email) async {
-    if (email==''){
+    if (email == '') {
       _showMessage("Please enter your email address");
       return;
     }
     final requests = BackendRequests();
-    try{
-      final response = await requests.postRequest(
-        'forgot_password',
-        body:
-          {
-            'email': email,
-          }
-      );
+    try {
+      final response = await requests.postRequest('forgot_password', body: {
+        'email': email,
+      });
 
-      if (response.statusCode == 200){
+      if (response.statusCode == 200) {
         _showMessage("Check your email for the reset passoword link");
-      } else{
+      } else {
         _showMessage("Please enter your email in the field");
       }
-    }
-    catch (e) {
+    } catch (e) {
       _showMessage("Please enter your email in the field");
       _showMessage('$e');
     }
@@ -153,24 +142,31 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Updated login method
   Future<void> _login() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-      bool loginSuccess = await loginCustomer(_emailController.text, _passwordController.text);
-      setState(() {
-        _isLoading = false;
-      });
-      if (!loginSuccess){
-        return;
-      }
-
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
-
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
+    );
   }
+
+  //Future<void> _login() async {
+  //setState(() {
+  //_isLoading = true;
+  //});
+
+  //bool loginSuccess = await loginCustomer(_emailController.text, _passwordController.text);
+  //setState(() {
+  //_isLoading = false;
+  //});
+  //if (!loginSuccess){
+  //return;
+  //}
+
+  //Navigator.pushReplacement(
+  //context,
+  //MaterialPageRoute(builder: (context) => const HomeScreen()),
+  //);
+
+  //}
 
   // Google sign-in method wrapper
   void _handleGoogleSignIn() {
@@ -264,15 +260,13 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }*/
 
-  
-
   @override
   void initState() {
     super.initState();
     final request = BackendRequests();
     final prefs = Prefs();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if(await request.isLoggedIn()){
+      if (await request.isLoggedIn()) {
         print('User is already logged in');
         print(prefs.getPrefs('userInfo'));
         Navigator.pushReplacement(
@@ -284,121 +278,126 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return WillPopScope(
-    onWillPop: () async {
-      if (Platform.isAndroid) {
-        SystemNavigator.pop(); // For Android
-      } else if (Platform.isIOS) {
-        exit(0); // For iOS and other platforms
-      }
-      return false;
-    },
-    child: Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 50), // Reduced from 100 to make room for new title
-              const Text(
-                'FABLY',
-                style: TextStyle(
-                  fontFamily: 'jura',
-                  fontSize: 50,
-                  letterSpacing: 3,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        if (Platform.isAndroid) {
+          SystemNavigator.pop(); // For Android
+        } else if (Platform.isIOS) {
+          exit(0); // For iOS and other platforms
+        }
+        return false;
+      },
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                    height: 50), // Reduced from 100 to make room for new title
+                const Text(
+                  'FABLY',
+                  style: TextStyle(
+                    fontFamily: 'jura',
+                    fontSize: 50,
+                    letterSpacing: 3,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 30), // Added spacing between titles
-              Align(
-                alignment: Alignment.center,
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 300),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        const Text(
-                          'LOGIN',
-                          style: TextStyle(
-                            letterSpacing: 8,
-                            fontFamily: 'jura',
-                            fontSize: 53,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                const SizedBox(height: 30), // Added spacing between titles
+                Align(
+                  alignment: Alignment.center,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 300),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          const Text(
+                            'LOGIN',
+                            style: TextStyle(
+                              letterSpacing: 8,
+                              fontFamily: 'jura',
+                              fontSize: 53,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 60),
-                        AuthTextField(
-                          controller: _emailController, 
-                          labelText: 'Email',
-                          validator: (value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Email is required';
-                            }
-                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-                                .hasMatch(value)) {
-                              return 'Enter a valid email address';
-                            }
-                            return null;
-                          },
-                        ),
-                        AuthTextField(
-                          controller: _passwordController,
-                          labelText: 'Password',
-                          obscureText: true,
-                        ),
-                        const SizedBox(height: 50),
-                        AuthButton(
-                          text: 'LOGIN',
-                          onPressed: _isLoading ? () {} : _handleLogin,
-                        ),
-                        TextButton(
-                          onPressed: _isLoading ? null : _handleForgotPassword,
-                          child: const Text(
-                            'Forgot Password?',
-                            style: TextStyle(color: Colors.white, fontSize: 13, height: 10)
+                          const SizedBox(height: 60),
+                          AuthTextField(
+                            controller: _emailController,
+                            labelText: 'Email',
+                            validator: (value) {
+                              if (value == null || value.trim().isEmpty) {
+                                return 'Email is required';
+                              }
+                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                  .hasMatch(value)) {
+                                return 'Enter a valid email address';
+                              }
+                              return null;
+                            },
                           ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                            );
-                          },
-                          child: const Text(
-                            "Don't have an account? Register",
-                            style: TextStyle(color: Colors.white)
+                          AuthTextField(
+                            controller: _passwordController,
+                            labelText: 'Password',
+                            obscureText: true,
                           ),
-                        ),
-                        if (_message == 'Email not verified. Check your inbox.')
-                          ElevatedButton(
-                            onPressed: _handleResendVerification,
-                            child: const Text('Resend Verification Email'),
+                          const SizedBox(height: 50),
+                          AuthButton(
+                            text: 'LOGIN',
+                            onPressed: _isLoading ? () {} : _handleLogin,
                           ),
-                        const SizedBox(height: 20),
-                        Text(
-                          _message,
-                          style: const TextStyle(
-                            fontFamily: 'Jura',
-                            fontSize: 16,
-                            color: Colors.white,
+                          TextButton(
+                            onPressed:
+                                _isLoading ? null : _handleForgotPassword,
+                            child: const Text('Forgot Password?',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    height: 10)),
                           ),
-                        ),
-                        const SizedBox(height: 30),
-                      ],
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RegisterScreen()),
+                              );
+                            },
+                            child: const Text("Don't have an account? Register",
+                                style: TextStyle(color: Colors.white)),
+                          ),
+                          if (_message ==
+                              'Email not verified. Check your inbox.')
+                            ElevatedButton(
+                              onPressed: _handleResendVerification,
+                              child: const Text('Resend Verification Email'),
+                            ),
+                          const SizedBox(height: 20),
+                          Text(
+                            _message,
+                            style: const TextStyle(
+                              fontFamily: 'Jura',
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 50),
-            ],
+                const SizedBox(height: 50),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}}
+    );
+  }
+}
